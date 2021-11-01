@@ -4,7 +4,4 @@ This is my repository for my first exercise in Text2Scene: a course offered at G
 
 ## Dependencies
 
-Python3 =>
-pip install matplotlib
-pip install networkx
-pip install spacy
+Python3 => matplotlib || networkx || spacy
