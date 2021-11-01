@@ -1,5 +1,6 @@
 import os
 import spacy
+import networkx as nx
 import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
 
@@ -42,8 +43,8 @@ def completeAnalysis(inpath):
     res6 = {}
 
     for f in allFiles:
-        tree = ET.parse(f)
-        root = tree.getroot()
+        root = ET.parse(f).getroot()
+        
         # Part 1
         for c in root.iter("TEXT"):
             # Part 1
@@ -129,11 +130,79 @@ def completeAnalysis(inpath):
     for k in sorted(res6, key=res6.get, reverse=True)[:5]:
         print(str(k) + ": " + str(res6[k]))
 
-
-
     plt.show()
 
 
 
-if __name__ == "__main__":
+def visualizeText(inpath):
+    graph = nx.Graph()
+    nodes = [[],[]]
+    edges = []
+    metas = []
+
+    root = ET.parse(inpath).getroot()
+    for c in root.findall("TAGS/"):
+        if c.tag in ["QSLINK","OLINK"]:
+            edges.append((c.tag, c.attrib["relType"], c.attrib["fromID"], c.attrib["toID"]))
+        if c.tag in ["SPATIAL_ENTITY","PLACE","LOCATION","NONMOTIONEVENT","PATH"]:
+            nodes[0].append((c.tag, [c.attrib["id"]], [c.attrib["text"]]))
+        if c.tag == "METALINK" and c.attrib["relType"] == "COREFERENCE":
+            metas.append((c.attrib["objectID1"], c.attrib["objectID2"]))
+    
+    nodes[1].append(nodes[0][0])
+    for node in nodes[0][1:]:
+        check = True
+        for k in range(len(nodes[1])):
+            if node[1][0] in nodes[1][k][1]:
+                break
+            else:
+                for link in metas:
+                    if (node[1][0] == link[0] and link[1] in nodes[1][k][1]) or (node[1][0] == link[1] and link[0] in nodes[1][k][1]):
+                        nodes[1][k][1].append(node[1][0])
+                        if node[2][0] not in nodes[1][k][2]:
+                            nodes[1][k][2].append(node[2][0])
+                        check = False
+                        break
+            if not check:
+                break
+        if check:
+            nodes[1].append(node)
+
+    colorTable = {"SPATIAL_ENTITY":"red","PLACE":"blue","LOCATION":"green","NONMOTIONEVENT":"yellow","PATH":"black"}
+    allLabels = [{},{}]
+    colors = []
+    for node in nodes[1]:
+        graph.add_node(node[1][0])
+        allLabels[0][node[1][0]] = ",".join(node[2])
+        colors.append(colorTable[node[0]])
+    
+    for edge in edges:
+        if edge[2] in graph.nodes() and edge[3] in graph.nodes():
+            graph.add_edge(edge[2], edge[3])
+            allLabels[1][(edge[2], edge[3])] = edge[1]
+    
+    pos = nx.spring_layout(graph, k=0.5, iterations=20)
+    plt.figure()
+
+    nx.draw_networkx(graph, pos, node_color=colors, labels=allLabels[0], with_labels=True, font_size=10, alpha=0.5)
+    nx.draw_networkx_edge_labels(graph, pos, edge_labels=allLabels[1], font_color="red")
+
+    plt.show()
+
+
+def run23():
     completeAnalysis(r"TrainingData")
+
+def run24I():
+    visualizeText(r"TrainingData\RFC\Bicycles.xml") 
+
+def run24II():
+    visualizeText(r"TrainingData\ANC\WhereToMadrid\Highlights_of_the_Prado_Museum.xml") 
+
+if __name__ == "__main__":
+    # Aufgabe 2.3 
+    # completeAnalysis(r"TrainingData")
+
+    # Aufgabe 2.4 :: run24I || run24II
+    # run24I()
+    # run24II()
