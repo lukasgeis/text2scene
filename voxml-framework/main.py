@@ -81,7 +81,7 @@ class MainVoxMLWindow(QMainWindow):
                     voxData.Type.Components.append(vComp)
                 for arg in VoxML.findall("Type/Args/Arg"):
                     vAr = vArg()
-                    vAr.Value = comp.get("Value")
+                    vAr.Value = arg.get("Value")
                     voxData.Type.Args.append(vAr)
                 for subev in VoxML.findall("Type/Body/Subevent"):
                     vSubev = vSubevent()
