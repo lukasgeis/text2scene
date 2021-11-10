@@ -191,17 +191,17 @@ def visualizeText(inpath):
 
 
 def run23():
-    completeAnalysis(r"TrainingData")
+    completeAnalysis(r"fingerübung\TrainingData")
 
 def run24I():
-    visualizeText(r"TrainingData\RFC\Bicycles.xml") 
+    visualizeText(r"fingerübung\TrainingData\RFC\Bicycles.xml") 
 
 def run24II():
-    visualizeText(r"TrainingData\ANC\WhereToMadrid\Highlights_of_the_Prado_Museum.xml") 
+    visualizeText(r"fingerübung\TrainingData\ANC\WhereToMadrid\Highlights_of_the_Prado_Museum.xml") 
 
 if __name__ == "__main__":
     # Aufgabe 2.3 
-    # completeAnalysis(r"TrainingData")
+    # run23()
 
     # Aufgabe 2.4 :: run24I || run24II
     # run24I()
