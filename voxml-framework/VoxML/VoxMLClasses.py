@@ -1,5 +1,5 @@
 # Python Dataclasses to implement VoxML Entities
-# created using files in https://github.com/VoxSim/tree/main/VoxML/voxml as reference
+# created using files in https://github.com/VoxML/VoxSim/tree/main/VoxML/voxml as reference
 # will be modified/expanded later on if new entites emerge
 
 
@@ -9,6 +9,8 @@
 
 class VoxMLObject:
     def __init__(self) -> None:
+        self.xmlns_xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+        self.xmlns_xsd = "http://www.w3.org/2001/XMLSchema"
         self.Entity = vEntity()
         self.Lex = vLex()
         self.Type = vType()
