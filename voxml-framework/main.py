@@ -36,6 +36,7 @@ class MainVoxMLWindow(QMainWindow):
     # Appends new object to allObj -> only used in lambda expression
     def appendNewObject(self, obj: VoxMLObject) -> None:
         self.allObj.append(obj)
+        self.printLastVoxMLObject() # Testing purposes
 
     # Choose .txt or .xml file containing VoxML data from system
     def chooseVoxMLData(self) -> str:
@@ -45,6 +46,7 @@ class MainVoxMLWindow(QMainWindow):
     def parseVoxMLData(self, inpath) -> VoxMLObject:
         if inpath.endswith(".xml") or inpath.endswith(".txt"):
             voxData = VoxMLObject()
+            voxData.filepath = inpath
             VoxML = ET.parse(inpath).getroot()
             
             Entity = VoxML.find("Entity")
@@ -121,6 +123,96 @@ class MainVoxMLWindow(QMainWindow):
                     voxData.Attributes.Attrs.append(vAtt)
             
             return voxData
+
+    # Print last added/parsed VoxMLObject to console :: only for testing purposes / will be removed later
+    def printLastVoxMLObject(self):
+        if len(self.allObj) == 0:
+            return
+        vox = self.allObj[-1]
+        print("Showing parsed data of " + str(vox.filepath) + "\n")
+        if vox.Entity.Type != None:
+            print("Entity:\n\tType: " + str(vox.Entity.Type))
+        if vox.Lex.Pred != None or vox.Lex.Type != None:
+            print("Lex:")
+            if vox.Lex.Pred != None:
+                print("\tPred: " + str(vox.Lex.Pred))
+            if vox.Lex.Type != None:
+                print("\tType: " + str(vox.Lex.Type))
+        if True in [x != None for x in [vox.Type.Head,vox.Type.Concavity,vox.Type.RotatSym,vox.Type.ReflSym,vox.Type.Class,vox.Type.Value,vox.Type.Constr,vox.Type.Scale,vox.Type.Arity,vox.Type.Referent,vox.Type.Mapping]] or True in [len(x) > 0 for x in [vox.Type.Components,vox.Type.Args,vox.Type.Body,vox.Type.Corresps]]:
+            print("Type:")
+            if vox.Type.Head != None:
+                print("\tHead: " + str(vox.Type.Head))
+            if len(vox.Type.Components) > 0:
+                print("\tComponents:")
+                for x in vox.Type.Components:
+                    print("\t\tComponent: Value: " + str(x.Value))
+            if vox.Type.Concavity != None:
+                print("\tConcavity: " + str(vox.Type.Concavity))
+            if vox.Type.RotatSym != None:
+                print("\tRotatSym: " + str(vox.Type.RotatSym))
+            if vox.Type.ReflSym != None:
+                print("\tReflSym: " + str(vox.Type.ReflSym))
+            if len(vox.Type.Args) > 0:
+                print("\tArgs:")
+                for x in vox.Type.Args:
+                    print("\t\tArg: Value: " + str(x.Value))
+            if len(vox.Type.Body) > 0:
+                print("\tBody:")
+                for x in vox.Type.Body:
+                    print("\t\tSubevent: Value: " + str(x.Value))
+            if vox.Type.Class != None:
+                print("\tClass: " + str(vox.Type.Class))
+            if vox.Type.Value != None:
+                print("\tValue: " + str(vox.Type.Value))
+            if vox.Type.Constr != None:
+                print("\tConstr: " + str(vox.Type.Constr))
+            if vox.Type.Scale != None:
+                print("\tScale: " + str(vox.Type.Scale))      
+            if vox.Type.Arity != None:
+                print("\tArity: " + str(vox.Type.Arity))
+            if vox.Type.Referent != None:
+                print("\tReferent: " + str(vox.Type.Referent))
+            if vox.Type.Mapping != None:
+                print("\tMapping: " + str(vox.Type.Mapping))  
+            if len(vox.Type.Corresps) > 0:
+                print("\tCorresps:")
+                for x in vox.Type.Corresps:
+                    print("\t\tCorresp: Value: " + str(x.Value))
+        if len(vox.Habitat.Intrinsic) > 0 or len(vox.Habitat.Extrinsic) > 0:
+            print("Habitat:")
+            if len(vox.Habitat.Intrinsic) > 0:
+                print("\tIntrinsic")
+                for x in vox.Habitat.Intrinsic:
+                    if x.Name != None or x.Value != None:
+                        print("\t\tIntr:")
+                        if x.Name != None:
+                            print("\t\t\tName: " + str(x.Name))
+                        if x.Value != None:
+                            print("\t\t\tValue: " + str(x.Value))
+            if len(vox.Habitat.Extrinsic) > 0:
+                print("\tExtrinsic")
+                for x in vox.Habitat.Extrinsic:
+                    if x.Name != None or x.Value != None:
+                        print("\t\tExtr:")
+                        if x.Name != None:
+                            print("\t\t\tName: " + str(x.Name))
+                        if x.Value != None:
+                            print("\t\t\tValue: " + str(x.Value))
+        if len(vox.AffordStr.Affordances) > 0:
+            print("AffordStr:\n\tAffordances")
+            for x in vox.AffordStr.Affordances:
+                print("\t\tAffordance: Formula: " + str(x.Formula))
+        if vox.Embodiment.Scale != None or vox.Embodiment.Movable != None:
+            print("Embodiment:")#
+            if vox.Embodiment.Scale != None:
+                print("\tScale: " + str(vox.Embodiment.Scale))
+            if vox.Embodiment.Movable != None:
+                print("\tMovable: " + str(vox.Embodiment.Movable))
+        if len(vox.Attributes.Attrs) > 0:
+            print("Attributes:\n\tAttrs:")
+            for x in vox.Attributes.Attrs:
+                print("\t\tAttr: Value: " + str(x.Value))
+
             
             
 

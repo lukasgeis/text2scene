@@ -9,6 +9,7 @@
 
 class VoxMLObject:
     def __init__(self) -> None:
+        self.filepath = None
         self.xmlns_xsi = "http://www.w3.org/2001/XMLSchema-instance" 
         self.xmlns_xsd = "http://www.w3.org/2001/XMLSchema"
         self.Entity = vEntity()
