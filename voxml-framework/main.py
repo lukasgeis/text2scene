@@ -27,9 +27,19 @@ class MainVoxMLWindow(QMainWindow):
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
-        # button logic
+        # main button logic
         self.ui.openVoxMLDataButton.clicked.connect(lambda: self.appendNewObject(self.parseVoxMLData(self.chooseVoxMLData())))
         self.ui.exitButton.clicked.connect(lambda: sys.exit())
+
+        # editing logic
+        self.ui.entityBtn.clicked.connect(lambda: self.switchEditingFrame("entity"))
+        self.ui.lexBtn.clicked.connect(lambda: self.switchEditingFrame("lex"))
+        self.ui.typeBtn.clicked.connect(lambda: self.switchEditingFrame("type"))
+        self.ui.habitatBtn.clicked.connect(lambda: self.switchEditingFrame("habitat"))
+        self.ui.affordStrBtn.clicked.connect(lambda: self.switchEditingFrame("affordStr"))
+        self.ui.embodimentBtn.clicked.connect(lambda: self.switchEditingFrame("embodiment"))
+        self.ui.attributesBtn.clicked.connect(lambda: self.switchEditingFrame("attributes"))
+        self.switchEditingFrame("none") # hide all frames in the beginning
 
         # setup position and show window
         self.oldPos = self.pos()
@@ -41,9 +51,54 @@ class MainVoxMLWindow(QMainWindow):
     
     # called when mouse is pressed and moved -> drag and move window
     def mouseMoveEvent(self, event) -> None:
-        delta = QtCore.QPoint(event.globalPos() - self.oldPos)
-        self.move(self.x() + delta.x(), self.y() + delta.y())
-        self.oldPos = event.globalPos()
+        if not True in [x.underMouse() for x in [self.ui.editingFrame,self.ui.exitButton,self.ui.openVoxMLDataButton,self.ui.saveVoxMLData,self.ui.templateChooser,self.ui.createVoxMLButton]]:
+            delta = QtCore.QPoint(event.globalPos() - self.oldPos)
+            self.move(self.x() + delta.x(), self.y() + delta.y())
+            self.oldPos = event.globalPos()
+
+    # switches between frames for editing: entity,lex,type,habitat,affordstr,embodiment,attributes
+    def switchEditingFrame(self, chosenPart):
+        # enable all buttons
+        self.ui.entityBtn.setEnabled(True)
+        self.ui.lexBtn.setEnabled(True)
+        self.ui.typeBtn.setEnabled(True)
+        self.ui.habitatBtn.setEnabled(True)
+        self.ui.affordStrBtn.setEnabled(True)
+        self.ui.embodimentBtn.setEnabled(True)
+        self.ui.attributesBtn.setEnabled(True)
+
+        # hide all frames
+        self.ui.entityFrame.hide()
+        self.ui.lexFrame.hide()
+        self.ui.typeFrame.hide()
+        self.ui.habitatFrame.hide()
+        self.ui.affordStrFrame.hide()
+        self.ui.embodimentFrame.hide()
+        self.ui.attributesFrame.hide()
+
+        # show chosen frame and button
+        if chosenPart == "entity":
+            self.ui.entityBtn.setEnabled(False)
+            self.ui.entityFrame.show()
+        elif chosenPart == "lex":
+            self.ui.lexBtn.setEnabled(False)
+            self.ui.lexFrame.show()
+        elif chosenPart == "type":
+            self.ui.typeBtn.setEnabled(False)
+            self.ui.typeFrame.show()
+        elif chosenPart == "habitat":
+            self.ui.habitatBtn.setEnabled(False)
+            self.ui.habitatFrame.show()
+        elif chosenPart == "affordStr":
+            self.ui.affordStrBtn.setEnabled(False)
+            self.ui.affordStrFrame.show()
+        elif chosenPart == "embodiment":
+            self.ui.embodimentBtn.setEnabled(False)
+            self.ui.embodimentFrame.show()
+        elif chosenPart == "attributes":
+            self.ui.attributesBtn.setEnabled(False)
+            self.ui.attributesFrame.show()
+
 
     # Appends new object to allObj -> only used in lambda expression
     def appendNewObject(self, obj: VoxMLObject) -> None:
