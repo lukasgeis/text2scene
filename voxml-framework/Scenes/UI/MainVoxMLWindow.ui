@@ -17,8 +17,8 @@
    <widget class="QFrame" name="backgroundFrame">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>20</x>
+      <y>0</y>
       <width>1280</width>
       <height>800</height>
      </rect>
@@ -30,9 +30,15 @@
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QFrame {
-	background-color: qlineargradient(spread:pad, x1:0.063, y1:0.937318, x2:1, y2:0, stop:0 rgba(22,28,33,255), stop:1 rgba(45,57,67,255));
+     <string notr="true">QFrame#backgroundFrame {
 	border-radius: 20px;
+	border: None;
+}
+
+QFrame {
+	background-color: qlineargradient(spread:pad, x1:0.063, y1:0.937318, x2:1, y2:0, stop:0 rgba(22,28,33,255), stop:1 rgba(45,57,67,255));
+	color: #f0f0f0;
+	border: 1px solid #f0f0f0;
 }</string>
     </property>
     <property name="frameShape">
@@ -95,6 +101,7 @@ QPushButton::hover {
 	border-radius: 0px;
 	background-color: None;
 	color: #f0f0f0;
+	border: None;
 }</string>
      </property>
      <property name="text">
@@ -107,8 +114,8 @@ QPushButton::hover {
     <widget class="QPushButton" name="openVoxMLDataButton">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>100</y>
+       <x>225</x>
+       <y>120</y>
        <width>160</width>
        <height>30</height>
       </rect>
@@ -126,7 +133,8 @@ QPushButton::hover {
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
-	background-color: None;
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
 	border-radius: 10px;
 	border: 1px solid #f0f0f0;
 	color: #2b78d3;
@@ -138,6 +146,236 @@ QPushButton::hover {
      </property>
      <property name="text">
       <string>Open VoxMLData</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>170</y>
+       <width>800</width>
+       <height>600</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame {
+	border: 2px solid #f0f0f0;
+	background-color: qlineargradient(spread:pad, x1:0.063, y1:0.937318, x2:1, y2:0, stop:0 rgba(22,28,33,255), stop:1 rgba(45,57,67,255));
+	border-radius: 20px;
+}
+</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="createVoxMLButton">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>120</y>
+       <width>160</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #2b78d3;
+}
+
+QPushButton::hover {
+	border: 2px solid #2b78d3;
+}</string>
+     </property>
+     <property name="text">
+      <string>Create VoxMLData</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="templateChooser">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>120</y>
+       <width>160</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+	color: #f0f0f0;
+}
+
+QComboBox::hover {
+	border: 2px solid #2b78d3;
+}
+
+QComboBox:editable {
+    background: #f0f0f0;
+}
+
+QComboBox:!editable, QComboBox::drop-down:editable {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+}
+
+QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+}
+
+QComboBox:on { 
+    padding-top: 3px;
+    padding-left: 4px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+    border-left-width: 1px;
+    border-left-color: #f0f0f0;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow:on { 
+    top: 1px;
+    left: 1px;
+}
+</string>
+     </property>
+     <property name="currentText">
+      <string>Empty</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="placeholderText">
+      <string/>
+     </property>
+     <item>
+      <property name="text">
+       <string>Empty</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Attribute</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Function</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Object</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Program</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Relation</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>120</y>
+       <width>100</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	background-color: None;
+	color: #2b78d3;
+	border: None;
+}</string>
+     </property>
+     <property name="text">
+      <string>Template:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="saveVoxMLData">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>120</y>
+       <width>160</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #1fd78d;
+}
+
+QPushButton::hover {
+	border: 2px solid #1fd78d;
+}</string>
+     </property>
+     <property name="text">
+      <string>Save VoxMLData</string>
      </property>
     </widget>
    </widget>

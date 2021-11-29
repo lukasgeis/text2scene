@@ -31,12 +31,25 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.openVoxMLDataButton.clicked.connect(lambda: self.appendNewObject(self.parseVoxMLData(self.chooseVoxMLData())))
         self.ui.exitButton.clicked.connect(lambda: sys.exit())
 
+        # setup position and show window
+        self.oldPos = self.pos()
         self.show()
+
+    # called when mouse is pressed on window -> save current window position
+    def mousePressEvent(self, event) -> None:
+        self.oldPos = event.globalPos()
+    
+    # called when mouse is pressed and moved -> drag and move window
+    def mouseMoveEvent(self, event) -> None:
+        delta = QtCore.QPoint(event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
 
     # Appends new object to allObj -> only used in lambda expression
     def appendNewObject(self, obj: VoxMLObject) -> None:
-        self.allObj.append(obj)
-        self.printLastVoxMLObject() # Testing purposes
+        if obj != None:
+            self.allObj.append(obj)
+            self.printLastVoxMLObject() # Testing purposes
 
     # Choose .txt or .xml file containing VoxML data from system
     def chooseVoxMLData(self) -> str:
