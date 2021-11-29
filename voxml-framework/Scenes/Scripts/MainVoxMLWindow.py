@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainVoxMLWindowSWyeSx.ui'
+## Form generated from reading UI file 'MainVoxMLWindoweuQLPY.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -76,7 +76,7 @@ class Ui_MainVoxMLWindow(object):
         self.titleLabel.setAlignment(Qt.AlignCenter)
         self.openVoxMLDataButton = QPushButton(self.backgroundFrame)
         self.openVoxMLDataButton.setObjectName(u"openVoxMLDataButton")
-        self.openVoxMLDataButton.setGeometry(QRect(225, 120, 160, 30))
+        self.openVoxMLDataButton.setGeometry(QRect(250, 120, 160, 30))
         font2 = QFont()
         font2.setFamily(u"Segoe UI")
         font2.setPointSize(12)
@@ -266,14 +266,14 @@ class Ui_MainVoxMLWindow(object):
         self.entityFrame.setFrameShadow(QFrame.Raised)
         self.entityTypeLabel = QLabel(self.entityFrame)
         self.entityTypeLabel.setObjectName(u"entityTypeLabel")
-        self.entityTypeLabel.setGeometry(QRect(280, 250, 120, 30))
+        self.entityTypeLabel.setGeometry(QRect(250, 250, 120, 30))
         font3 = QFont()
         font3.setFamily(u"Segoe UI")
         font3.setPointSize(12)
         self.entityTypeLabel.setFont(font3)
         self.entityType = QLineEdit(self.entityFrame)
         self.entityType.setObjectName(u"entityType")
-        self.entityType.setGeometry(QRect(400, 250, 150, 30))
+        self.entityType.setGeometry(QRect(370, 250, 150, 30))
         self.entityType.setFont(font3)
         self.entityType.setAlignment(Qt.AlignCenter)
         self.lexFrame = QFrame(self.editingFrame)
@@ -296,20 +296,20 @@ class Ui_MainVoxMLWindow(object):
         self.lexFrame.setFrameShadow(QFrame.Raised)
         self.lexTypeLabel = QLabel(self.lexFrame)
         self.lexTypeLabel.setObjectName(u"lexTypeLabel")
-        self.lexTypeLabel.setGeometry(QRect(280, 275, 120, 30))
+        self.lexTypeLabel.setGeometry(QRect(250, 275, 120, 30))
         self.lexTypeLabel.setFont(font3)
         self.lexType = QLineEdit(self.lexFrame)
         self.lexType.setObjectName(u"lexType")
-        self.lexType.setGeometry(QRect(400, 275, 150, 30))
+        self.lexType.setGeometry(QRect(370, 275, 150, 30))
         self.lexType.setFont(font3)
         self.lexType.setAlignment(Qt.AlignCenter)
         self.lexPredLabel = QLabel(self.lexFrame)
         self.lexPredLabel.setObjectName(u"lexPredLabel")
-        self.lexPredLabel.setGeometry(QRect(280, 225, 120, 30))
+        self.lexPredLabel.setGeometry(QRect(250, 225, 120, 30))
         self.lexPredLabel.setFont(font3)
         self.lexPred = QLineEdit(self.lexFrame)
         self.lexPred.setObjectName(u"lexPred")
-        self.lexPred.setGeometry(QRect(400, 225, 150, 30))
+        self.lexPred.setGeometry(QRect(370, 225, 150, 30))
         self.lexPred.setFont(font3)
         self.lexPred.setAlignment(Qt.AlignCenter)
         self.embodimentFrame = QFrame(self.editingFrame)
@@ -348,69 +348,19 @@ class Ui_MainVoxMLWindow(object):
         self.embodimentFrame.setFrameShadow(QFrame.Raised)
         self.movableLabel = QLabel(self.embodimentFrame)
         self.movableLabel.setObjectName(u"movableLabel")
-        self.movableLabel.setGeometry(QRect(280, 275, 120, 30))
+        self.movableLabel.setGeometry(QRect(250, 275, 120, 30))
         self.movableLabel.setFont(font3)
         self.scaleLabel = QLabel(self.embodimentFrame)
         self.scaleLabel.setObjectName(u"scaleLabel")
-        self.scaleLabel.setGeometry(QRect(280, 225, 120, 30))
+        self.scaleLabel.setGeometry(QRect(250, 225, 120, 30))
         self.scaleLabel.setFont(font3)
         self.embodimentMovable = QCheckBox(self.embodimentFrame)
         self.embodimentMovable.setObjectName(u"embodimentMovable")
-        self.embodimentMovable.setGeometry(QRect(460, 275, 30, 30))
-        self.embodimentScale = QComboBox(self.embodimentFrame)
-        self.embodimentScale.addItem("")
-        self.embodimentScale.addItem("")
-        self.embodimentScale.addItem("")
+        self.embodimentMovable.setGeometry(QRect(430, 275, 30, 30))
+        self.embodimentScale = QLineEdit(self.embodimentFrame)
         self.embodimentScale.setObjectName(u"embodimentScale")
-        self.embodimentScale.setGeometry(QRect(400, 225, 160, 30))
+        self.embodimentScale.setGeometry(QRect(370, 225, 150, 30))
         self.embodimentScale.setFont(font3)
-        self.embodimentScale.setStyleSheet(u"QComboBox {\n"
-"    border: 1px solid #2b78d3;\n"
-"    border-radius: 10px;\n"
-"	color: #f0f0f0;\n"
-"}\n"
-"\n"
-"QComboBox::hover {\n"
-"	border: 2px solid #2b78d3;\n"
-"}\n"
-"\n"
-"QComboBox:editable {\n"
-"    background: #f0f0f0;\n"
-"}\n"
-"\n"
-"QComboBox:!editable, QComboBox::drop-down:editable {\n"
-"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"}\n"
-"\n"
-"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
-"    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"}\n"
-"\n"
-"QComboBox:on { \n"
-"    padding-top: 3px;\n"
-"    padding-left: 4px;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"\n"
-"    border-left-width: 1px;\n"
-"    border-left-color: #f0f0f0;\n"
-"    border-left-style: solid;\n"
-"    border-top-right-radius: 3px;\n"
-"    borde"
-                        "r-bottom-right-radius: 3px;\n"
-"}\n"
-"\n"
-"QComboBox::down-arrow:on { \n"
-"    top: 1px;\n"
-"    left: 1px;\n"
-"}\n"
-"")
         self.attributesFrame = QFrame(self.editingFrame)
         self.attributesFrame.setObjectName(u"attributesFrame")
         self.attributesFrame.setEnabled(True)
@@ -447,11 +397,11 @@ class Ui_MainVoxMLWindow(object):
         self.attributesFrame.setFrameShadow(QFrame.Raised)
         self.attributesLabel = QLabel(self.attributesFrame)
         self.attributesLabel.setObjectName(u"attributesLabel")
-        self.attributesLabel.setGeometry(QRect(280, 225, 120, 30))
+        self.attributesLabel.setGeometry(QRect(250, 225, 120, 30))
         self.attributesLabel.setFont(font3)
         self.attributesAttrs = QComboBox(self.attributesFrame)
         self.attributesAttrs.setObjectName(u"attributesAttrs")
-        self.attributesAttrs.setGeometry(QRect(400, 225, 160, 30))
+        self.attributesAttrs.setGeometry(QRect(370, 225, 160, 30))
         self.attributesAttrs.setFont(font3)
         self.attributesAttrs.setStyleSheet(u"QComboBox {\n"
 "    border: 1px solid #2b78d3;\n"
@@ -502,7 +452,7 @@ class Ui_MainVoxMLWindow(object):
 "")
         self.attributesAttrsDelete = QPushButton(self.attributesFrame)
         self.attributesAttrsDelete.setObjectName(u"attributesAttrsDelete")
-        self.attributesAttrsDelete.setGeometry(QRect(570, 225, 100, 30))
+        self.attributesAttrsDelete.setGeometry(QRect(540, 225, 100, 30))
         self.attributesAttrsDelete.setFont(font2)
         self.attributesAttrsDelete.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -517,7 +467,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.attributesAttrsAdd = QPushButton(self.attributesFrame)
         self.attributesAttrsAdd.setObjectName(u"attributesAttrsAdd")
-        self.attributesAttrsAdd.setGeometry(QRect(570, 265, 100, 30))
+        self.attributesAttrsAdd.setGeometry(QRect(540, 265, 100, 30))
         self.attributesAttrsAdd.setFont(font2)
         self.attributesAttrsAdd.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -532,7 +482,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.attributesAttrsNewItem = QLineEdit(self.attributesFrame)
         self.attributesAttrsNewItem.setObjectName(u"attributesAttrsNewItem")
-        self.attributesAttrsNewItem.setGeometry(QRect(400, 265, 160, 30))
+        self.attributesAttrsNewItem.setGeometry(QRect(370, 265, 160, 30))
         self.attributesAttrsNewItem.setFont(font3)
         self.attributesAttrsNewItem.setStyleSheet(u"QLineEdit {\n"
 "	border: 1px solid #f0f0f0;\n"
@@ -573,11 +523,11 @@ class Ui_MainVoxMLWindow(object):
         self.affordStrFrame.setFrameShadow(QFrame.Raised)
         self.affordancesLabel = QLabel(self.affordStrFrame)
         self.affordancesLabel.setObjectName(u"affordancesLabel")
-        self.affordancesLabel.setGeometry(QRect(280, 225, 120, 30))
+        self.affordancesLabel.setGeometry(QRect(250, 225, 120, 30))
         self.affordancesLabel.setFont(font3)
         self.affordStrAffordances = QComboBox(self.affordStrFrame)
         self.affordStrAffordances.setObjectName(u"affordStrAffordances")
-        self.affordStrAffordances.setGeometry(QRect(400, 225, 160, 30))
+        self.affordStrAffordances.setGeometry(QRect(370, 225, 160, 30))
         self.affordStrAffordances.setFont(font3)
         self.affordStrAffordances.setStyleSheet(u"QComboBox {\n"
 "    border: 1px solid #2b78d3;\n"
@@ -628,7 +578,7 @@ class Ui_MainVoxMLWindow(object):
 "")
         self.affordStrAffordancesDelete = QPushButton(self.affordStrFrame)
         self.affordStrAffordancesDelete.setObjectName(u"affordStrAffordancesDelete")
-        self.affordStrAffordancesDelete.setGeometry(QRect(570, 225, 100, 30))
+        self.affordStrAffordancesDelete.setGeometry(QRect(540, 225, 100, 30))
         self.affordStrAffordancesDelete.setFont(font2)
         self.affordStrAffordancesDelete.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -643,7 +593,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.affordStrAffordancesAdd = QPushButton(self.affordStrFrame)
         self.affordStrAffordancesAdd.setObjectName(u"affordStrAffordancesAdd")
-        self.affordStrAffordancesAdd.setGeometry(QRect(570, 265, 100, 30))
+        self.affordStrAffordancesAdd.setGeometry(QRect(540, 265, 100, 30))
         self.affordStrAffordancesAdd.setFont(font2)
         self.affordStrAffordancesAdd.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -658,7 +608,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.affordStrAffordancesNewItem = QLineEdit(self.affordStrFrame)
         self.affordStrAffordancesNewItem.setObjectName(u"affordStrAffordancesNewItem")
-        self.affordStrAffordancesNewItem.setGeometry(QRect(400, 265, 160, 30))
+        self.affordStrAffordancesNewItem.setGeometry(QRect(370, 265, 160, 30))
         self.affordStrAffordancesNewItem.setFont(font3)
         self.affordStrAffordancesNewItem.setStyleSheet(u"QLineEdit {\n"
 "	border: 1px solid #f0f0f0;\n"
@@ -969,10 +919,10 @@ class Ui_MainVoxMLWindow(object):
         self.typeScale.setObjectName(u"typeScale")
         self.typeScale.setGeometry(QRect(160, 295, 160, 30))
         self.typeScale.setFont(font3)
-        self.typeRefrentLabel = QLabel(self.typeFrame)
-        self.typeRefrentLabel.setObjectName(u"typeRefrentLabel")
-        self.typeRefrentLabel.setGeometry(QRect(30, 405, 120, 30))
-        self.typeRefrentLabel.setFont(font3)
+        self.typeReferentLabel = QLabel(self.typeFrame)
+        self.typeReferentLabel.setObjectName(u"typeReferentLabel")
+        self.typeReferentLabel.setGeometry(QRect(30, 405, 120, 30))
+        self.typeReferentLabel.setFont(font3)
         self.typeConstr = QLineEdit(self.typeFrame)
         self.typeConstr.setObjectName(u"typeConstr")
         self.typeConstr.setGeometry(QRect(160, 240, 160, 30))
@@ -1389,22 +1339,36 @@ class Ui_MainVoxMLWindow(object):
         self.typeRotatSymZ.setObjectName(u"typeRotatSymZ")
         self.typeRotatSymZ.setGeometry(QRect(640, 405, 70, 30))
         self.typeRotatSymZ.setFont(font3)
-        self.typeRotatSymYZ = QCheckBox(self.typeFrame)
-        self.typeRotatSymYZ.setObjectName(u"typeRotatSymYZ")
-        self.typeRotatSymYZ.setGeometry(QRect(640, 460, 70, 30))
-        self.typeRotatSymYZ.setFont(font3)
+        self.typeReflSymYZ = QCheckBox(self.typeFrame)
+        self.typeReflSymYZ.setObjectName(u"typeReflSymYZ")
+        self.typeReflSymYZ.setGeometry(QRect(640, 460, 70, 30))
+        self.typeReflSymYZ.setFont(font3)
         self.typeReflSymLabel = QLabel(self.typeFrame)
         self.typeReflSymLabel.setObjectName(u"typeReflSymLabel")
         self.typeReflSymLabel.setGeometry(QRect(360, 460, 120, 30))
         self.typeReflSymLabel.setFont(font3)
-        self.typeRotatSymXZ = QCheckBox(self.typeFrame)
-        self.typeRotatSymXZ.setObjectName(u"typeRotatSymXZ")
-        self.typeRotatSymXZ.setGeometry(QRect(560, 460, 70, 30))
-        self.typeRotatSymXZ.setFont(font3)
-        self.typeRotatSymXY = QCheckBox(self.typeFrame)
-        self.typeRotatSymXY.setObjectName(u"typeRotatSymXY")
-        self.typeRotatSymXY.setGeometry(QRect(480, 460, 70, 30))
-        self.typeRotatSymXY.setFont(font3)
+        self.typeReflSymXZ = QCheckBox(self.typeFrame)
+        self.typeReflSymXZ.setObjectName(u"typeReflSymXZ")
+        self.typeReflSymXZ.setGeometry(QRect(560, 460, 70, 30))
+        self.typeReflSymXZ.setFont(font3)
+        self.typeReflSymXY = QCheckBox(self.typeFrame)
+        self.typeReflSymXY.setObjectName(u"typeReflSymXY")
+        self.typeReflSymXY.setGeometry(QRect(480, 460, 70, 30))
+        self.typeReflSymXY.setFont(font3)
+        self.entityFrame.raise_()
+        self.lexFrame.raise_()
+        self.embodimentFrame.raise_()
+        self.attributesFrame.raise_()
+        self.affordStrFrame.raise_()
+        self.habitatFrame.raise_()
+        self.typeFrame.raise_()
+        self.entityBtn.raise_()
+        self.lexBtn.raise_()
+        self.typeBtn.raise_()
+        self.habitatBtn.raise_()
+        self.attributesBtn.raise_()
+        self.embodimentBtn.raise_()
+        self.affordStrBtn.raise_()
         self.createVoxMLButton = QPushButton(self.backgroundFrame)
         self.createVoxMLButton.setObjectName(u"createVoxMLButton")
         self.createVoxMLButton.setGeometry(QRect(670, 120, 160, 30))
@@ -1502,11 +1466,25 @@ class Ui_MainVoxMLWindow(object):
 "QPushButton::hover {\n"
 "	border: 2px solid #1fd78d;\n"
 "}")
+        self.saveToObject = QPushButton(self.backgroundFrame)
+        self.saveToObject.setObjectName(u"saveToObject")
+        self.saveToObject.setGeometry(QRect(195, 120, 50, 30))
+        self.saveToObject.setFont(font2)
+        self.saveToObject.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #1fd78d;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 1px solid #1fd78d;\n"
+"}")
         MainVoxMLWindow.setCentralWidget(self.mainWidget)
 
         self.retranslateUi(MainVoxMLWindow)
 
-        self.embodimentScale.setCurrentIndex(0)
         self.attributesAttrs.setCurrentIndex(-1)
         self.affordStrAffordances.setCurrentIndex(-1)
         self.habitatIntrinsic.setCurrentIndex(-1)
@@ -1542,12 +1520,6 @@ class Ui_MainVoxMLWindow(object):
         self.movableLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Movable:", None))
         self.scaleLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Scale:", None))
         self.embodimentMovable.setText("")
-        self.embodimentScale.setItemText(0, QCoreApplication.translate("MainVoxMLWindow", u"< agent", None))
-        self.embodimentScale.setItemText(1, QCoreApplication.translate("MainVoxMLWindow", u"> agent", None))
-        self.embodimentScale.setItemText(2, QCoreApplication.translate("MainVoxMLWindow", u"agent", None))
-
-        self.embodimentScale.setCurrentText(QCoreApplication.translate("MainVoxMLWindow", u"< agent", None))
-        self.embodimentScale.setPlaceholderText("")
         self.attributesLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Attrs:", None))
         self.attributesAttrs.setCurrentText("")
         self.attributesAttrs.setPlaceholderText("")
@@ -1578,7 +1550,7 @@ class Ui_MainVoxMLWindow(object):
         self.typeConcavityLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Concavity:", None))
         self.typeClassLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Class:", None))
         self.typeValueLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Value:", None))
-        self.typeRefrentLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Referent:", None))
+        self.typeReferentLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Referent:", None))
         self.typeArityLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Arity:", None))
         self.typeConstrLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Constr:", None))
         self.typeScaleLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Scale:", None))
@@ -1611,10 +1583,10 @@ class Ui_MainVoxMLWindow(object):
         self.typeRotatSymX.setText(QCoreApplication.translate("MainVoxMLWindow", u"X", None))
         self.typeRotatSymY.setText(QCoreApplication.translate("MainVoxMLWindow", u"Y", None))
         self.typeRotatSymZ.setText(QCoreApplication.translate("MainVoxMLWindow", u"Z", None))
-        self.typeRotatSymYZ.setText(QCoreApplication.translate("MainVoxMLWindow", u"YZ", None))
+        self.typeReflSymYZ.setText(QCoreApplication.translate("MainVoxMLWindow", u"YZ", None))
         self.typeReflSymLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"ReflSym:", None))
-        self.typeRotatSymXZ.setText(QCoreApplication.translate("MainVoxMLWindow", u"XZ", None))
-        self.typeRotatSymXY.setText(QCoreApplication.translate("MainVoxMLWindow", u"XY", None))
+        self.typeReflSymXZ.setText(QCoreApplication.translate("MainVoxMLWindow", u"XZ", None))
+        self.typeReflSymXY.setText(QCoreApplication.translate("MainVoxMLWindow", u"XY", None))
         self.createVoxMLButton.setText(QCoreApplication.translate("MainVoxMLWindow", u"Create VoxMLData", None))
         self.templateChooser.setItemText(0, QCoreApplication.translate("MainVoxMLWindow", u"Empty", None))
         self.templateChooser.setItemText(1, QCoreApplication.translate("MainVoxMLWindow", u"Attribute", None))
@@ -1626,6 +1598,7 @@ class Ui_MainVoxMLWindow(object):
         self.templateChooser.setCurrentText(QCoreApplication.translate("MainVoxMLWindow", u"Empty", None))
         self.templateChooser.setPlaceholderText("")
         self.templateLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Template:", None))
-        self.saveVoxMLData.setText(QCoreApplication.translate("MainVoxMLWindow", u"Save VoxMLData", None))
+        self.saveVoxMLData.setText(QCoreApplication.translate("MainVoxMLWindow", u"Save To File", None))
+        self.saveToObject.setText(QCoreApplication.translate("MainVoxMLWindow", u"Save", None))
     # retranslateUi
 

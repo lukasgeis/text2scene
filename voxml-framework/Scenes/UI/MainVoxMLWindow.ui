@@ -114,7 +114,7 @@ QPushButton::hover {
     <widget class="QPushButton" name="openVoxMLDataButton">
      <property name="geometry">
       <rect>
-       <x>225</x>
+       <x>250</x>
        <y>120</y>
        <width>160</width>
        <height>30</height>
@@ -498,7 +498,7 @@ QLineEdit {
       <widget class="QLabel" name="entityTypeLabel">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>250</x>
          <y>250</y>
          <width>120</width>
          <height>30</height>
@@ -517,7 +517,7 @@ QLineEdit {
       <widget class="QLineEdit" name="entityType">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>370</x>
          <y>250</y>
          <width>150</width>
          <height>30</height>
@@ -572,7 +572,7 @@ QLineEdit {
       <widget class="QLabel" name="lexTypeLabel">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>250</x>
          <y>275</y>
          <width>120</width>
          <height>30</height>
@@ -591,7 +591,7 @@ QLineEdit {
       <widget class="QLineEdit" name="lexType">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>370</x>
          <y>275</y>
          <width>150</width>
          <height>30</height>
@@ -613,7 +613,7 @@ QLineEdit {
       <widget class="QLabel" name="lexPredLabel">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>250</x>
          <y>225</y>
          <width>120</width>
          <height>30</height>
@@ -632,7 +632,7 @@ QLineEdit {
       <widget class="QLineEdit" name="lexPred">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>370</x>
          <y>225</y>
          <width>150</width>
          <height>30</height>
@@ -703,7 +703,7 @@ QCheckBox::indicator:checked {
       <widget class="QLabel" name="movableLabel">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>250</x>
          <y>275</y>
          <width>120</width>
          <height>30</height>
@@ -722,7 +722,7 @@ QCheckBox::indicator:checked {
       <widget class="QLabel" name="scaleLabel">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>250</x>
          <y>225</y>
          <width>120</width>
          <height>30</height>
@@ -741,7 +741,7 @@ QCheckBox::indicator:checked {
       <widget class="QCheckBox" name="embodimentMovable">
        <property name="geometry">
         <rect>
-         <x>460</x>
+         <x>430</x>
          <y>275</y>
          <width>30</width>
          <height>30</height>
@@ -751,12 +751,12 @@ QCheckBox::indicator:checked {
         <string/>
        </property>
       </widget>
-      <widget class="QComboBox" name="embodimentScale">
+      <widget class="QLineEdit" name="embodimentScale">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>370</x>
          <y>225</y>
-         <width>160</width>
+         <width>150</width>
          <height>30</height>
         </rect>
        </property>
@@ -766,78 +766,6 @@ QCheckBox::indicator:checked {
          <pointsize>12</pointsize>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QComboBox {
-    border: 1px solid #2b78d3;
-    border-radius: 10px;
-	color: #f0f0f0;
-}
-
-QComboBox::hover {
-	border: 2px solid #2b78d3;
-}
-
-QComboBox:editable {
-    background: #f0f0f0;
-}
-
-QComboBox:!editable, QComboBox::drop-down:editable {
-     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                 stop: 0 #161c21, stop: 1.0 #2d3943);
-}
-
-QComboBox:!editable:on, QComboBox::drop-down:editable:on {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                 stop: 0 #161c21, stop: 1.0 #2d3943);
-}
-
-QComboBox:on { 
-    padding-top: 3px;
-    padding-left: 4px;
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 15px;
-
-    border-left-width: 1px;
-    border-left-color: #f0f0f0;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
-
-QComboBox::down-arrow:on { 
-    top: 1px;
-    left: 1px;
-}
-</string>
-       </property>
-       <property name="currentText">
-        <string>&lt; agent</string>
-       </property>
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <property name="placeholderText">
-        <string/>
-       </property>
-       <item>
-        <property name="text">
-         <string>&lt; agent</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>&gt; agent</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>agent</string>
-        </property>
-       </item>
       </widget>
      </widget>
      <widget class="QFrame" name="attributesFrame">
@@ -891,7 +819,7 @@ QCheckBox::indicator:checked {
       <widget class="QLabel" name="attributesLabel">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>250</x>
          <y>225</y>
          <width>120</width>
          <height>30</height>
@@ -910,7 +838,7 @@ QCheckBox::indicator:checked {
       <widget class="QComboBox" name="attributesAttrs">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>370</x>
          <y>225</y>
          <width>160</width>
          <height>30</height>
@@ -983,7 +911,7 @@ QComboBox::down-arrow:on {
       <widget class="QPushButton" name="attributesAttrsDelete">
        <property name="geometry">
         <rect>
-         <x>570</x>
+         <x>540</x>
          <y>225</y>
          <width>100</width>
          <height>30</height>
@@ -1020,7 +948,7 @@ QPushButton::hover {
       <widget class="QPushButton" name="attributesAttrsAdd">
        <property name="geometry">
         <rect>
-         <x>570</x>
+         <x>540</x>
          <y>265</y>
          <width>100</width>
          <height>30</height>
@@ -1057,7 +985,7 @@ QPushButton::hover {
       <widget class="QLineEdit" name="attributesAttrsNewItem">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>370</x>
          <y>265</y>
          <width>160</width>
          <height>30</height>
@@ -1130,7 +1058,7 @@ QCheckBox::indicator:checked {
       <widget class="QLabel" name="affordancesLabel">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>250</x>
          <y>225</y>
          <width>120</width>
          <height>30</height>
@@ -1149,7 +1077,7 @@ QCheckBox::indicator:checked {
       <widget class="QComboBox" name="affordStrAffordances">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>370</x>
          <y>225</y>
          <width>160</width>
          <height>30</height>
@@ -1222,7 +1150,7 @@ QComboBox::down-arrow:on {
       <widget class="QPushButton" name="affordStrAffordancesDelete">
        <property name="geometry">
         <rect>
-         <x>570</x>
+         <x>540</x>
          <y>225</y>
          <width>100</width>
          <height>30</height>
@@ -1259,7 +1187,7 @@ QPushButton::hover {
       <widget class="QPushButton" name="affordStrAffordancesAdd">
        <property name="geometry">
         <rect>
-         <x>570</x>
+         <x>540</x>
          <y>265</y>
          <width>100</width>
          <height>30</height>
@@ -1296,7 +1224,7 @@ QPushButton::hover {
       <widget class="QLineEdit" name="affordStrAffordancesNewItem">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>370</x>
          <y>265</y>
          <width>160</width>
          <height>30</height>
@@ -2003,7 +1931,7 @@ QCheckBox::indicator:checked {
         </font>
        </property>
       </widget>
-      <widget class="QLabel" name="typeRefrentLabel">
+      <widget class="QLabel" name="typeReferentLabel">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -2998,7 +2926,7 @@ QPushButton::hover {
         <string>Z</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="typeRotatSymYZ">
+      <widget class="QCheckBox" name="typeReflSymYZ">
        <property name="geometry">
         <rect>
          <x>640</x>
@@ -3036,7 +2964,7 @@ QPushButton::hover {
         <string>ReflSym:</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="typeRotatSymXZ">
+      <widget class="QCheckBox" name="typeReflSymXZ">
        <property name="geometry">
         <rect>
          <x>560</x>
@@ -3055,7 +2983,7 @@ QPushButton::hover {
         <string>XZ</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="typeRotatSymXY">
+      <widget class="QCheckBox" name="typeReflSymXY">
        <property name="geometry">
         <rect>
          <x>480</x>
@@ -3075,6 +3003,20 @@ QPushButton::hover {
        </property>
       </widget>
      </widget>
+     <zorder>entityFrame</zorder>
+     <zorder>lexFrame</zorder>
+     <zorder>embodimentFrame</zorder>
+     <zorder>attributesFrame</zorder>
+     <zorder>affordStrFrame</zorder>
+     <zorder>habitatFrame</zorder>
+     <zorder>typeFrame</zorder>
+     <zorder>entityBtn</zorder>
+     <zorder>lexBtn</zorder>
+     <zorder>typeBtn</zorder>
+     <zorder>habitatBtn</zorder>
+     <zorder>attributesBtn</zorder>
+     <zorder>embodimentBtn</zorder>
+     <zorder>affordStrBtn</zorder>
     </widget>
     <widget class="QPushButton" name="createVoxMLButton">
      <property name="geometry">
@@ -3279,7 +3221,44 @@ QPushButton::hover {
 }</string>
      </property>
      <property name="text">
-      <string>Save VoxMLData</string>
+      <string>Save To File</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="saveToObject">
+     <property name="geometry">
+      <rect>
+       <x>195</x>
+       <y>120</y>
+       <width>50</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #1fd78d;
+}
+
+QPushButton::hover {
+	border: 1px solid #1fd78d;
+}</string>
+     </property>
+     <property name="text">
+      <string>Save</string>
      </property>
     </widget>
    </widget>

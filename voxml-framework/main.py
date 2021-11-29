@@ -30,6 +30,9 @@ class MainVoxMLWindow(QMainWindow):
         # main button logic
         self.ui.openVoxMLDataButton.clicked.connect(lambda: self.appendNewObject(self.parseVoxMLData(self.chooseVoxMLData())))
         self.ui.exitButton.clicked.connect(lambda: sys.exit())
+        self.ui.createVoxMLButton.clicked.connect(lambda: self.createNewVoxMLObject(str(self.ui.templateChooser.currentText())))
+        self.ui.saveVoxMLData.clicked.connect(lambda: self.saveDataToFile(self.createXMLStringFromVoxMLObject()))
+        self.ui.saveToObject.clicked.connect(lambda: self.saveDataToObject())
 
         # editing logic
         self.ui.entityBtn.clicked.connect(lambda: self.switchEditingFrame("entity"))
@@ -39,7 +42,7 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.affordStrBtn.clicked.connect(lambda: self.switchEditingFrame("affordStr"))
         self.ui.embodimentBtn.clicked.connect(lambda: self.switchEditingFrame("embodiment"))
         self.ui.attributesBtn.clicked.connect(lambda: self.switchEditingFrame("attributes"))
-        self.switchEditingFrame("none") # hide all frames in the beginning
+        self.disableEditingMode()
 
         # setup position and show window
         self.oldPos = self.pos()
@@ -55,6 +58,26 @@ class MainVoxMLWindow(QMainWindow):
             delta = QtCore.QPoint(event.globalPos() - self.oldPos)
             self.move(self.x() + delta.x(), self.y() + delta.y())
             self.oldPos = event.globalPos()
+
+    # disable all editing related features
+    def disableEditingMode(self):
+        # disable all buttons
+        self.ui.entityBtn.setEnabled(False)
+        self.ui.lexBtn.setEnabled(False)
+        self.ui.typeBtn.setEnabled(False)
+        self.ui.habitatBtn.setEnabled(False)
+        self.ui.affordStrBtn.setEnabled(False)
+        self.ui.embodimentBtn.setEnabled(False)
+        self.ui.attributesBtn.setEnabled(False)
+
+        # hide all frames
+        self.ui.entityFrame.hide()
+        self.ui.lexFrame.hide()
+        self.ui.typeFrame.hide()
+        self.ui.habitatFrame.hide()
+        self.ui.affordStrFrame.hide()
+        self.ui.embodimentFrame.hide()
+        self.ui.attributesFrame.hide()
 
     # switches between frames for editing: entity,lex,type,habitat,affordstr,embodiment,attributes
     def switchEditingFrame(self, chosenPart):
@@ -99,12 +122,169 @@ class MainVoxMLWindow(QMainWindow):
             self.ui.attributesBtn.setEnabled(False)
             self.ui.attributesFrame.show()
 
+    # hide all attributes -> used when loading new object
+    def hideAllAttributes(self):
+        for x in self.ui.entityFrame.children():
+            x.hide()
+        for x in self.ui.lexFrame.children():
+            x.hide()
+        for x in self.ui.typeFrame.children():
+            x.hide()
+        for x in self.ui.habitatFrame.children():
+            x.hide()
+        for x in self.ui.affordStrFrame.children():
+            x.hide()
+        for x in self.ui.embodimentFrame.children():
+            x.hide()
+        for x in self.ui.attributesFrame.children():
+            x.hide()
+
+    # show all attributes -> used when loading new object
+    def showAllAttributes(self):
+        for x in self.ui.entityFrame.children():
+            x.show()
+        for x in self.ui.lexFrame.children():
+            x.show()
+        for x in self.ui.typeFrame.children():
+            x.show()
+        for x in self.ui.habitatFrame.children():
+            x.show()
+        for x in self.ui.affordStrFrame.children():
+            x.show()
+        for x in self.ui.embodimentFrame.children():
+            x.show()
+        for x in self.ui.attributesFrame.children():
+            x.show()
+
+    # show specific editing attributes for specific template
+    def createNewVoxMLObject(self, template):
+        self.allObj.append(VoxMLObject())
+        self.hideAllAttributes()
+        self.switchEditingFrame("entity")
+        if template == "Empty":
+            self.showAllAttributes()
+        elif template == "Object":
+            # Entity
+            for x in self.ui.entityFrame.children():
+                x.show()
+            self.ui.entityType.setText("Object")
+            # Lex
+            for x in self.ui.lexFrame.children():
+                x.show()
+            # Type
+            self.ui.typeHeadLabel.show()
+            self.ui.typeHead.show()
+            self.ui.typeConcavityLabel.show()
+            self.ui.typeConcavity.show()
+            self.ui.typeRotatSymLabel.show()
+            self.ui.typeRotatSymX.show()
+            self.ui.typeRotatSymY.show()
+            self.ui.typeRotatSymZ.show()
+            self.ui.typeReflSymLabel.show()
+            self.ui.typeReflSymXY.show()
+            self.ui.typeReflSymXZ.show()
+            self.ui.typeReflSymYZ.show()
+            self.ui.typeComponentsLabel.show()
+            self.ui.typeComponents.show()
+            self.ui.typeComponentsValue.show()
+            self.ui.typeComponentsAdd.show()
+            self.ui.typeComponentsDelete.show()
+            # Habitat
+            for x in self.ui.habitatFrame.children():
+                x.show()
+            # AffordStr
+            for x in self.ui.affordStrFrame.children():
+                x.show()
+            # Embodiment
+            for x in self.ui.embodimentFrame.children():
+                x.show()
+        elif template == "Program":
+            # Entity
+            for x in self.ui.entityFrame.children():
+                x.show()
+            self.ui.entityType.setText("Program")
+            # Lex
+            for x in self.ui.lexFrame.children():
+                x.show()
+            # Type
+            self.ui.typeHeadLabel.show()
+            self.ui.typeHead.show()
+            self.ui.typeArgsLabel.show()
+            self.ui.typeArgs.show()
+            self.ui.typeArgsAdd.show()
+            self.ui.typeArgsValue.show()
+            self.ui.typeArgsDelete.show()
+            self.ui.typeBodyLabel.show()
+            self.ui.typeBody.show()
+            self.ui.typeBodySubeventValue.show()
+            self.ui.typeBodyAdd.show()
+            self.ui.typeBodyDelete.show()
+        elif template == "Attribute":
+            # Entity
+            for x in self.ui.entityFrame.children():
+                x.show()
+            self.ui.entityType.setText("Attribute")
+            # Lex
+            self.ui.lexPredLabel.show()
+            self.ui.lexPred.show()
+            # Type
+            self.ui.typeScaleLabel.show()
+            self.ui.typeScale.show()
+            self.ui.typeArgsLabel.show()
+            self.ui.typeArgs.show()
+            self.ui.typeArgsAdd.show()
+            self.ui.typeArgsValue.show()
+            self.ui.typeArgsDelete.show()
+            self.ui.typeArityLabel.show()
+            self.ui.typeArity.show()
+        elif template == "Relation":
+            # Entity
+            for x in self.ui.entityFrame.children():
+                x.show()
+            self.ui.entityType.setText("Relation")
+            # Lex
+            self.ui.lexPredLabel.show()
+            self.ui.lexPred.show()
+            # Type
+            self.ui.typeClassLabel.show()
+            self.ui.typeClass.show()
+            self.ui.typeArgsLabel.show()
+            self.ui.typeArgs.show()
+            self.ui.typeArgsAdd.show()
+            self.ui.typeArgsValue.show()
+            self.ui.typeArgsDelete.show()
+            self.ui.typeValueLabel.show()
+            self.ui.typeValue.show()
+            self.ui.typeCorrespsLabel.show()
+            self.ui.typeCorresps.show()
+            self.ui.typeCorrespsAdd.show()
+            self.ui.typeCorrespsValue.show()
+            self.ui.typeCorrespsDelete.show()
+            self.ui.typeConstrLabel.show()
+            self.ui.typeConstr.show()
+        elif template == "Function":
+            # Entity
+            for x in self.ui.entityFrame.children():
+                x.show()
+            self.ui.entityType.setText("Function")
+            # Lex
+            self.ui.lexPredLabel.show()
+            self.ui.lexPred.show()
+            # Type
+            self.ui.typeReferentLabel.show()
+            self.ui.typeReferent.show()
+            self.ui.typeArgsLabel.show()
+            self.ui.typeArgs.show()
+            self.ui.typeArgsAdd.show()
+            self.ui.typeArgsValue.show()
+            self.ui.typeArgsDelete.show()
+            self.ui.typeMappingLabel.show()
+            self.ui.typeMapping.show()
 
     # Appends new object to allObj -> only used in lambda expression
     def appendNewObject(self, obj: VoxMLObject) -> None:
         if obj != None:
             self.allObj.append(obj)
-            self.printLastVoxMLObject() # Testing purposes
 
     # Choose .txt or .xml file containing VoxML data from system
     def chooseVoxMLData(self) -> str:
@@ -191,6 +371,258 @@ class MainVoxMLWindow(QMainWindow):
                     voxData.Attributes.Attrs.append(vAtt)
             
             return voxData
+
+    def createXMLStringFromVoxMLObject(self) -> str:
+        if len(self.allObj) == 0:
+            return
+        vox = self.allObj[-1]
+
+        # VoxML
+        VoxML = ET.Element("VoxML")
+        VoxML.set("xmlns:xsi", vox.xmlns_xsi)
+        VoxML.set("xmlns:xsd", vox.xmlns_xsd)
+
+        # Entity
+        Entity = ET.SubElement(VoxML, "Entity")
+        Entity.set("Type", str(vox.Entity.Type))
+
+        # Lex
+        Lex = ET.SubElement(VoxML, "Lex")
+        LexPred = ET.SubElement(Lex, "Pred")
+        LexType = ET.SubElement(Lex, "Type")
+        if vox.Lex.Pred != None:
+            LexPred.text = str(vox.Lex.Pred)
+        if vox.Lex.Type != None:
+            LexType.text = str(vox.Lex.Type)
+        
+        # Type
+        Type = ET.SubElement(VoxML, "Type")
+        TypeHead = ET.SubElement(Type, "Head")
+        TypeComponents = ET.SubElement(Type, "Components")
+        TypeConcavity = ET.SubElement(Type, "Concavity")
+        TypeRotatSym = ET.SubElement(Type, "RotatSym")
+        TypeReflSym = ET.SubElement(Type, "ReflSym")
+        TypeArgs = ET.SubElement(Type, "Args")
+        TypeBody = ET.SubElement(Type, "Body")
+        TypeClass = ET.SubElement(Type, "Class")
+        TypeValue = ET.SubElement(Type, "Value")
+        TypeConstr = ET.SubElement(Type, "Constr")
+        TypeScale = ET.SubElement(Type, "Scale")
+        TypeArity = ET.SubElement(Type, "Arity")
+        TypeReferent = ET.SubElement(Type, "Referent")
+        TypeMapping = ET.SubElement(Type, "Mapping")
+        TypeCorresps = ET.SubElement(Type, "Corresps")
+        if vox.Type.Head != None:
+            TypeHead.text = str(vox.Type.Head)
+        if len(vox.Type.Components) > 0:
+                for x in vox.Type.Components:
+                    TypeComponentsComponent = ET.SubElement(TypeComponents, "Component")
+                    TypeComponentsComponent.set("Value", str(x.Value))
+        if vox.Type.Concavity != None:
+                TypeConcavity.text = str(vox.Type.Concavity)
+        if vox.Type.RotatSym != None:
+                TypeRotatSym.text = str(vox.Type.RotatSym)
+        if vox.Type.ReflSym != None:
+                TypeReflSym.text = str(vox.Type.ReflSym)
+        if len(vox.Type.Args) > 0:
+                for x in vox.Type.Args:
+                    TypeArgsArg = ET.SubElement(TypeArgs, "Arg")
+                    TypeArgsArg.set("Value", str(x.Value))
+        if len(vox.Type.Body) > 0:
+                for x in vox.Type.Body:
+                    TypeBodySubevent = ET.SubElement(TypeBody, "Subevent")
+                    TypeBodySubevent.set("Value", str(x.Value))
+        if vox.Type.Class != None:
+                TypeClass.text = str(vox.Type.Class)
+        if vox.Type.Value != None:
+                TypeValue.text = str(vox.Type.Value)
+        if vox.Type.Constr != None:
+                TypeConstr.text = str(vox.Type.Constr)
+        if vox.Type.Scale != None:
+                TypeScale.text = str(vox.Type.Scale)    
+        if vox.Type.Arity != None:
+                TypeArity.text = str(vox.Type.Arity)
+        if vox.Type.Referent != None:
+                TypeReferent.text = str(vox.Type.Referent)
+        if vox.Type.Mapping != None:
+                TypeMapping.text = str(vox.Type.Mapping) 
+        if len(vox.Type.Corresps) > 0:
+                for x in vox.Type.Corresps:
+                    TypeCorrespsCorresp = ET.SubElement(TypeCorresps, "Corresp")
+                    TypeCorrespsCorresp.set("Value", str(x.Value))
+
+        # Habitat
+        Habitat = ET.SubElement(VoxML, "Habitat")
+        HabitatIntrinsic = ET.SubElement(Habitat, "Intrinsic")
+        HabitatExtrinsic = ET.SubElement(Habitat, "Extrinsic")
+        if len(vox.Habitat.Intrinsic) > 0:
+                for x in vox.Habitat.Intrinsic:
+                    HabitatIntrinsicIntr = ET.SubElement(HabitatIntrinsic, "Intr")
+                    HabitatIntrinsicIntr.set("Name", str(x.Name))
+                    HabitatIntrinsicIntr.set("Value", str(x.Value))
+        if len(vox.Habitat.Extrinsic) > 0:
+                for x in vox.Habitat.Extrinsic:
+                    HabitatExtrinsicExtr = ET.SubElement(HabitatExtrinsic, "Extr")
+                    HabitatExtrinsicExtr.set("Name", str(x.Name))
+                    HabitatExtrinsicExtr.set("Value", str(x.Value))
+        
+        # AffordStr
+        AffordStr = ET.SubElement(VoxML, "AffordStr")
+        AffordStrAffordances = ET.SubElement(AffordStr, "Affordances")
+        if len(vox.AffordStr.Affordances) > 0:
+            for x in vox.AffordStr.Affordances:
+                AffordStrAffordancesAffordance = ET.SubElement(AffordStrAffordances, "Affordance")
+                AffordStrAffordancesAffordance.set("Formula", str(x.Formula))
+        
+        # Embodiment
+        Embodiment = ET.SubElement(VoxML, "Embodiment")
+        EmbodimentScale = ET.SubElement(Embodiment, "Scale")
+        EmbodimentMovable = ET.SubElement(Embodiment, "Movable")
+        if vox.Embodiment.Scale != None:
+            EmbodimentScale.text = str(vox.Embodiment.Scale)
+        if vox.Embodiment.Movable != None:
+            EmbodimentMovable.text = str(vox.Embodiment.Movable)
+        
+        # Attributes
+        Attributes = ET.SubElement(VoxML, "Attributes")
+        AttributesAttrs = ET.SubElement(AffordStr, "Attrs")
+        if len(vox.Attributes.Attrs) > 0:
+            for x in vox.Attributes.Attrs:
+                AttributesAttrsAttr = ET.SubElement(AttributesAttrs, "Attr")
+                AttributesAttrsAttr.set("Value", str(x.Value))
+
+        return ET.tostring(VoxML)
+
+    # save xml data to file with QFileDialog -> use together with createXMLStringFromVoxMLObject
+    def saveDataToFile(self, outputStr):
+        fileName = QFileDialog.getSaveFileName(self, "Save File", "voml-framework\\VoxMLData", "VoxML Data (*.xml *.txt )")[0]
+        if len(fileName) > 0:
+            self.printLastVoxMLObject() # Testing purposes
+            with open(fileName, "w") as f:
+                f.write(outputStr.decode("utf-8"))
+        
+    # save current input data to last VoxML Object
+    def saveDataToObject(self):
+        vox = VoxMLObject()
+
+        # Entity
+        if len(str(self.ui.entityType.text())) > 0:
+            vox.Entity.Type = str(self.ui.entityType.text()) 
+        
+        # Lex
+        if len(str(self.ui.lexPred.text())) > 0:
+            vox.Lex.Pred = str(self.ui.lexPred.text()) 
+        if len(str(self.ui.lexType.text())) > 0:
+            vox.Lex.Type = str(self.ui.lexType.text()) 
+
+        # Type
+        if len(str(self.ui.typeHead.text())) > 0:
+            vox.Type.Head = str(self.ui.typeHead.text()) 
+        vox.Type.Components = []
+        for x in range(self.ui.typeComponents.count()):
+            comp = vComponent()
+            comp.Value = str(self.ui.typeComponents.itemText(x))
+            vox.Type.Components.append(comp)
+        if len(str(self.ui.typeConcavity.text())) > 0:
+            vox.Type.Concavity = str(self.ui.typeConcavity.text())
+        if self.ui.typeRotatSymX.isChecked() or self.ui.typeRotatSymY.isChecked() or self.ui.typeRotatSymZ.isChecked():
+            rotatSym = []
+            if self.ui.typeRotatSymX.isChecked():
+                rotatSym.append("X")
+            if self.ui.typeRotatSymY.isChecked():
+                rotatSym.append("Y")
+            if self.ui.typeRotatSymZ.isChecked():
+                rotatSym.append("Z")
+            vox.Type.RotatSym = ",".join(rotatSym)
+        else:
+            vox.Type.RotatSym = None
+        if self.ui.typeReflSymXY.isChecked() or self.ui.typeReflSymXZ.isChecked() or self.ui.typeReflSymYZ.isChecked():
+            reflSym = []
+            if self.ui.typeReflSymXY.isChecked():
+                reflSym.append("XY")
+            if self.ui.typeReflSymXZ.isChecked():
+                reflSym.append("XZ")
+            if self.ui.typeReflSymYZ.isChecked():
+                reflSym.append("YZ")
+            vox.Type.ReflSym = ",".join(reflSym)
+        else:
+            vox.Type.ReflSym = None
+        vox.Type.Args = []
+        for x in range(self.ui.typeArgs.count()):
+            arg = vArg()
+            arg.Value = str(self.ui.typeArgs.itemText(x))
+            vox.Type.Args.append(arg)
+        vox.Type.Body = []
+        for x in range(self.ui.typeBody.count()):
+            subevent = vSubevent()
+            subevent.Value = str(self.ui.typeBody.itemText(x))
+            vox.Type.Body.append(subevent)
+        if len(str(self.ui.typeClass.text())) > 0:
+            vox.Type.Class = str(self.ui.typeClass.text()) 
+        if len(str(self.ui.typeValue.text())) > 0:
+            vox.Type.Value = str(self.ui.typeValue.text()) 
+        if len(str(self.ui.typeConstr.text())) > 0:
+            vox.Type.Constr = str(self.ui.typeConstr.text()) 
+        if len(str(self.ui.typeScale.text())) > 0:
+            vox.Type.Scale = str(self.ui.typeScale.text()) 
+        if len(str(self.ui.typeArity.text())) > 0:
+            vox.Type.Arity = str(self.ui.typeArity.text()) 
+        if len(str(self.ui.typeReferent.text())) > 0:
+            vox.Type.Referent = str(self.ui.typeReferent.text()) 
+        if len(str(self.ui.typeMapping.text())) > 0:
+            vox.Type.Mapping = str(self.ui.typeMapping.text()) 
+        vox.Type.Corresps = []
+        for x in range(self.ui.typeCorresps.count()):
+            corr = vCorresp()
+            corr.Value = str(self.ui.typeCorresps.itemText(x))
+            vox.Type.Corresps.append(corr)
+        
+        # Habitat
+        vox.Habitat.Intrinsic = []
+        for x in range(self.ui.habitatIntrinsic.count()):
+            intr = vIntr()
+            content = str(self.ui.habitatIntrinsic.itemText(x))
+            intr.Name = content.split(",Value:")[0].replace("Name:","")
+            intr.Value = content.split(",Value:")[1]
+            vox.Habitat.Intrinsic.append(intr)
+        vox.Habitat.Extrinsic = []
+        for x in range(self.ui.habitatExtrinsic.count()):
+            extr = vExtr()
+            content = str(self.ui.habitatExtrinsic.itemText(x))
+            extr.Name = content.split(",Value:")[0].replace("Name:","")
+            extr.Value = content.split(",Value:")[1]
+            vox.Habitat.Extrinsic.append(extr)
+
+        # AffordStr
+        vox.AffordStr.Affordances = []
+        for x in range(self.ui.affordStrAffordances.count()):
+            aff = vAffordance()
+            aff.Formula = str(self.ui.affordStrAffordances.itemText(x))
+            vox.AffordStr.Affordances.append(aff)
+        
+        # Embodiment
+        if len(str(self.ui.embodimentScale.text())) > 0:
+            vox.Embodiment.Scale = str(self.ui.embodimentScale.text()) 
+        if self.ui.embodimentMovable.isChecked():
+            vox.Embodiment.Movable = True;
+        elif self.ui.embodimentMovable.isVisible():
+            vox.Embodiment.Movable = False
+        else:
+            vox.Embodiment.Movable = None
+        
+        # Attributes
+        vox.Attributes.Attrs = []
+        for x in range(self.ui.attributesAttrs.count()):
+            attr = vAttr()
+            attr.Value = str(self.ui.attributesAttrs.itemText(x))
+            vox.Attributes.Attrs.append(attr)
+
+        self.allObj[-1] = vox
+
+    # update text and checkboxes for VoxMLObject
+    def loadDataToEditing(self):
+        vox = VoxMLObject()
+        
 
     # Print last added/parsed VoxMLObject to console :: only for testing purposes / will be removed later
     def printLastVoxMLObject(self):
@@ -282,10 +714,6 @@ class MainVoxMLWindow(QMainWindow):
                 print("\t\tAttr: Value: " + str(x.Value))
 
             
-            
-
-        
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainVoxMLWindow()
