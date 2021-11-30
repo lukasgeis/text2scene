@@ -44,9 +44,75 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.attributesBtn.clicked.connect(lambda: self.switchEditingFrame("attributes"))
         self.disableEditingMode()
 
+        # editing :: comboboxes
+        self.ui.typeComponentsAdd.clicked.connect(lambda: self.addToBox("components"))
+        self.ui.typeComponentsDelete.clicked.connect(lambda: self.deleteFromBox("components"))
+        self.ui.typeArgsAdd.clicked.connect(lambda: self.addToBox("args"))
+        self.ui.typeArgsDelete.clicked.connect(lambda: self.deleteFromBox("args"))
+        self.ui.typeBodyAdd.clicked.connect(lambda: self.addToBox("body"))
+        self.ui.typeBodyDelete.clicked.connect(lambda: self.deleteFromBox("body"))
+        self.ui.typeCorrespsAdd.clicked.connect(lambda: self.addToBox("corresps"))
+        self.ui.typeCorrespsDelete.clicked.connect(lambda: self.deleteFromBox("corresps"))
+        self.ui.habitatIntrinsicAdder.clicked.connect(lambda: self.addToBox("intrinsic"))
+        self.ui.habitatIntrinsicDelete.clicked.connect(lambda: self.deleteFromBox("intrinsic"))
+        self.ui.habitatExtrinsicAdd.clicked.connect(lambda: self.addToBox("extrinsic"))
+        self.ui.habitatExtrinsicDelete.clicked.connect(lambda: self.deleteFromBox("extrinsic"))
+        self.ui.affordStrAffordancesAdd.clicked.connect(lambda: self.addToBox("affordances"))
+        self.ui.affordStrAffordancesDelete.clicked.connect(lambda: self.deleteFromBox("affordances"))
+        self.ui.attributesAttrsAdd.clicked.connect(lambda: self.addToBox("attrs"))
+        self.ui.attributesAttrsDelete.clicked.connect(lambda: self.deleteFromBox("attrs"))
+
         # setup position and show window
         self.oldPos = self.pos()
         self.show()
+
+    # add item to ComboBox
+    def addToBox(self, attr):
+        if attr == "components":
+            self.ui.typeComponents.addItem(str(self.ui.typeComponentsValue.text()))
+            self.ui.typeComponentsValue.setText("")
+        elif attr == "args":
+            self.ui.typeArgs.addItem(str(self.ui.typeArgsValue.text()))
+            self.ui.typeArgsValue.setText("")
+        elif attr == "body":
+            self.ui.typeBody.addItem(str(self.ui.typeBodySubeventValue.text()))
+            self.ui.typeBodySubeventValue.setText("")
+        elif attr == "corresps":
+            self.ui.typeCorresps.addItem(str(self.ui.typeCorrespsValue.text()))
+            self.ui.typeCorrespsValue.setText("")
+        elif attr == "intrinsic":
+            self.ui.habitatIntrinsic.addItem("Name:" + str(self.ui.habitatIntrName.text()) + ",Value:" + str(self.ui.habitatIntrValue.text()))
+            self.ui.habitatIntrName.setText("")
+            self.ui.habitatIntrValue.setText("")
+        elif attr == "extrinsic":
+            self.ui.habitatExtrinsic.addItem("Name:" + str(self.ui.habitatExtrName.text()) + ",Value:" + str(self.ui.habitatExtrValue.text()))
+            self.ui.habitatExtrName.setText("")
+            self.ui.habitatExtrValue.setText("")
+        elif attr == "affordances":
+            self.ui.affordStrAffordances.addItem(str(self.ui.affordStrAffordancesNewItem.text()))
+            self.ui.affordStrAffordancesNewItem.setText("")
+        elif attr == "attrs":
+            self.ui.attributesAttrs.addItem(str(self.ui.attributesAttrsNewItem.text()))
+            self.ui.attributesAttrsNewItem.setText("")
+
+    # remove item from ComboBox
+    def deleteFromBox(self,attr):
+        if attr == "components":
+            self.ui.typeComponents.removeItem(self.ui.typeComponents.currentIndex())
+        elif attr == "args":
+            self.ui.typeArgs.removeItem(self.ui.typeArgs.currentIndex())
+        elif attr == "body":
+            self.ui.typeBody.removeItem(self.ui.typeBody.currentIndex())
+        elif attr == "corresps":
+            self.ui.typeCorresps.removeItem(self.ui.typeCorresps.currentIndex())
+        elif attr == "intrinsic":
+            self.ui.habitatIntrinsic.removeItem(self.ui.habitatIntrinsic.currentIndex())
+        elif attr == "extrinsic":
+            self.ui.habitatExtrinsic.removeItem(self.ui.habitatExtrinsic.currentIndex())
+        elif attr == "affordances":
+            self.ui.affordStrAffordances.removeItem(self.ui.affordStrAffordances.currentIndex())
+        elif attr == "attrs":
+            self.ui.attributesAttrs.removeItem(self.ui.attributesAttrs.currentIndex())
 
     # called when mouse is pressed on window -> save current window position
     def mousePressEvent(self, event) -> None:
@@ -157,8 +223,9 @@ class MainVoxMLWindow(QMainWindow):
             x.show()
 
     # show specific editing attributes for specific template
-    def createNewVoxMLObject(self, template):
-        self.allObj.append(VoxMLObject())
+    def createNewVoxMLObject(self, template, create = True):
+        if create:
+            self.allObj.append(VoxMLObject())
         self.hideAllAttributes()
         self.switchEditingFrame("entity")
         if template == "Empty":
@@ -285,6 +352,8 @@ class MainVoxMLWindow(QMainWindow):
     def appendNewObject(self, obj: VoxMLObject) -> None:
         if obj != None:
             self.allObj.append(obj)
+            self.loadDataToEditing()
+            self.createNewVoxMLObject(str(obj.Entity.Type), False)
 
     # Choose .txt or .xml file containing VoxML data from system
     def chooseVoxMLData(self) -> str:
@@ -618,11 +687,95 @@ class MainVoxMLWindow(QMainWindow):
             vox.Attributes.Attrs.append(attr)
 
         self.allObj[-1] = vox
+        self.loadDataToEditing()
 
     # update text and checkboxes for VoxMLObject
     def loadDataToEditing(self):
-        vox = VoxMLObject()
+        vox = self.allObj[-1]
         
+        # Entity
+        if vox.Entity.Type != None:
+            self.ui.entityType.setText(str(vox.Entity.Type))
+        
+        # Lex
+        if vox.Lex.Pred != None:
+            self.ui.lexPred.setText(str(vox.Lex.Pred))
+        if vox.Lex.Type != None:
+            self.ui.lexType.setText(str(vox.Lex.Type)) 
+
+        # Type
+        if vox.Type.Head != None:
+            self.ui.typeHead.setText(str(vox.Type.Head)) 
+        self.ui.typeComponents.clear()
+        for x in vox.Type.Components:
+            self.ui.typeComponents.addItem(str(x.Value))
+        if vox.Type.Concavity != None:
+            self.ui.typeConcavity.setText(str(vox.Type.Concavity))
+        if vox.Type.RotatSym != None:
+            self.ui.typeRotatSymX.setChecked("X" in vox.Type.RotatSym)
+            self.ui.typeRotatSymY.setChecked("Y" in vox.Type.RotatSym)
+            self.ui.typeRotatSymZ.setChecked("Z" in vox.Type.RotatSym)
+        else:
+            self.ui.typeRotatSymX.setChecked(False)
+            self.ui.typeRotatSymY.setChecked(False)
+            self.ui.typeRotatSymZ.setChecked(False)
+        if vox.Type.ReflSym != None:
+            self.ui.typeReflSymXY.setChecked("XY" in vox.Type.ReflSym)
+            self.ui.typeReflSymXZ.setChecked("XZ" in vox.Type.ReflSym)
+            self.ui.typeReflSymYZ.setChecked("YZ" in vox.Type.ReflSym)
+        else:
+            self.ui.typeReflSymXY.setChecked(False)
+            self.ui.typeReflSymXZ.setChecked(False)
+            self.ui.typeReflSymYZ.setChecked(False)
+        self.ui.typeArgs.clear()
+        for x in vox.Type.Args:
+            self.ui.typeArgs.addItem(str(x.Value))
+        self.ui.typeBody.clear()
+        for x in vox.Type.Body:
+            self.ui.typeBody.addItem(str(x.Value))
+        if vox.Type.Class != None:
+            self.ui.typeClass.setText(str(vox.Type.Class))
+        if vox.Type.Value != None:
+            self.ui.typeValue.setText(str(vox.Type.Value)) 
+        if vox.Type.Constr != None:
+            self.ui.typeConstr.setText(str(vox.Type.Constr))
+        if vox.Type.Scale != None:
+            self.ui.typeScale.setText(str(vox.Type.Scale))
+        if vox.Type.Arity != None:
+            self.ui.typeArity.setText(str(vox.Type.Arity))
+        if vox.Type.Referent != None:
+            self.ui.typeReferent.setText(str(vox.Type.Referent))
+        if vox.Type.Mapping != None:
+            self.ui.typeMapping.setText(str(vox.Type.Mapping))
+        self.ui.typeCorresps.clear()
+        for x in vox.Type.Corresps:
+            self.ui.typeCorresps.addItem(str(x.Value))
+        
+        # Habitat
+        self.ui.habitatIntrinsic.clear()
+        for x in vox.Habitat.Intrinsic:
+            self.ui.habitatIntrinsic.addItem("Name:" + str(x.Name) + ",Value:" + str(x.Value))
+        self.ui.habitatExtrinsic.clear()
+        for x in vox.Habitat.Extrinsic:
+            self.ui.habitatExtrinsic.addItem("Name:" + str(x.Name) + ",Value:" + str(x.Value))
+
+        # AffordStr
+        self.ui.affordStrAffordances.clear()
+        for x in vox.AffordStr.Affordances:
+            self.ui.affordStrAffordances.addItem(str(x.Formula))
+        
+        # Embodiment
+        if vox.Embodiment.Scale != None:
+            self.ui.embodimentScale.setText(str(vox.Embodiment.Scale))
+        if vox.Embodiment.Movable:
+            self.ui.embodimentMovable.setChecked(True)
+        else:
+            self.ui.embodimentMovable.setChecked(False)
+        
+        # Attributes
+        self.ui.attributesAttrs.clear()
+        for x in vox.Attributes.Attrs:
+            self.ui.attributesAttrs.addItem(str(x.Value))
 
     # Print last added/parsed VoxMLObject to console :: only for testing purposes / will be removed later
     def printLastVoxMLObject(self):
