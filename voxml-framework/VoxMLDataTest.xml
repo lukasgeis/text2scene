@@ -1,1 +1,53 @@
-<VoxML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Entity Type="Object" /><Lex><Pred>banana</Pred><Type>physobj*artifact</Type></Lex><Type><Head>cylindroid[1]</Head><Components><Component Value="fruit[1]" /><Component Value="stem" /><Component Value="butt" /></Components><Concavity>Convex</Concavity><RotatSym /><ReflSym>YZ</ReflSym><Args /><Body /><Class>Testing</Class><Value /><Constr /><Scale /><Arity /><Referent /><Mapping /><Corresps /></Type><Habitat><Intrinsic /><Extrinsic /></Habitat><AffordStr><Affordances><Affordance Formula="H-&gt;[put([1], in(x))]contain([1], x)" /><Affordance Formula="H-&gt;[grasp(x, [1])]hold(x, [1])" /><Affordance Formula="H-&gt;[lift(x, [1])]hold(x, [1])" /><Affordance Formula="H-&gt;[roll([1])]" /><Affordance Formula="H-&gt;[slide([1])]" /></Affordances><Attrs /></AffordStr><Embodiment><Scale>&lt;agent</Scale><Movable>True</Movable></Embodiment><Attributes /></VoxML>
+<VoxML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Entity Type="Program" />
+	<Lex>
+		<Pred>
+			move
+		</Pred>
+		<Type>
+			process
+		</Type>
+	</Lex>
+	<Type>
+		<Head>
+			processorHAHAHA
+		</Head>
+		<Components />
+		<Concavity />
+		<RotatSym />
+		<ReflSym />
+		<Args>
+			<Arg Value="x:agent" />
+			<Arg Value="y:physobj" />
+			<Arg Value="z:location" />
+			<Arg Value="p:method" />
+			<Arg Value="a:T[]" />
+		</Args>
+		<Body>
+			<Subevent Value="move_1(x,y,z,p)" />
+		</Body>
+		<Class />
+		<Value />
+		<Constr />
+		<Scale />
+		<Arity />
+		<Referent />
+		<Mapping />
+		<Corresps />
+	</Type>
+	<Habitat>
+		<Intrinsic />
+		<Extrinsic />
+	</Habitat>
+	<AffordStr>
+		<Affordances />
+		<Attrs />
+	</AffordStr>
+	<Embodiment>
+		<Scale />
+		<Movable>
+			True
+		</Movable>
+	</Embodiment>
+	<Attributes />
+</VoxML>
