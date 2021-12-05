@@ -67,6 +67,9 @@ QFrame {
        <strikeout>false</strikeout>
       </font>
      </property>
+     <property name="toolTip">
+      <string>Exit the program.</string>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	background-color: #f62451;
@@ -95,6 +98,9 @@ QPushButton::hover {
        <family>Segoe UI</family>
        <pointsize>50</pointsize>
       </font>
+     </property>
+     <property name="toolTip">
+      <string>That's just the title!</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QLabel {
@@ -130,6 +136,9 @@ QPushButton::hover {
        <underline>false</underline>
        <strikeout>false</strikeout>
       </font>
+     </property>
+     <property name="toolTip">
+      <string>Import VoxML Object from file</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
@@ -196,6 +205,9 @@ QFrame {
         <strikeout>false</strikeout>
        </font>
       </property>
+      <property name="toolTip">
+       <string>Edit Entity attributes</string>
+      </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
 	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
@@ -236,6 +248,9 @@ QPushButton:disabled {
         <underline>false</underline>
         <strikeout>false</strikeout>
        </font>
+      </property>
+      <property name="toolTip">
+       <string>Edit Lex Attributes</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
@@ -278,6 +293,9 @@ QPushButton:disabled {
         <strikeout>false</strikeout>
        </font>
       </property>
+      <property name="toolTip">
+       <string>Edit Type attributes</string>
+      </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
 	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
@@ -318,6 +336,9 @@ QPushButton:disabled {
         <underline>false</underline>
         <strikeout>false</strikeout>
        </font>
+      </property>
+      <property name="toolTip">
+       <string>Edit Habitat attributes</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
@@ -360,6 +381,9 @@ QPushButton:disabled {
         <strikeout>false</strikeout>
        </font>
       </property>
+      <property name="toolTip">
+       <string>Edit Attributes attributes</string>
+      </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
 	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
@@ -401,6 +425,9 @@ QPushButton:disabled {
         <strikeout>false</strikeout>
        </font>
       </property>
+      <property name="toolTip">
+       <string>Edit Embodiment attributes</string>
+      </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
 	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
@@ -441,6 +468,9 @@ QPushButton:disabled {
         <underline>false</underline>
         <strikeout>false</strikeout>
        </font>
+      </property>
+      <property name="toolTip">
+       <string>Edit AffordStr attributes</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
@@ -529,6 +559,9 @@ QLineEdit {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Entity: Type</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -603,6 +636,9 @@ QLineEdit {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Lex: Type</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -643,6 +679,9 @@ QLineEdit {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Lex: Pred</string>
        </property>
        <property name="text">
         <string/>
@@ -747,6 +786,9 @@ QCheckBox::indicator:checked {
          <height>30</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Embodiment: Movable</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -765,6 +807,9 @@ QCheckBox::indicator:checked {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Embodiment: Scale</string>
        </property>
       </widget>
      </widget>
@@ -1088,6 +1133,9 @@ QCheckBox::indicator:checked {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string/>
        </property>
        <property name="styleSheet">
         <string notr="true">QComboBox {
@@ -1790,6 +1838,9 @@ QCheckBox::indicator:checked {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string/>
+       </property>
        <property name="text">
         <string>Head:</string>
        </property>
@@ -1809,6 +1860,9 @@ QCheckBox::indicator:checked {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Type: Head</string>
+       </property>
       </widget>
       <widget class="QLineEdit" name="typeConcavity">
        <property name="geometry">
@@ -1824,6 +1878,9 @@ QCheckBox::indicator:checked {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Type Concavity</string>
        </property>
       </widget>
       <widget class="QLabel" name="typeConcavityLabel">
@@ -1860,6 +1917,9 @@ QCheckBox::indicator:checked {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Type: Class</string>
+       </property>
       </widget>
       <widget class="QLabel" name="typeClassLabel">
        <property name="geometry">
@@ -1894,6 +1954,9 @@ QCheckBox::indicator:checked {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Type: Value</string>
        </property>
       </widget>
       <widget class="QLabel" name="typeValueLabel">
@@ -1930,6 +1993,9 @@ QCheckBox::indicator:checked {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Type: Scale</string>
+       </property>
       </widget>
       <widget class="QLabel" name="typeReferentLabel">
        <property name="geometry">
@@ -1965,6 +2031,9 @@ QCheckBox::indicator:checked {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Type: Constr</string>
+       </property>
       </widget>
       <widget class="QLabel" name="typeArityLabel">
        <property name="geometry">
@@ -1999,6 +2068,9 @@ QCheckBox::indicator:checked {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Type: Referent</string>
        </property>
       </widget>
       <widget class="QLabel" name="typeConstrLabel">
@@ -2054,6 +2126,9 @@ QCheckBox::indicator:checked {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Type: Arity</string>
+       </property>
       </widget>
       <widget class="QLabel" name="typeMappingLabel">
        <property name="geometry">
@@ -2088,6 +2163,9 @@ QCheckBox::indicator:checked {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Type: Mapping</string>
        </property>
       </widget>
       <widget class="QLabel" name="typeComponentsLabel">
@@ -2124,6 +2202,9 @@ QCheckBox::indicator:checked {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>New Component Value</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QLineEdit {
 	border: 1px solid #f0f0f0;
@@ -2147,6 +2228,9 @@ QCheckBox::indicator:checked {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Type: Components</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QComboBox {
@@ -2351,6 +2435,9 @@ QPushButton::hover {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Type: Args</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QComboBox {
     border: 1px solid #2b78d3;
@@ -2461,6 +2548,9 @@ QPushButton::hover {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>New Arg Value</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QLineEdit {
 	border: 1px solid #f0f0f0;
@@ -2540,6 +2630,9 @@ QPushButton::hover {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Type: Body</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QComboBox {
@@ -2651,6 +2744,9 @@ QPushButton::hover {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>New Subevent Value</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QLineEdit {
 	border: 1px solid #f0f0f0;
@@ -2730,6 +2826,9 @@ QPushButton::hover {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Type: Corresps</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QComboBox {
@@ -2841,6 +2940,9 @@ QPushButton::hover {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>New Corresp Value</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QLineEdit {
 	border: 1px solid #f0f0f0;
@@ -2884,6 +2986,9 @@ QPushButton::hover {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Type: RotatSym</string>
+       </property>
        <property name="text">
         <string>X</string>
        </property>
@@ -2902,6 +3007,9 @@ QPushButton::hover {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Type: RotatSym</string>
        </property>
        <property name="text">
         <string>Y</string>
@@ -2922,6 +3030,9 @@ QPushButton::hover {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Type: RotatSym</string>
+       </property>
        <property name="text">
         <string>Z</string>
        </property>
@@ -2940,6 +3051,9 @@ QPushButton::hover {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Type: ReflSym</string>
        </property>
        <property name="text">
         <string>YZ</string>
@@ -2979,6 +3093,9 @@ QPushButton::hover {
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Type: ReflSym</string>
+       </property>
        <property name="text">
         <string>XZ</string>
        </property>
@@ -2997,6 +3114,9 @@ QPushButton::hover {
          <family>Segoe UI</family>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Type: ReflSym</string>
        </property>
        <property name="text">
         <string>XY</string>
@@ -3038,6 +3158,9 @@ QPushButton::hover {
        <strikeout>false</strikeout>
       </font>
      </property>
+     <property name="toolTip">
+      <string>Create VoxML Data based on template</string>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
@@ -3069,6 +3192,9 @@ QPushButton::hover {
        <family>Segoe UI</family>
        <pointsize>12</pointsize>
       </font>
+     </property>
+     <property name="toolTip">
+      <string>Choose a Template for your VoxML Object.</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QComboBox {
@@ -3173,6 +3299,9 @@ QComboBox::down-arrow:on {
        <pointsize>12</pointsize>
       </font>
      </property>
+     <property name="toolTip">
+      <string>Not here. To the right!</string>
+     </property>
      <property name="styleSheet">
       <string notr="true">QLabel {
 	background-color: None;
@@ -3206,6 +3335,9 @@ QComboBox::down-arrow:on {
        <underline>false</underline>
        <strikeout>false</strikeout>
       </font>
+     </property>
+     <property name="toolTip">
+      <string>Save your VoxMLObject to a file. (Press -Save- beforehand).</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
@@ -3243,6 +3375,9 @@ QPushButton::hover {
        <underline>false</underline>
        <strikeout>false</strikeout>
       </font>
+     </property>
+     <property name="toolTip">
+      <string>Save your edits to your VoxML Object</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
