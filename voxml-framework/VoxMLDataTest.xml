@@ -1,38 +1,32 @@
 <VoxML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<Entity Type="Program" />
+	<Entity Type="Function" />
 	<Lex>
 		<Pred>
-			move
+			the
 		</Pred>
-		<Type>
-			process
-		</Type>
+		<Type />
 	</Lex>
 	<Type>
-		<Head>
-			processorHAHAHA
-		</Head>
+		<Head />
 		<Components />
 		<Concavity />
 		<RotatSym />
 		<ReflSym />
 		<Args>
-			<Arg Value="x:agent" />
-			<Arg Value="y:physobj" />
-			<Arg Value="z:location" />
-			<Arg Value="p:method" />
-			<Arg Value="a:T[]" />
+			<Arg Value="x:physobj" />
 		</Args>
-		<Body>
-			<Subevent Value="move_1(x,y,z,p)" />
-		</Body>
+		<Body />
 		<Class />
 		<Value />
 		<Constr />
 		<Scale />
 		<Arity />
-		<Referent />
-		<Mapping />
+		<Referent>
+			xjajaja
+		</Referent>
+		<Mapping>
+			n:1
+		</Mapping>
 		<Corresps />
 	</Type>
 	<Habitat>
@@ -45,9 +39,7 @@
 	</AffordStr>
 	<Embodiment>
 		<Scale />
-		<Movable>
-			True
-		</Movable>
+		<Movable />
 	</Embodiment>
 	<Attributes />
 </VoxML>

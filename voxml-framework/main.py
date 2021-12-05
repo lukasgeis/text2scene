@@ -4,7 +4,8 @@ import xml.etree.ElementTree as ET
 
 # PyQt5 imports
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication, QFileDialog, QMainWindow
+from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import QApplication, QFileDialog, QLineEdit, QMainWindow, QPushButton
 
 # Scenes imports
 from Scenes.Scripts.MainVoxMLWindow import Ui_MainVoxMLWindow
@@ -14,7 +15,7 @@ from VoxML.VoxMLClasses import *
 
 # Main Window class
 class MainVoxMLWindow(QMainWindow):
-### init window -> start settings etc.
+### general
     def __init__(self) -> None:
         # Create and setup window
         QMainWindow.__init__(self)
@@ -54,19 +55,44 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.typeBodyDelete.clicked.connect(lambda: self.deleteFromBox("body"))
         self.ui.typeCorrespsAdd.clicked.connect(lambda: self.addToBox("corresps"))
         self.ui.typeCorrespsDelete.clicked.connect(lambda: self.deleteFromBox("corresps"))
+
         self.ui.habitatIntrinsicAdder.clicked.connect(lambda: self.addToBox("intrinsic"))
         self.ui.habitatIntrinsicDelete.clicked.connect(lambda: self.deleteFromBox("intrinsic"))
         self.ui.habitatExtrinsicAdd.clicked.connect(lambda: self.addToBox("extrinsic"))
         self.ui.habitatExtrinsicDelete.clicked.connect(lambda: self.deleteFromBox("extrinsic"))
+
         self.ui.affordStrAffordancesAdd.clicked.connect(lambda: self.addToBox("affordances"))
-        self.ui.affordStrAffordancesDelete.clicked.connect(lambda: self.deleteFromBox("affordances"))
+        self.ui.afforValues = [self.ui.afforVal0,self.ui.afforVal1,self.ui.afforVal2,self.ui.afforVal3,self.ui.afforVal4,self.ui.afforVal5,self.ui.afforVal6]
+        self.ui.afforDelete = [self.ui.afforDel0,self.ui.afforDel1,self.ui.afforDel2,self.ui.afforDel3,self.ui.afforDel4,self.ui.afforDel5,self.ui.afforDel6]
+        self.ui.afforDel0.clicked.connect(lambda: self.doNothing(self.allObj[-1].AffordStr.Affordances.pop(0), self.updateListVisualisations()))
+        self.ui.afforDel1.clicked.connect(lambda: self.doNothing(self.allObj[-1].AffordStr.Affordances.pop(1), self.updateListVisualisations()))
+        self.ui.afforDel2.clicked.connect(lambda: self.doNothing(self.allObj[-1].AffordStr.Affordances.pop(2), self.updateListVisualisations()))
+        self.ui.afforDel3.clicked.connect(lambda: self.doNothing(self.allObj[-1].AffordStr.Affordances.pop(3), self.updateListVisualisations()))
+        self.ui.afforDel4.clicked.connect(lambda: self.doNothing(self.allObj[-1].AffordStr.Affordances.pop(4), self.updateListVisualisations()))
+        self.ui.afforDel5.clicked.connect(lambda: self.doNothing(self.allObj[-1].AffordStr.Affordances.pop(5), self.updateListVisualisations()))
+        self.ui.afforDel6.clicked.connect(lambda: self.doNothing(self.allObj[-1].AffordStr.Affordances.pop(6), self.updateListVisualisations()))
+
         self.ui.attributesAttrsAdd.clicked.connect(lambda: self.addToBox("attrs"))
-        self.ui.attributesAttrsDelete.clicked.connect(lambda: self.deleteFromBox("attrs"))
+        self.ui.attrsValues = [self.ui.attrsVal0,self.ui.attrsVal1,self.ui.attrsVal2,self.ui.attrsVal3,self.ui.attrsVal4,self.ui.attrsVal5,self.ui.attrsVal6]
+        self.ui.attrsDelete = [self.ui.attrsDel0,self.ui.attrsDel1,self.ui.attrsDel2,self.ui.attrsDel3,self.ui.attrsDel4,self.ui.attrsDel5,self.ui.attrsDel6]
+        self.ui.attrsDel0.clicked.connect(lambda: self.doNothing(self.allObj[-1].Attributes.Attrs.pop(0), self.updateListVisualisations()))
+        self.ui.attrsDel1.clicked.connect(lambda: self.doNothing(self.allObj[-1].Attributes.Attrs.pop(1), self.updateListVisualisations()))
+        self.ui.attrsDel2.clicked.connect(lambda: self.doNothing(self.allObj[-1].Attributes.Attrs.pop(2), self.updateListVisualisations()))
+        self.ui.attrsDel3.clicked.connect(lambda: self.doNothing(self.allObj[-1].Attributes.Attrs.pop(3), self.updateListVisualisations()))
+        self.ui.attrsDel4.clicked.connect(lambda: self.doNothing(self.allObj[-1].Attributes.Attrs.pop(4), self.updateListVisualisations()))
+        self.ui.attrsDel5.clicked.connect(lambda: self.doNothing(self.allObj[-1].Attributes.Attrs.pop(5), self.updateListVisualisations()))
+        self.ui.attrsDel6.clicked.connect(lambda: self.doNothing(self.allObj[-1].Attributes.Attrs.pop(6), self.updateListVisualisations()))
 
         # setup position and show window
         self.oldPos = self.pos()
+        self.ui.popupText.hide()
         self.show()
 
+    # show popup message for x seconds
+    def showPopupMessage(self, msg: str, x: float):
+        self.ui.popupText.setText(msg)
+        self.ui.popupText.show()
+        QtCore.QTimer.singleShot(int(x * 1000), lambda: self.ui.popupText.hide())
 
 ### window drag-and-drop 
 
@@ -106,12 +132,18 @@ class MainVoxMLWindow(QMainWindow):
             self.ui.habitatExtrinsic.addItem("Name:" + str(self.ui.habitatExtrName.text()) + ",Value:" + str(self.ui.habitatExtrValue.text()))
             self.ui.habitatExtrName.setText("")
             self.ui.habitatExtrValue.setText("")
-        elif attr == "affordances":
-            self.ui.affordStrAffordances.addItem(str(self.ui.affordStrAffordancesNewItem.text()))
+        elif attr == "affordances" and len(str(self.ui.affordStrAffordancesNewItem.text())) > 0:
+            affor = vAffordance()
+            affor.Formula = str(self.ui.affordStrAffordancesNewItem.text())
+            self.allObj[-1].AffordStr.Affordances.append(affor)
             self.ui.affordStrAffordancesNewItem.setText("")
-        elif attr == "attrs":
-            self.ui.attributesAttrs.addItem(str(self.ui.attributesAttrsNewItem.text()))
+        elif attr == "attrs" and len(str(self.ui.attributesAttrsNewItem.text())) > 0:
+            attr = vAttr()
+            attr.Value = str(self.ui.attributesAttrsNewItem.text())
+            self.allObj[-1].Attributes.Attrs.append(attr)
             self.ui.attributesAttrsNewItem.setText("")
+        
+        self.updateListVisualisations()
 
     # remove item from ComboBox
     def deleteFromBox(self,attr):
@@ -127,10 +159,6 @@ class MainVoxMLWindow(QMainWindow):
             self.ui.habitatIntrinsic.removeItem(self.ui.habitatIntrinsic.currentIndex())
         elif attr == "extrinsic":
             self.ui.habitatExtrinsic.removeItem(self.ui.habitatExtrinsic.currentIndex())
-        elif attr == "affordances":
-            self.ui.affordStrAffordances.removeItem(self.ui.affordStrAffordances.currentIndex())
-        elif attr == "attrs":
-            self.ui.attributesAttrs.removeItem(self.ui.attributesAttrs.currentIndex())
 
     # disable all editing related features
     def disableEditingMode(self):
@@ -194,6 +222,8 @@ class MainVoxMLWindow(QMainWindow):
         elif chosenPart == "attributes":
             self.ui.attributesBtn.setEnabled(False)
             self.ui.attributesFrame.show()
+        
+        self.updateListVisualisations()
 
     # hide all attributes -> used when loading new object
     def hideAllAttributes(self):
@@ -298,11 +328,6 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.habitatExtrinsic.clear()
         for x in vox.Habitat.Extrinsic:
             self.ui.habitatExtrinsic.addItem("Name:" + str(x.Name) + ",Value:" + str(x.Value))
-
-        # AffordStr
-        self.ui.affordStrAffordances.clear()
-        for x in vox.AffordStr.Affordances:
-            self.ui.affordStrAffordances.addItem(str(x.Formula))
         
         # Embodiment
         if vox.Embodiment.Scale != None:
@@ -312,10 +337,7 @@ class MainVoxMLWindow(QMainWindow):
         else:
             self.ui.embodimentMovable.setChecked(False)
         
-        # Attributes
-        self.ui.attributesAttrs.clear()
-        for x in vox.Attributes.Attrs:
-            self.ui.attributesAttrs.addItem(str(x.Value))
+        self.updateListVisualisations()
 
     # show specific editing attributes for specific template
     def createNewVoxMLObject(self, template, create = True):
@@ -443,6 +465,30 @@ class MainVoxMLWindow(QMainWindow):
             self.ui.typeMappingLabel.show()
             self.ui.typeMapping.show()
 
+    # Currently handling the display of Affordances/Attrs values (max 7)
+    def updateListVisualisations(self):
+        # AffordStr: Affordances
+        for k in range(7):
+            if k < len(self.allObj[-1].AffordStr.Affordances):
+                self.ui.afforValues[k].setText(str(self.allObj[-1].AffordStr.Affordances[k].Formula))
+                self.ui.afforValues[k].show()
+                self.ui.afforDelete[k].show()
+            else:
+                self.ui.afforValues[k].setText("")
+                self.ui.afforValues[k].hide()
+                self.ui.afforDelete[k].hide()
+
+        # Attributes: Attrs
+        for k in range(7):
+            if k < len(self.allObj[-1].Attributes.Attrs):
+                self.ui.attrsValues[k].setText(str(self.allObj[-1].Attributes.Attrs[k].Value))
+                self.ui.attrsValues[k].show()
+                self.ui.attrsDelete[k].show()
+            else:
+                self.ui.attrsValues[k].setText("")
+                self.ui.attrsValues[k].hide()
+                self.ui.attrsDelete[k].hide()
+
 
 ### VoxMLData related functions
 
@@ -454,6 +500,7 @@ class MainVoxMLWindow(QMainWindow):
             self.allObj.append(obj)
             self.loadDataToEditing()
             self.createNewVoxMLObject(str(obj.Entity.Type), False)
+            self.showPopupMessage("Data loaded from file!", 1.5)
 
     # Choose .txt or .xml file containing VoxML data from system
     def chooseVoxMLDataFile(self) -> str:
@@ -463,13 +510,15 @@ class MainVoxMLWindow(QMainWindow):
     def saveDataToFile(self):
         fileName = QFileDialog.getSaveFileName(self, "Save File", "voml-framework\\VoxMLData", "VoxML Data (*.xml *.txt )")[0]
         if len(fileName) > 0:
-            self.printLastVoxMLObject() # Testing purposes
             output = self.allObj[-1].createXMLString()
             with open(fileName, "w") as f:
                 f.write(output.decode("utf-8"))
+            self.showPopupMessage("Data saved to file!", 1.5)
         
     # save current input data to last VoxML Object
     def saveDataToObject(self):
+        if len(self.allObj) < 1:
+            return
         vox = VoxMLObject()
 
         # Entity
@@ -561,10 +610,9 @@ class MainVoxMLWindow(QMainWindow):
             vox.Habitat.Extrinsic.append(extr)
 
         # AffordStr
-        vox.AffordStr.Affordances = []
-        for x in range(self.ui.affordStrAffordances.count()):
+        for x in range(len(self.allObj[-1].AffordStr.Affordances)):
             aff = vAffordance()
-            aff.Formula = str(self.ui.affordStrAffordances.itemText(x))
+            aff.Formula = str(self.ui.afforValues[x].text())
             vox.AffordStr.Affordances.append(aff)
         
         # Embodiment
@@ -578,14 +626,15 @@ class MainVoxMLWindow(QMainWindow):
             vox.Embodiment.Movable = None
         
         # Attributes
-        vox.Attributes.Attrs = []
-        for x in range(self.ui.attributesAttrs.count()):
+        for x in range(len(self.allObj[-1].Attributes.Attrs)):
             attr = vAttr()
-            attr.Value = str(self.ui.attributesAttrs.itemText(x))
-            vox.Attributes.Attrs.append(attr)
+            attr.Value = str(self.ui.attrsValues[x].text())
+            vox.Attributes.Attrs.append(aff)
 
         self.allObj[-1] = vox
         self.loadDataToEditing()
+
+        self.showPopupMessage("Data saved to object!", 1.5)
 
     # Print last added/parsed VoxMLObject to console :: only for testing purposes / will be removed later
     def printLastVoxMLObject(self):
@@ -676,6 +725,8 @@ class MainVoxMLWindow(QMainWindow):
             for x in vox.Attributes.Attrs:
                 print("\t\tAttr: Value: " + str(x.Value))
 
+    def doNothing(self, *args):
+        pass
             
 if __name__ == "__main__":
     app = QApplication(sys.argv)

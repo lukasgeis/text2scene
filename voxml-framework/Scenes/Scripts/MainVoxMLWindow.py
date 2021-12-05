@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainVoxMLWindowJdvSiO.ui'
+## Form generated from reading UI file 'MainVoxMLWindowWNlSUF.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -397,64 +397,13 @@ class Ui_MainVoxMLWindow(object):
         self.attributesFrame.setFrameShadow(QFrame.Raised)
         self.attributesLabel = QLabel(self.attributesFrame)
         self.attributesLabel.setObjectName(u"attributesLabel")
-        self.attributesLabel.setGeometry(QRect(250, 225, 120, 30))
+        self.attributesLabel.setGeometry(QRect(200, 100, 120, 30))
         self.attributesLabel.setFont(font3)
-        self.attributesAttrs = QComboBox(self.attributesFrame)
-        self.attributesAttrs.setObjectName(u"attributesAttrs")
-        self.attributesAttrs.setGeometry(QRect(370, 225, 160, 30))
-        self.attributesAttrs.setFont(font3)
-        self.attributesAttrs.setStyleSheet(u"QComboBox {\n"
-"    border: 1px solid #2b78d3;\n"
-"    border-radius: 10px;\n"
-"	color: #f0f0f0;\n"
-"}\n"
-"\n"
-"QComboBox::hover {\n"
-"	border: 2px solid #2b78d3;\n"
-"}\n"
-"\n"
-"QComboBox:editable {\n"
-"    background: #f0f0f0;\n"
-"}\n"
-"\n"
-"QComboBox:!editable, QComboBox::drop-down:editable {\n"
-"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"}\n"
-"\n"
-"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
-"    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"}\n"
-"\n"
-"QComboBox:on { \n"
-"    padding-top: 3px;\n"
-"    padding-left: 4px;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"\n"
-"    border-left-width: 1px;\n"
-"    border-left-color: #f0f0f0;\n"
-"    border-left-style: solid;\n"
-"    border-top-right-radius: 3px;\n"
-"    borde"
-                        "r-bottom-right-radius: 3px;\n"
-"}\n"
-"\n"
-"QComboBox::down-arrow:on { \n"
-"    top: 1px;\n"
-"    left: 1px;\n"
-"}\n"
-"")
-        self.attributesAttrsDelete = QPushButton(self.attributesFrame)
-        self.attributesAttrsDelete.setObjectName(u"attributesAttrsDelete")
-        self.attributesAttrsDelete.setGeometry(QRect(540, 225, 100, 30))
-        self.attributesAttrsDelete.setFont(font2)
-        self.attributesAttrsDelete.setStyleSheet(u"QPushButton {\n"
+        self.attrsDel0 = QPushButton(self.attributesFrame)
+        self.attrsDel0.setObjectName(u"attrsDel0")
+        self.attrsDel0.setGeometry(QRect(470, 150, 100, 30))
+        self.attrsDel0.setFont(font2)
+        self.attrsDel0.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
 "	border-radius: 10px;\n"
@@ -467,7 +416,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.attributesAttrsAdd = QPushButton(self.attributesFrame)
         self.attributesAttrsAdd.setObjectName(u"attributesAttrsAdd")
-        self.attributesAttrsAdd.setGeometry(QRect(540, 265, 100, 30))
+        self.attributesAttrsAdd.setGeometry(QRect(470, 100, 100, 30))
         self.attributesAttrsAdd.setFont(font2)
         self.attributesAttrsAdd.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -482,11 +431,136 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.attributesAttrsNewItem = QLineEdit(self.attributesFrame)
         self.attributesAttrsNewItem.setObjectName(u"attributesAttrsNewItem")
-        self.attributesAttrsNewItem.setGeometry(QRect(370, 265, 160, 30))
+        self.attributesAttrsNewItem.setGeometry(QRect(300, 100, 160, 30))
         self.attributesAttrsNewItem.setFont(font3)
         self.attributesAttrsNewItem.setStyleSheet(u"QLineEdit {\n"
 "	border: 1px solid #f0f0f0;\n"
 "}")
+        self.attrsVal0 = QLineEdit(self.attributesFrame)
+        self.attrsVal0.setObjectName(u"attrsVal0")
+        self.attrsVal0.setGeometry(QRect(300, 150, 160, 30))
+        self.attrsVal0.setFont(font3)
+        self.attrsVal0.setStyleSheet(u"")
+        self.attrsDel1 = QPushButton(self.attributesFrame)
+        self.attrsDel1.setObjectName(u"attrsDel1")
+        self.attrsDel1.setGeometry(QRect(470, 190, 100, 30))
+        self.attrsDel1.setFont(font2)
+        self.attrsDel1.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.attrsVal1 = QLineEdit(self.attributesFrame)
+        self.attrsVal1.setObjectName(u"attrsVal1")
+        self.attrsVal1.setGeometry(QRect(300, 190, 160, 30))
+        self.attrsVal1.setFont(font3)
+        self.attrsVal1.setStyleSheet(u"")
+        self.attrsDel2 = QPushButton(self.attributesFrame)
+        self.attrsDel2.setObjectName(u"attrsDel2")
+        self.attrsDel2.setGeometry(QRect(470, 230, 100, 30))
+        self.attrsDel2.setFont(font2)
+        self.attrsDel2.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.attrsVal2 = QLineEdit(self.attributesFrame)
+        self.attrsVal2.setObjectName(u"attrsVal2")
+        self.attrsVal2.setGeometry(QRect(300, 230, 160, 30))
+        self.attrsVal2.setFont(font3)
+        self.attrsVal2.setStyleSheet(u"")
+        self.attrsDel3 = QPushButton(self.attributesFrame)
+        self.attrsDel3.setObjectName(u"attrsDel3")
+        self.attrsDel3.setGeometry(QRect(470, 270, 100, 30))
+        self.attrsDel3.setFont(font2)
+        self.attrsDel3.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.attrsVal3 = QLineEdit(self.attributesFrame)
+        self.attrsVal3.setObjectName(u"attrsVal3")
+        self.attrsVal3.setGeometry(QRect(300, 270, 160, 30))
+        self.attrsVal3.setFont(font3)
+        self.attrsVal3.setStyleSheet(u"")
+        self.attrsDel4 = QPushButton(self.attributesFrame)
+        self.attrsDel4.setObjectName(u"attrsDel4")
+        self.attrsDel4.setGeometry(QRect(470, 310, 100, 30))
+        self.attrsDel4.setFont(font2)
+        self.attrsDel4.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.attrsVal4 = QLineEdit(self.attributesFrame)
+        self.attrsVal4.setObjectName(u"attrsVal4")
+        self.attrsVal4.setGeometry(QRect(300, 310, 160, 30))
+        self.attrsVal4.setFont(font3)
+        self.attrsVal4.setStyleSheet(u"")
+        self.attrsDel6 = QPushButton(self.attributesFrame)
+        self.attrsDel6.setObjectName(u"attrsDel6")
+        self.attrsDel6.setGeometry(QRect(470, 390, 100, 30))
+        self.attrsDel6.setFont(font2)
+        self.attrsDel6.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.attrsDel5 = QPushButton(self.attributesFrame)
+        self.attrsDel5.setObjectName(u"attrsDel5")
+        self.attrsDel5.setGeometry(QRect(470, 350, 100, 30))
+        self.attrsDel5.setFont(font2)
+        self.attrsDel5.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.attrsVal6 = QLineEdit(self.attributesFrame)
+        self.attrsVal6.setObjectName(u"attrsVal6")
+        self.attrsVal6.setGeometry(QRect(300, 390, 160, 30))
+        self.attrsVal6.setFont(font3)
+        self.attrsVal6.setStyleSheet(u"")
+        self.attrsVal5 = QLineEdit(self.attributesFrame)
+        self.attrsVal5.setObjectName(u"attrsVal5")
+        self.attrsVal5.setGeometry(QRect(300, 350, 160, 30))
+        self.attrsVal5.setFont(font3)
+        self.attrsVal5.setStyleSheet(u"")
         self.affordStrFrame = QFrame(self.editingFrame)
         self.affordStrFrame.setObjectName(u"affordStrFrame")
         self.affordStrFrame.setEnabled(True)
@@ -523,64 +597,13 @@ class Ui_MainVoxMLWindow(object):
         self.affordStrFrame.setFrameShadow(QFrame.Raised)
         self.affordancesLabel = QLabel(self.affordStrFrame)
         self.affordancesLabel.setObjectName(u"affordancesLabel")
-        self.affordancesLabel.setGeometry(QRect(250, 225, 120, 30))
+        self.affordancesLabel.setGeometry(QRect(200, 100, 120, 30))
         self.affordancesLabel.setFont(font3)
-        self.affordStrAffordances = QComboBox(self.affordStrFrame)
-        self.affordStrAffordances.setObjectName(u"affordStrAffordances")
-        self.affordStrAffordances.setGeometry(QRect(370, 225, 160, 30))
-        self.affordStrAffordances.setFont(font3)
-        self.affordStrAffordances.setStyleSheet(u"QComboBox {\n"
-"    border: 1px solid #2b78d3;\n"
-"    border-radius: 10px;\n"
-"	color: #f0f0f0;\n"
-"}\n"
-"\n"
-"QComboBox::hover {\n"
-"	border: 2px solid #2b78d3;\n"
-"}\n"
-"\n"
-"QComboBox:editable {\n"
-"    background: #f0f0f0;\n"
-"}\n"
-"\n"
-"QComboBox:!editable, QComboBox::drop-down:editable {\n"
-"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"}\n"
-"\n"
-"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
-"    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"}\n"
-"\n"
-"QComboBox:on { \n"
-"    padding-top: 3px;\n"
-"    padding-left: 4px;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"\n"
-"    border-left-width: 1px;\n"
-"    border-left-color: #f0f0f0;\n"
-"    border-left-style: solid;\n"
-"    border-top-right-radius: 3px;\n"
-"    borde"
-                        "r-bottom-right-radius: 3px;\n"
-"}\n"
-"\n"
-"QComboBox::down-arrow:on { \n"
-"    top: 1px;\n"
-"    left: 1px;\n"
-"}\n"
-"")
-        self.affordStrAffordancesDelete = QPushButton(self.affordStrFrame)
-        self.affordStrAffordancesDelete.setObjectName(u"affordStrAffordancesDelete")
-        self.affordStrAffordancesDelete.setGeometry(QRect(540, 225, 100, 30))
-        self.affordStrAffordancesDelete.setFont(font2)
-        self.affordStrAffordancesDelete.setStyleSheet(u"QPushButton {\n"
+        self.afforDel0 = QPushButton(self.affordStrFrame)
+        self.afforDel0.setObjectName(u"afforDel0")
+        self.afforDel0.setGeometry(QRect(470, 150, 100, 30))
+        self.afforDel0.setFont(font2)
+        self.afforDel0.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
 "	border-radius: 10px;\n"
@@ -593,7 +616,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.affordStrAffordancesAdd = QPushButton(self.affordStrFrame)
         self.affordStrAffordancesAdd.setObjectName(u"affordStrAffordancesAdd")
-        self.affordStrAffordancesAdd.setGeometry(QRect(540, 265, 100, 30))
+        self.affordStrAffordancesAdd.setGeometry(QRect(470, 100, 100, 30))
         self.affordStrAffordancesAdd.setFont(font2)
         self.affordStrAffordancesAdd.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -608,10 +631,135 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.affordStrAffordancesNewItem = QLineEdit(self.affordStrFrame)
         self.affordStrAffordancesNewItem.setObjectName(u"affordStrAffordancesNewItem")
-        self.affordStrAffordancesNewItem.setGeometry(QRect(370, 265, 160, 30))
+        self.affordStrAffordancesNewItem.setGeometry(QRect(300, 100, 160, 30))
         self.affordStrAffordancesNewItem.setFont(font3)
         self.affordStrAffordancesNewItem.setStyleSheet(u"QLineEdit {\n"
 "	border: 1px solid #f0f0f0;\n"
+"}")
+        self.afforVal0 = QLineEdit(self.affordStrFrame)
+        self.afforVal0.setObjectName(u"afforVal0")
+        self.afforVal0.setGeometry(QRect(300, 150, 160, 30))
+        self.afforVal0.setFont(font3)
+        self.afforVal0.setStyleSheet(u"")
+        self.afforVal1 = QLineEdit(self.affordStrFrame)
+        self.afforVal1.setObjectName(u"afforVal1")
+        self.afforVal1.setGeometry(QRect(300, 190, 160, 30))
+        self.afforVal1.setFont(font3)
+        self.afforVal1.setStyleSheet(u"")
+        self.afforDel1 = QPushButton(self.affordStrFrame)
+        self.afforDel1.setObjectName(u"afforDel1")
+        self.afforDel1.setGeometry(QRect(470, 190, 100, 30))
+        self.afforDel1.setFont(font2)
+        self.afforDel1.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.afforVal2 = QLineEdit(self.affordStrFrame)
+        self.afforVal2.setObjectName(u"afforVal2")
+        self.afforVal2.setGeometry(QRect(300, 230, 160, 30))
+        self.afforVal2.setFont(font3)
+        self.afforVal2.setStyleSheet(u"")
+        self.afforDel3 = QPushButton(self.affordStrFrame)
+        self.afforDel3.setObjectName(u"afforDel3")
+        self.afforDel3.setGeometry(QRect(470, 270, 100, 30))
+        self.afforDel3.setFont(font2)
+        self.afforDel3.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.afforDel2 = QPushButton(self.affordStrFrame)
+        self.afforDel2.setObjectName(u"afforDel2")
+        self.afforDel2.setGeometry(QRect(470, 230, 100, 30))
+        self.afforDel2.setFont(font2)
+        self.afforDel2.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.afforVal3 = QLineEdit(self.affordStrFrame)
+        self.afforVal3.setObjectName(u"afforVal3")
+        self.afforVal3.setGeometry(QRect(300, 270, 160, 30))
+        self.afforVal3.setFont(font3)
+        self.afforVal3.setStyleSheet(u"")
+        self.afforVal4 = QLineEdit(self.affordStrFrame)
+        self.afforVal4.setObjectName(u"afforVal4")
+        self.afforVal4.setGeometry(QRect(300, 310, 160, 30))
+        self.afforVal4.setFont(font3)
+        self.afforVal4.setStyleSheet(u"")
+        self.afforDel5 = QPushButton(self.affordStrFrame)
+        self.afforDel5.setObjectName(u"afforDel5")
+        self.afforDel5.setGeometry(QRect(470, 350, 100, 30))
+        self.afforDel5.setFont(font2)
+        self.afforDel5.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.afforDel4 = QPushButton(self.affordStrFrame)
+        self.afforDel4.setObjectName(u"afforDel4")
+        self.afforDel4.setGeometry(QRect(470, 310, 100, 30))
+        self.afforDel4.setFont(font2)
+        self.afforDel4.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
+"}")
+        self.afforVal5 = QLineEdit(self.affordStrFrame)
+        self.afforVal5.setObjectName(u"afforVal5")
+        self.afforVal5.setGeometry(QRect(300, 350, 160, 30))
+        self.afforVal5.setFont(font3)
+        self.afforVal5.setStyleSheet(u"")
+        self.afforVal6 = QLineEdit(self.affordStrFrame)
+        self.afforVal6.setObjectName(u"afforVal6")
+        self.afforVal6.setGeometry(QRect(300, 390, 160, 30))
+        self.afforVal6.setFont(font3)
+        self.afforVal6.setStyleSheet(u"")
+        self.afforDel6 = QPushButton(self.affordStrFrame)
+        self.afforDel6.setObjectName(u"afforDel6")
+        self.afforDel6.setGeometry(QRect(470, 390, 100, 30))
+        self.afforDel6.setFont(font2)
+        self.afforDel6.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #f62451;\n"
 "}")
         self.habitatFrame = QFrame(self.editingFrame)
         self.habitatFrame.setObjectName(u"habitatFrame")
@@ -649,11 +797,11 @@ class Ui_MainVoxMLWindow(object):
         self.habitatFrame.setFrameShadow(QFrame.Raised)
         self.intrinsicLabel = QLabel(self.habitatFrame)
         self.intrinsicLabel.setObjectName(u"intrinsicLabel")
-        self.intrinsicLabel.setGeometry(QRect(250, 175, 120, 30))
+        self.intrinsicLabel.setGeometry(QRect(200, 175, 120, 30))
         self.intrinsicLabel.setFont(font3)
         self.habitatIntrinsic = QComboBox(self.habitatFrame)
         self.habitatIntrinsic.setObjectName(u"habitatIntrinsic")
-        self.habitatIntrinsic.setGeometry(QRect(370, 175, 190, 30))
+        self.habitatIntrinsic.setGeometry(QRect(300, 175, 190, 30))
         self.habitatIntrinsic.setFont(font3)
         self.habitatIntrinsic.setStyleSheet(u"QComboBox {\n"
 "    border: 1px solid #2b78d3;\n"
@@ -704,7 +852,7 @@ class Ui_MainVoxMLWindow(object):
 "")
         self.habitatIntrinsicDelete = QPushButton(self.habitatFrame)
         self.habitatIntrinsicDelete.setObjectName(u"habitatIntrinsicDelete")
-        self.habitatIntrinsicDelete.setGeometry(QRect(570, 175, 100, 30))
+        self.habitatIntrinsicDelete.setGeometry(QRect(500, 175, 100, 30))
         self.habitatIntrinsicDelete.setFont(font2)
         self.habitatIntrinsicDelete.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -719,7 +867,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.habitatIntrinsicAdder = QPushButton(self.habitatFrame)
         self.habitatIntrinsicAdder.setObjectName(u"habitatIntrinsicAdder")
-        self.habitatIntrinsicAdder.setGeometry(QRect(570, 215, 100, 30))
+        self.habitatIntrinsicAdder.setGeometry(QRect(500, 215, 100, 30))
         self.habitatIntrinsicAdder.setFont(font2)
         self.habitatIntrinsicAdder.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -734,39 +882,39 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.habitatIntrName = QLineEdit(self.habitatFrame)
         self.habitatIntrName.setObjectName(u"habitatIntrName")
-        self.habitatIntrName.setGeometry(QRect(370, 215, 90, 30))
+        self.habitatIntrName.setGeometry(QRect(300, 215, 90, 30))
         self.habitatIntrName.setFont(font3)
         self.habitatIntrName.setStyleSheet(u"QLineEdit {\n"
 "	border: 1px solid #f0f0f0;\n"
 "}")
         self.habitatIntrValue = QLineEdit(self.habitatFrame)
         self.habitatIntrValue.setObjectName(u"habitatIntrValue")
-        self.habitatIntrValue.setGeometry(QRect(470, 215, 90, 30))
+        self.habitatIntrValue.setGeometry(QRect(400, 215, 90, 30))
         self.habitatIntrValue.setFont(font3)
         self.habitatIntrValue.setStyleSheet(u"QLineEdit {\n"
 "	border: 1px solid #f0f0f0;\n"
 "}")
         self.extrinsicLabel = QLabel(self.habitatFrame)
         self.extrinsicLabel.setObjectName(u"extrinsicLabel")
-        self.extrinsicLabel.setGeometry(QRect(250, 280, 120, 30))
+        self.extrinsicLabel.setGeometry(QRect(200, 280, 120, 30))
         self.extrinsicLabel.setFont(font3)
         self.habitatExtrName = QLineEdit(self.habitatFrame)
         self.habitatExtrName.setObjectName(u"habitatExtrName")
-        self.habitatExtrName.setGeometry(QRect(370, 320, 90, 30))
+        self.habitatExtrName.setGeometry(QRect(300, 320, 90, 30))
         self.habitatExtrName.setFont(font3)
         self.habitatExtrName.setStyleSheet(u"QLineEdit {\n"
 "	border: 1px solid #f0f0f0;\n"
 "}")
         self.habitatExtrValue = QLineEdit(self.habitatFrame)
         self.habitatExtrValue.setObjectName(u"habitatExtrValue")
-        self.habitatExtrValue.setGeometry(QRect(470, 320, 90, 30))
+        self.habitatExtrValue.setGeometry(QRect(400, 320, 90, 30))
         self.habitatExtrValue.setFont(font3)
         self.habitatExtrValue.setStyleSheet(u"QLineEdit {\n"
 "	border: 1px solid #f0f0f0;\n"
 "}")
         self.habitatExtrinsic = QComboBox(self.habitatFrame)
         self.habitatExtrinsic.setObjectName(u"habitatExtrinsic")
-        self.habitatExtrinsic.setGeometry(QRect(370, 280, 190, 30))
+        self.habitatExtrinsic.setGeometry(QRect(300, 280, 190, 30))
         self.habitatExtrinsic.setFont(font3)
         self.habitatExtrinsic.setStyleSheet(u"QComboBox {\n"
 "    border: 1px solid #2b78d3;\n"
@@ -817,7 +965,7 @@ class Ui_MainVoxMLWindow(object):
 "")
         self.habitatExtrinsicAdd = QPushButton(self.habitatFrame)
         self.habitatExtrinsicAdd.setObjectName(u"habitatExtrinsicAdd")
-        self.habitatExtrinsicAdd.setGeometry(QRect(570, 320, 100, 30))
+        self.habitatExtrinsicAdd.setGeometry(QRect(500, 320, 100, 30))
         self.habitatExtrinsicAdd.setFont(font2)
         self.habitatExtrinsicAdd.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -832,7 +980,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.habitatExtrinsicDelete = QPushButton(self.habitatFrame)
         self.habitatExtrinsicDelete.setObjectName(u"habitatExtrinsicDelete")
-        self.habitatExtrinsicDelete.setGeometry(QRect(570, 280, 100, 30))
+        self.habitatExtrinsicDelete.setGeometry(QRect(500, 280, 100, 30))
         self.habitatExtrinsicDelete.setFont(font2)
         self.habitatExtrinsicDelete.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -1355,13 +1503,13 @@ class Ui_MainVoxMLWindow(object):
         self.typeReflSymXY.setObjectName(u"typeReflSymXY")
         self.typeReflSymXY.setGeometry(QRect(480, 460, 70, 30))
         self.typeReflSymXY.setFont(font3)
+        self.habitatFrame.raise_()
+        self.typeFrame.raise_()
         self.entityFrame.raise_()
         self.lexFrame.raise_()
         self.embodimentFrame.raise_()
         self.attributesFrame.raise_()
         self.affordStrFrame.raise_()
-        self.habitatFrame.raise_()
-        self.typeFrame.raise_()
         self.entityBtn.raise_()
         self.lexBtn.raise_()
         self.typeBtn.raise_()
@@ -1481,12 +1629,23 @@ class Ui_MainVoxMLWindow(object):
 "QPushButton::hover {\n"
 "	border: 1px solid #1fd78d;\n"
 "}")
+        self.popupText = QLabel(self.backgroundFrame)
+        self.popupText.setObjectName(u"popupText")
+        self.popupText.setGeometry(QRect(600, 20, 600, 80))
+        font4 = QFont()
+        font4.setFamily(u"Segoe UI")
+        font4.setPointSize(20)
+        self.popupText.setFont(font4)
+        self.popupText.setStyleSheet(u"QLabel {\n"
+"	border-radius: 20px;\n"
+"	border: 3px solid #eb7b59;\n"
+"	color: #eb7b59;\n"
+"}")
+        self.popupText.setAlignment(Qt.AlignCenter)
         MainVoxMLWindow.setCentralWidget(self.mainWidget)
 
         self.retranslateUi(MainVoxMLWindow)
 
-        self.attributesAttrs.setCurrentIndex(-1)
-        self.affordStrAffordances.setCurrentIndex(-1)
         self.habitatIntrinsic.setCurrentIndex(-1)
         self.habitatExtrinsic.setCurrentIndex(-1)
         self.typeComponents.setCurrentIndex(-1)
@@ -1566,20 +1725,39 @@ class Ui_MainVoxMLWindow(object):
         self.embodimentScale.setToolTip(QCoreApplication.translate("MainVoxMLWindow", u"Embodiment: Scale", None))
 #endif // QT_CONFIG(tooltip)
         self.attributesLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"Attrs:", None))
-        self.attributesAttrs.setCurrentText("")
-        self.attributesAttrs.setPlaceholderText("")
-        self.attributesAttrsDelete.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.attrsDel0.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
         self.attributesAttrsAdd.setText(QCoreApplication.translate("MainVoxMLWindow", u"Add", None))
         self.attributesAttrsNewItem.setPlaceholderText(QCoreApplication.translate("MainVoxMLWindow", u"Value", None))
+        self.attrsVal0.setPlaceholderText("")
+        self.attrsDel1.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.attrsVal1.setPlaceholderText("")
+        self.attrsDel2.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.attrsVal2.setPlaceholderText("")
+        self.attrsDel3.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.attrsVal3.setPlaceholderText("")
+        self.attrsDel4.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.attrsVal4.setPlaceholderText("")
+        self.attrsDel6.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.attrsDel5.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.attrsVal6.setPlaceholderText("")
+        self.attrsVal5.setPlaceholderText("")
         self.affordancesLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"<html><head/><body><p>Affordances:</p></body></html>", None))
-#if QT_CONFIG(tooltip)
-        self.affordStrAffordances.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.affordStrAffordances.setCurrentText("")
-        self.affordStrAffordances.setPlaceholderText("")
-        self.affordStrAffordancesDelete.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.afforDel0.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
         self.affordStrAffordancesAdd.setText(QCoreApplication.translate("MainVoxMLWindow", u"Add", None))
         self.affordStrAffordancesNewItem.setPlaceholderText(QCoreApplication.translate("MainVoxMLWindow", u"Formula", None))
+        self.afforVal0.setPlaceholderText("")
+        self.afforVal1.setPlaceholderText("")
+        self.afforDel1.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.afforVal2.setPlaceholderText("")
+        self.afforDel3.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.afforDel2.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.afforVal3.setPlaceholderText("")
+        self.afforVal4.setPlaceholderText("")
+        self.afforDel5.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.afforDel4.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
+        self.afforVal5.setPlaceholderText("")
+        self.afforVal6.setPlaceholderText("")
+        self.afforDel6.setText(QCoreApplication.translate("MainVoxMLWindow", u"Delete", None))
         self.intrinsicLabel.setText(QCoreApplication.translate("MainVoxMLWindow", u"<html><head/><body><p>Intrinsic:</p></body></html>", None))
         self.habitatIntrinsic.setCurrentText("")
         self.habitatIntrinsic.setPlaceholderText("")
@@ -1735,5 +1913,6 @@ class Ui_MainVoxMLWindow(object):
         self.saveToObject.setToolTip(QCoreApplication.translate("MainVoxMLWindow", u"Save your edits to your VoxML Object", None))
 #endif // QT_CONFIG(tooltip)
         self.saveToObject.setText(QCoreApplication.translate("MainVoxMLWindow", u"Save", None))
+        self.popupText.setText(QCoreApplication.translate("MainVoxMLWindow", u"PopUP Window", None))
     # retranslateUi
 

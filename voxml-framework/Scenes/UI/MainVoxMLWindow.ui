@@ -864,8 +864,8 @@ QCheckBox::indicator:checked {
       <widget class="QLabel" name="attributesLabel">
        <property name="geometry">
         <rect>
-         <x>250</x>
-         <y>225</y>
+         <x>200</x>
+         <y>100</y>
          <width>120</width>
          <height>30</height>
         </rect>
@@ -880,84 +880,11 @@ QCheckBox::indicator:checked {
         <string>Attrs:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="attributesAttrs">
+      <widget class="QPushButton" name="attrsDel0">
        <property name="geometry">
         <rect>
-         <x>370</x>
-         <y>225</y>
-         <width>160</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QComboBox {
-    border: 1px solid #2b78d3;
-    border-radius: 10px;
-	color: #f0f0f0;
-}
-
-QComboBox::hover {
-	border: 2px solid #2b78d3;
-}
-
-QComboBox:editable {
-    background: #f0f0f0;
-}
-
-QComboBox:!editable, QComboBox::drop-down:editable {
-     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                 stop: 0 #161c21, stop: 1.0 #2d3943);
-}
-
-QComboBox:!editable:on, QComboBox::drop-down:editable:on {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                 stop: 0 #161c21, stop: 1.0 #2d3943);
-}
-
-QComboBox:on { 
-    padding-top: 3px;
-    padding-left: 4px;
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 15px;
-
-    border-left-width: 1px;
-    border-left-color: #f0f0f0;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
-
-QComboBox::down-arrow:on { 
-    top: 1px;
-    left: 1px;
-}
-</string>
-       </property>
-       <property name="currentText">
-        <string/>
-       </property>
-       <property name="currentIndex">
-        <number>-1</number>
-       </property>
-       <property name="placeholderText">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="attributesAttrsDelete">
-       <property name="geometry">
-        <rect>
-         <x>540</x>
-         <y>225</y>
+         <x>470</x>
+         <y>150</y>
          <width>100</width>
          <height>30</height>
         </rect>
@@ -993,8 +920,8 @@ QPushButton::hover {
       <widget class="QPushButton" name="attributesAttrsAdd">
        <property name="geometry">
         <rect>
-         <x>540</x>
-         <y>265</y>
+         <x>470</x>
+         <y>100</y>
          <width>100</width>
          <height>30</height>
         </rect>
@@ -1030,8 +957,8 @@ QPushButton::hover {
       <widget class="QLineEdit" name="attributesAttrsNewItem">
        <property name="geometry">
         <rect>
-         <x>370</x>
-         <y>265</y>
+         <x>300</x>
+         <y>100</y>
          <width>160</width>
          <height>30</height>
         </rect>
@@ -1049,6 +976,382 @@ QPushButton::hover {
        </property>
        <property name="placeholderText">
         <string>Value</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="attrsVal0">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>150</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="attrsDel1">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>190</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="attrsVal1">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>190</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="attrsDel2">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>230</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="attrsVal2">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>230</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="attrsDel3">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>270</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="attrsVal3">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>270</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="attrsDel4">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>310</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="attrsVal4">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>310</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="attrsDel6">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>390</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="attrsDel5">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>350</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="attrsVal6">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>390</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="attrsVal5">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>350</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
        </property>
       </widget>
      </widget>
@@ -1103,8 +1406,8 @@ QCheckBox::indicator:checked {
       <widget class="QLabel" name="affordancesLabel">
        <property name="geometry">
         <rect>
-         <x>250</x>
-         <y>225</y>
+         <x>200</x>
+         <y>100</y>
          <width>120</width>
          <height>30</height>
         </rect>
@@ -1119,87 +1422,11 @@ QCheckBox::indicator:checked {
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affordances:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="affordStrAffordances">
+      <widget class="QPushButton" name="afforDel0">
        <property name="geometry">
         <rect>
-         <x>370</x>
-         <y>225</y>
-         <width>160</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QComboBox {
-    border: 1px solid #2b78d3;
-    border-radius: 10px;
-	color: #f0f0f0;
-}
-
-QComboBox::hover {
-	border: 2px solid #2b78d3;
-}
-
-QComboBox:editable {
-    background: #f0f0f0;
-}
-
-QComboBox:!editable, QComboBox::drop-down:editable {
-     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                 stop: 0 #161c21, stop: 1.0 #2d3943);
-}
-
-QComboBox:!editable:on, QComboBox::drop-down:editable:on {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                 stop: 0 #161c21, stop: 1.0 #2d3943);
-}
-
-QComboBox:on { 
-    padding-top: 3px;
-    padding-left: 4px;
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 15px;
-
-    border-left-width: 1px;
-    border-left-color: #f0f0f0;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
-
-QComboBox::down-arrow:on { 
-    top: 1px;
-    left: 1px;
-}
-</string>
-       </property>
-       <property name="currentText">
-        <string/>
-       </property>
-       <property name="currentIndex">
-        <number>-1</number>
-       </property>
-       <property name="placeholderText">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="affordStrAffordancesDelete">
-       <property name="geometry">
-        <rect>
-         <x>540</x>
-         <y>225</y>
+         <x>470</x>
+         <y>150</y>
          <width>100</width>
          <height>30</height>
         </rect>
@@ -1235,8 +1462,8 @@ QPushButton::hover {
       <widget class="QPushButton" name="affordStrAffordancesAdd">
        <property name="geometry">
         <rect>
-         <x>540</x>
-         <y>265</y>
+         <x>470</x>
+         <y>100</y>
          <width>100</width>
          <height>30</height>
         </rect>
@@ -1272,8 +1499,8 @@ QPushButton::hover {
       <widget class="QLineEdit" name="affordStrAffordancesNewItem">
        <property name="geometry">
         <rect>
-         <x>370</x>
-         <y>265</y>
+         <x>300</x>
+         <y>100</y>
          <width>160</width>
          <height>30</height>
         </rect>
@@ -1291,6 +1518,383 @@ QPushButton::hover {
        </property>
        <property name="placeholderText">
         <string>Formula</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="afforVal0">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>150</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="afforVal1">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>190</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="afforDel1">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>190</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="afforVal2">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>230</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="afforDel3">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>270</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="afforDel2">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>230</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="afforVal3">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>270</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+</string>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="afforVal4">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>310</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="afforDel5">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>350</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="afforDel4">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>310</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="afforVal5">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>350</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="afforVal6">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>390</y>
+         <width>160</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="afforDel6">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>390</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #f62451;
+}
+
+QPushButton::hover {
+	border: 2px solid #f62451;
+}</string>
+       </property>
+       <property name="text">
+        <string>Delete</string>
        </property>
       </widget>
      </widget>
@@ -1345,7 +1949,7 @@ QCheckBox::indicator:checked {
       <widget class="QLabel" name="intrinsicLabel">
        <property name="geometry">
         <rect>
-         <x>250</x>
+         <x>200</x>
          <y>175</y>
          <width>120</width>
          <height>30</height>
@@ -1364,7 +1968,7 @@ QCheckBox::indicator:checked {
       <widget class="QComboBox" name="habitatIntrinsic">
        <property name="geometry">
         <rect>
-         <x>370</x>
+         <x>300</x>
          <y>175</y>
          <width>190</width>
          <height>30</height>
@@ -1437,7 +2041,7 @@ QComboBox::down-arrow:on {
       <widget class="QPushButton" name="habitatIntrinsicDelete">
        <property name="geometry">
         <rect>
-         <x>570</x>
+         <x>500</x>
          <y>175</y>
          <width>100</width>
          <height>30</height>
@@ -1474,7 +2078,7 @@ QPushButton::hover {
       <widget class="QPushButton" name="habitatIntrinsicAdder">
        <property name="geometry">
         <rect>
-         <x>570</x>
+         <x>500</x>
          <y>215</y>
          <width>100</width>
          <height>30</height>
@@ -1511,7 +2115,7 @@ QPushButton::hover {
       <widget class="QLineEdit" name="habitatIntrName">
        <property name="geometry">
         <rect>
-         <x>370</x>
+         <x>300</x>
          <y>215</y>
          <width>90</width>
          <height>30</height>
@@ -1535,7 +2139,7 @@ QPushButton::hover {
       <widget class="QLineEdit" name="habitatIntrValue">
        <property name="geometry">
         <rect>
-         <x>470</x>
+         <x>400</x>
          <y>215</y>
          <width>90</width>
          <height>30</height>
@@ -1559,7 +2163,7 @@ QPushButton::hover {
       <widget class="QLabel" name="extrinsicLabel">
        <property name="geometry">
         <rect>
-         <x>250</x>
+         <x>200</x>
          <y>280</y>
          <width>120</width>
          <height>30</height>
@@ -1578,7 +2182,7 @@ QPushButton::hover {
       <widget class="QLineEdit" name="habitatExtrName">
        <property name="geometry">
         <rect>
-         <x>370</x>
+         <x>300</x>
          <y>320</y>
          <width>90</width>
          <height>30</height>
@@ -1602,7 +2206,7 @@ QPushButton::hover {
       <widget class="QLineEdit" name="habitatExtrValue">
        <property name="geometry">
         <rect>
-         <x>470</x>
+         <x>400</x>
          <y>320</y>
          <width>90</width>
          <height>30</height>
@@ -1626,7 +2230,7 @@ QPushButton::hover {
       <widget class="QComboBox" name="habitatExtrinsic">
        <property name="geometry">
         <rect>
-         <x>370</x>
+         <x>300</x>
          <y>280</y>
          <width>190</width>
          <height>30</height>
@@ -1699,7 +2303,7 @@ QComboBox::down-arrow:on {
       <widget class="QPushButton" name="habitatExtrinsicAdd">
        <property name="geometry">
         <rect>
-         <x>570</x>
+         <x>500</x>
          <y>320</y>
          <width>100</width>
          <height>30</height>
@@ -1736,7 +2340,7 @@ QPushButton::hover {
       <widget class="QPushButton" name="habitatExtrinsicDelete">
        <property name="geometry">
         <rect>
-         <x>570</x>
+         <x>500</x>
          <y>280</y>
          <width>100</width>
          <height>30</height>
@@ -3123,13 +3727,13 @@ QPushButton::hover {
        </property>
       </widget>
      </widget>
+     <zorder>habitatFrame</zorder>
+     <zorder>typeFrame</zorder>
      <zorder>entityFrame</zorder>
      <zorder>lexFrame</zorder>
      <zorder>embodimentFrame</zorder>
      <zorder>attributesFrame</zorder>
      <zorder>affordStrFrame</zorder>
-     <zorder>habitatFrame</zorder>
-     <zorder>typeFrame</zorder>
      <zorder>entityBtn</zorder>
      <zorder>lexBtn</zorder>
      <zorder>typeBtn</zorder>
@@ -3394,6 +3998,35 @@ QPushButton::hover {
      </property>
      <property name="text">
       <string>Save</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="popupText">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>20</y>
+       <width>600</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	border-radius: 20px;
+	border: 3px solid #eb7b59;
+	color: #eb7b59;
+}</string>
+     </property>
+     <property name="text">
+      <string>PopUP Window</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
