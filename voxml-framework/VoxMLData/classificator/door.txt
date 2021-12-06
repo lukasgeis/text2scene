@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<VoxML xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Entity Type="Object"/>
+	<Lex>
+		<Pred>door</Pred>
+		<Type>physobj</Type>
+	</Lex>
+	<Type>
+		<Head>sheet[1]</Head>
+		<Components>
+			<Component Value="panel[1]"/>
+			<Component Value="hinge+[2]"/>
+			<Component Value="handle[3]"/>
+		</Components>
+		<Concavity>Flat</Concavity>
+		<RotatSym>Z</RotatSym>
+		<ReflSym>XY,XZ,YZ</ReflSym>
+	</Type>
+	<Habitat>
+		<Intrinsic/>
+		<Extrinsic/>
+	</Habitat>
+	<Afford_Str>
+		<Affordances/>
+	</Afford_Str>
+	<Embodiement>
+		<Scale>agent</Scale>
+		<Movable>True</Movable>
+	</Embodiement>
+</VoxML>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<VoxML xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Entity Type="Object"/>
+	<Lex>
+		<Pred>bed</Pred>
+		<Type>physobj</Type>
+	</Lex>
+	<Type>
+		<Head>rectangular_prism[1]</Head>
+		<Components>
+			<Component Value="body[1]"/>
+			<Component Value="leg+[2]"/>
+			<Component Value="pillow[3]"/>
+			<Component Value="blanket[4]"/>
+		</Components>
+		<Concavity>Flat</Concavity>
+		<RotatSym>Z</RotatSym>
+		<ReflSym>XZ,YZ</ReflSym>
+	</Type>
+	<Habitat>
+		<Intrinsic/>
+		<Extrinsic/>
+	</Habitat>
+	<Afford_Str>
+		<Affordances>
+			<Affordance Formula="H[3]-&gt;[grasp(x, [3])]"/>
+			<Affordance Formula="H[3]-&gt;[lift(x, [3])]hold(x, [3])"/>
+			<Affordance Formula="H[4]-&gt;[grasp(x, [4])]"/>
+			<Affordance Formula="H[4]-&gt;[lift(x, [4])]hold(x, [4])"/>
+			<Affordance Formula="H-&gt;[put(x, on([1]))]support([1], x)"/>
+		</Affordances>
+	</Afford_Str>
+	<Embodiement>
+		<Scale>agent</Scale>
+		<Movable>True</Movable>
+	</Embodiement>
+</VoxML>

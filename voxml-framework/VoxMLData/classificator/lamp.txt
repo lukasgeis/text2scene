@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<VoxML xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Entity Type="Object"/>
+	<Lex>
+		<Pred>lamp</Pred>
+		<Type>physobj</Type>
+	</Lex>
+	<Type>
+		<Head>cylindroid[1]</Head>
+		<Components>
+			<Component Value="body[1]"/>
+			<Component Value="tube[2]"/>
+			<Component Value="shade[3]"/>
+		</Components>
+		<Concavity>Convex</Concavity>
+		<RotatSym>Z</RotatSym>
+		<ReflSym>XZ,YZ</ReflSym>
+	</Type>
+	<Habitat>
+		<Intrinsic/>
+		<Extrinsic/>
+	</Habitat>
+	<Afford_Str>
+		<Affordances/>
+	</Afford_Str>
+	<Embodiement>
+		<Scale>agent</Scale>
+		<Movable>True</Movable>
+	</Embodiement>
+</VoxML>

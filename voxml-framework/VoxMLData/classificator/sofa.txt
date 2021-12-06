@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<VoxML xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Entity Type="Object"/>
+	<Lex>
+		<Pred>sofa</Pred>
+		<Type>physobj</Type>
+	</Lex>
+	<Type>
+		<Head>ellipsoid</Head>
+		<Components>
+			<Component Value="seat+[1]"/>
+			<Component Value="backrest[2]"/>
+			<Component Value="armrest+[3]"/>
+		</Components>
+		<Concavity>Flat</Concavity>
+		<RotatSym/>
+		<ReflSym>YZ</ReflSym>
+	</Type>
+	<Habitat>
+		<Intrinsic/>
+		<Extrinsic/>
+	</Habitat>
+	<Afford_Str>
+		<Affordances>
+			<Affordance Formula="H-&gt;[put(x, on([1]))]support([1], x)"/>
+			<Affordance Formula="H-&gt;[put(x, on([3]))]support([3], x)"/>
+		</Affordances>
+	</Afford_Str>
+	<Embodiement>
+		<Scale>&gt; agent</Scale>
+		<Movable>True</Movable>
+	</Embodiement>
+</VoxML>

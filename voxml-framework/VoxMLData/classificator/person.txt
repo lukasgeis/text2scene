@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<VoxML xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Entity Type="Object"/>
+	<Lex>
+		<Pred>person</Pred>
+		<Type>physobj</Type>
+	</Lex>
+	<Type>
+		<Head>rectangular_prism</Head>
+		<Components>
+			<Component Value="head[1]"/>
+			<Component Value="face[1]"/>
+			<Component Value="body[2]"/>
+			<Component Value="arm+[3]"/>
+			<Component Value="hand+[4]"/>
+			<Component Value="leg+[5]"/>
+			<Component Value="foot+[6]"/>
+		</Components>
+		<Concavity>Convex</Concavity>
+		<RotatSym/>
+		<ReflSym>YZ</ReflSym>
+	</Type>
+	<Habitat>
+		<Intrinsic/>
+		<Extrinsic/>
+	</Habitat>
+	<Afford_Str>
+		<Affordances/>
+	</Afford_Str>
+	<Embodiement>
+		<Scale>agent</Scale>
+		<Movable>True</Movable>
+	</Embodiement>
+</VoxML>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<VoxML xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Entity Type="Object"/>
+	<Lex>
+		<Pred>laptop</Pred>
+		<Type>physobj</Type>
+	</Lex>
+	<Type>
+		<Head>ellipsoid</Head>
+		<Components>
+			<Component Value="body[1]"/>
+			<Component Value="keyboard[2]"/>
+		</Components>
+		<Concavity>Flat</Concavity>
+		<RotatSym/>
+		<ReflSym>XZ,YZ</ReflSym>
+	</Type>
+	<Habitat>
+		<Intrinsic/>
+		<Extrinsic/>
+	</Habitat>
+	<Afford_Str>
+		<Affordances/>
+	</Afford_Str>
+	<Embodiement>
+		<Scale>agent</Scale>
+		<Movable>True</Movable>
+	</Embodiement>
+</VoxML>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<VoxML xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Entity Type="Object"/>
+	<Lex>
+		<Pred>airplane</Pred>
+		<Type>physobj</Type>
+	</Lex>
+	<Type>
+		<Head>cylindroid[1]</Head>
+		<Components>
+			<Component Value="fuselage[1]"/>
+			<Component Value="engine+[2]"/>
+			<Component Value="wing+[3]"/>
+		</Components>
+		<Concavity>Flat</Concavity>
+		<RotatSym/>
+		<ReflSym>YZ</ReflSym>
+	</Type>
+	<Habitat>
+		<Intrinsic/>
+		<Extrinsic/>
+	</Habitat>
+	<Afford_Str>
+		<Affordances/>
+	</Afford_Str>
+	<Embodiement>
+		<Scale>&gt; agent</Scale>
+		<Movable>True</Movable>
+	</Embodiement>
+</VoxML>

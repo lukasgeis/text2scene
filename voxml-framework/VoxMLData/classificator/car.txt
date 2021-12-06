@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<VoxML xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Entity Type="Object"/>
+	<Lex>
+		<Pred>car</Pred>
+		<Type>physobj</Type>
+	</Lex>
+	<Type>
+		<Head>rectangular_prism[1]</Head>
+		<Components>
+			<Component Value="frame[1]"/>
+			<Component Value="door+[2]"/>
+			<Component Value="wheel+[3]"/>
+			<Component Value="hood[4]"/>
+			<Component Value="trunk[5]"/>
+		</Components>
+		<Concavity>Flat</Concavity>
+		<RotatSym/>
+		<ReflSym>XZ,YZ</ReflSym>
+	</Type>
+	<Habitat>
+		<Intrinsic/>
+		<Extrinsic/>
+	</Habitat>
+	<Afford_Str>
+		<Affordances/>
+	</Afford_Str>
+	<Embodiement>
+		<Scale>&gt; agent</Scale>
+		<Movable>True</Movable>
+	</Embodiement>
+</VoxML>

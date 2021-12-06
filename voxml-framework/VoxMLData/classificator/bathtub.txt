@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<VoxML xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Entity Type="Object"/>
+	<Lex>
+		<Pred>bathtub</Pred>
+		<Type>physobj</Type>
+	</Lex>
+	<Type>
+		<Head>rectangular_prism[1]</Head>
+		<Components>
+			<Component Value="body[1]"/>
+			<Component Value="faucet[2]"/>
+			<Component Value="drain[3]"/>
+		</Components>
+		<Concavity>Concave[1]</Concavity>
+		<RotatSym>Z</RotatSym>
+		<ReflSym>XZ,YZ</ReflSym>
+	</Type>
+	<Habitat>
+		<Intrinsic/>
+		<Extrinsic/>
+	</Habitat>
+	<Afford_Str>
+		<Affordances>
+			<Affordance Formula="H-&gt;[grasp(x, [2])]"/>
+			<Affordance Formula="H-&gt;[put(x, in([1]))]contain([1], x)"/>
+		</Affordances>
+	</Afford_Str>
+	<Embodiement>
+		<Scale>agent</Scale>
+		<Movable>False</Movable>
+	</Embodiement>
+</VoxML>
