@@ -20,3 +20,6 @@ Based on old project: https://github.com/texttechnologylab/TTLabVoxMLAnnotator
 ### VoxML Framework
 * PyQt5
 * torch
+* trimesh
+* pyvista
+* pyvistaqt

@@ -120,9 +120,9 @@ QPushButton::hover {
     <widget class="QPushButton" name="openVoxMLDataButton">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>100</x>
        <y>120</y>
-       <width>160</width>
+       <width>100</width>
        <height>30</height>
       </rect>
      </property>
@@ -154,7 +154,7 @@ QPushButton::hover {
 }</string>
      </property>
      <property name="text">
-      <string>Open VoxMLData</string>
+      <string>VoxML Data</string>
      </property>
     </widget>
     <widget class="QFrame" name="editingFrame">
@@ -1713,8 +1713,7 @@ QPushButton::hover {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">
-</string>
+        <string notr="true"/>
        </property>
        <property name="placeholderText">
         <string/>
@@ -3727,13 +3726,13 @@ QPushButton::hover {
        </property>
       </widget>
      </widget>
-     <zorder>habitatFrame</zorder>
-     <zorder>typeFrame</zorder>
      <zorder>entityFrame</zorder>
      <zorder>lexFrame</zorder>
      <zorder>embodimentFrame</zorder>
      <zorder>attributesFrame</zorder>
      <zorder>affordStrFrame</zorder>
+     <zorder>habitatFrame</zorder>
+     <zorder>typeFrame</zorder>
      <zorder>entityBtn</zorder>
      <zorder>lexBtn</zorder>
      <zorder>typeBtn</zorder>
@@ -3785,9 +3784,9 @@ QPushButton::hover {
     <widget class="QComboBox" name="templateChooser">
      <property name="geometry">
       <rect>
-       <x>500</x>
+       <x>510</x>
        <y>120</y>
-       <width>160</width>
+       <width>150</width>
        <height>30</height>
       </rect>
      </property>
@@ -3891,7 +3890,7 @@ QComboBox::down-arrow:on {
     <widget class="QLabel" name="templateLabel">
      <property name="geometry">
       <rect>
-       <x>390</x>
+       <x>400</x>
        <y>120</y>
        <width>100</width>
        <height>28</height>
@@ -3923,8 +3922,8 @@ QComboBox::down-arrow:on {
     <widget class="QPushButton" name="saveVoxMLData">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>120</y>
+       <x>670</x>
+       <y>60</y>
        <width>160</width>
        <height>30</height>
       </rect>
@@ -3963,9 +3962,9 @@ QPushButton::hover {
     <widget class="QPushButton" name="saveToObject">
      <property name="geometry">
       <rect>
-       <x>195</x>
-       <y>120</y>
-       <width>50</width>
+       <x>670</x>
+       <y>20</y>
+       <width>160</width>
        <height>30</height>
       </rect>
      </property>
@@ -3997,22 +3996,22 @@ QPushButton::hover {
 }</string>
      </property>
      <property name="text">
-      <string>Save</string>
+      <string>Save To Object</string>
      </property>
     </widget>
     <widget class="QLabel" name="popupText">
      <property name="geometry">
       <rect>
-       <x>600</x>
+       <x>850</x>
        <y>20</y>
-       <width>600</width>
+       <width>350</width>
        <height>80</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Segoe UI</family>
-       <pointsize>20</pointsize>
+       <pointsize>18</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -4027,6 +4026,118 @@ QPushButton::hover {
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="templateLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>120</y>
+       <width>60</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Not here. To the right!</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	background-color: None;
+	color: #2b78d3;
+	border: None;
+}</string>
+     </property>
+     <property name="text">
+      <string>Open:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="open3DObjectButton">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>120</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Import 3D Object from file</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #2b78d3;
+}
+
+QPushButton::hover {
+	border: 2px solid #2b78d3;
+}</string>
+     </property>
+     <property name="text">
+      <string>3D Object</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="openImageButton">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>120</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Import Image from file</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #161c21, stop: 1.0 #2d3943);
+	border-radius: 10px;
+	border: 1px solid #f0f0f0;
+	color: #2b78d3;
+}
+
+QPushButton::hover {
+	border: 2px solid #2b78d3;
+}</string>
+     </property>
+     <property name="text">
+      <string>Image</string>
      </property>
     </widget>
    </widget>

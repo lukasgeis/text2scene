@@ -1,5 +1,11 @@
+import math
 import torch
+import random
+import trimesh
+from pyvista import read as pvRead
+from pyvistaqt import BackgroundPlotter
 
+import os
 import xml.etree.ElementTree as ET
 
 from VoxML.VoxMLClasses import *
@@ -49,17 +55,18 @@ class VoxMLDataLoader:
                 39: "xbox",
                 }
         self.plotter = None
+        self.initModel()
     
     # copied from old project
     def initModel(self):
         model = DGCNN().to(torch.device("cpu"))
         model = torch.nn.DataParallel(model)
-        model.load_state_dict(torch.load("voml-framework\\VoxMLData\\models\\custommodelorig.t7", map_location = torch.device("cpu")))
+        model.load_state_dict(torch.load("voxml-framework/VoxMLData/models/custommodelorig.t7", map_location = torch.device("cpu")))
         model = model.eval()
         self.model = model
 
     # parse VoxML data file into VoxMLObject
-    def loadFileToObject(self, inpath) -> VoxMLObject:
+    def loadFileToObject(self, inpath: str) -> VoxMLObject:
         if inpath.endswith(".xml") or inpath.endswith(".txt"):
             vox = VoxMLObject()
             vox.filepath = inpath
@@ -266,7 +273,88 @@ class VoxMLDataLoader:
 
         return ET.tostring(VoxML)   
 
-    # load 3D object     
+    # load 3D object  :: copied from old project   
+    def load3Dobj(self, inpath: str):
+        pointCloud = torch.tensor([self.createPointCloudFromFile(inpath).tolist()])
+        pointCloud = pointCloud.permute(0, 2, 1)
+        logits = self.model(pointCloud)
+        guess = (logits.max(dim = 1)[1]).item()
+
+        if self.plotter != None:
+            self.plotter.close()
+        self.plotter = BackgroundPlotter()
+        self.plotter.add_mesh(pvRead(inpath))
+
+        path = os.path.abspath("voxml-framework/VoxMLData/classificator/" + str(self.classdict[guess]) + ".txt").replace("\\", "/")           
+        return self.loadFileToObject(path)
+
+
+
+    # create PointCloud from file :: copied from old project
+    def createPointCloudFromFile(self, inpath: str):
+        initialsize = 2048
+        mesh = trimesh.load_mesh(inpath)
+        sample = ((trimesh.sample.sample_surface_even(mesh, initialsize, radius=None))[0])
+
+        if len(sample) != 2048:
+            fstmul = (2048 / len(sample)) * 0.92
+            initialsize = int(initialsize * fstmul)
+            sample = ((trimesh.sample.sample_surface_even(mesh, initialsize, radius=None))[0])
+
+        while len(sample) < 2048:
+            initialsize = int(initialsize * 1.02)
+            sample = ((trimesh.sample.sample_surface_even(mesh, initialsize, radius=None))[0])
+
+        i = 0
+        indices = []
+        rightlensample = []
+
+        if len(sample) != 2048:
+            while i < 2048:
+                rand_pt_idx = random.randint(0, len(sample) - 1)
+                if rand_pt_idx not in indices:
+                    indices.append(rand_pt_idx)
+                    i += 1
+                elif rand_pt_idx in indices:
+                    pass
+            for each in indices:
+                rightlensample.append(sample[each])
+        elif len(sample) == 2048:
+            rightlensample = sample
+
+        cloud = trimesh.points.PointCloud(rightlensample)
+        pccenter = cloud.centroid
+        for each in rightlensample:
+            each[0] = each[0] - pccenter[0]
+            each[1] = each[1] - pccenter[1]
+            each[2] = each[2] - pccenter[2]
+
+        maxdist = 0
+        for each in rightlensample:
+            dist = math.sqrt((each[0] ** 2) + (each[1] ** 2) + (each[2] ** 2))
+            if dist >= maxdist:
+                maxdist = dist
+
+        for each in rightlensample:
+            each[0] = each[0] / maxdist
+            each[1] = each[1] / maxdist
+            each[2] = each[2] / maxdist
+
+        cloud2 = trimesh.points.PointCloud(rightlensample)
+
+        maxdist = 0
+        for each in rightlensample:
+            dist = math.sqrt((each[0] ** 2) + (each[1] ** 2) + (each[2] ** 2))
+            if dist >= maxdist:
+                maxdist = dist
+
+        rightlensample2 = []
+        for each in cloud2:
+            rightlensample2.append(each)
+
+        converted = torch.FloatTensor(rightlensample2)
+        return converted        
+
 
 
 # copied from 
@@ -292,4 +380,72 @@ class DGCNN(torch.nn.Module):
         self.bn6 = torch.nn.BatchNorm1d(512)
         self.linear2 = torch.nn.Linear(512, 256)
         self.bn7 = torch.nn.BatchNorm1d(256)
-        self.linear3 = torch.nn.Linear(256, outputChannels.nnels)
+        self.linear3 = torch.nn.Linear(256, outputChannels)
+    
+    def forward(self, x):
+        batch_size = x.size(0)
+        x = get_graph_feature(x, k=self.k)
+        x = self.conv1(x)
+        x1 = x.max(dim=-1, keepdim=False)[0]
+
+        x = get_graph_feature(x1, k=self.k)
+        x = self.conv2(x)
+        x2 = x.max(dim=-1, keepdim=False)[0]
+
+        x = get_graph_feature(x2, k=self.k)
+        x = self.conv3(x)
+        x3 = x.max(dim=-1, keepdim=False)[0]
+
+        x = get_graph_feature(x3, k=self.k)
+        x = self.conv4(x)
+        x4 = x.max(dim=-1, keepdim=False)[0]
+
+        x = torch.cat((x1, x2, x3, x4), dim=1)
+
+        x = self.conv5(x)
+        x1 = torch.nn.functional.adaptive_max_pool1d(x, 1).view(batch_size, -1)
+        x2 = torch.nn.functional.adaptive_avg_pool1d(x, 1).view(batch_size, -1)
+        x = torch.cat((x1, x2), 1)
+
+        x = torch.nn.functional.leaky_relu(self.bn6(self.linear1(x)), negative_slope=0.2)
+        x = torch.nn.functional.leaky_relu(self.bn7(self.linear2(x)), negative_slope=0.2)
+        x = self.linear3(x)
+        return x
+
+# copied from 
+# https://github.com/WangYueFt/dgcnn/blob/master/pytorch/model.py
+def knn(x, k):
+    inner = -2*torch.matmul(x.transpose(2, 1), x)
+    xx = torch.sum(x**2, dim=1, keepdim=True)
+    pairwise_distance = -xx - inner - xx.transpose(2, 1)
+ 
+    idx = pairwise_distance.topk(k=k, dim=-1)[1]   
+    
+    return idx
+
+# copied from 
+# https://github.com/WangYueFt/dgcnn/blob/master/pytorch/model.py
+def get_graph_feature(x, k=20, idx=None):
+    batch_size = x.size(0)
+    num_points = x.size(2)
+    x = x.view(batch_size, -1, num_points)
+    if idx is None:
+        idx = knn(x, k=k)   
+    device = torch.device('cpu')
+
+    idx_base = torch.arange(0, batch_size, device=device).view(-1, 1, 1)*num_points
+
+    idx = idx + idx_base
+
+    idx = idx.view(-1)
+ 
+    _, num_dims, _ = x.size()
+
+    x = x.transpose(2, 1).contiguous()   
+    feature = x.view(batch_size*num_points, -1)[idx, :]
+    feature = feature.view(batch_size, num_points, k, num_dims) 
+    x = x.view(batch_size, num_points, 1, num_dims).repeat(1, 1, k, 1)
+    
+    feature = torch.cat((feature-x, x), dim=3).permute(0, 3, 1, 2).contiguous()
+  
+    return feature

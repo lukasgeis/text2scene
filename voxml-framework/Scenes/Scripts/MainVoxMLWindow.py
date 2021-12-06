@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainVoxMLWindowWNlSUF.ui'
+## Form generated from reading UI file 'MainVoxMLWindowVdQSeh.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -76,7 +76,7 @@ class Ui_MainVoxMLWindow(object):
         self.titleLabel.setAlignment(Qt.AlignCenter)
         self.openVoxMLDataButton = QPushButton(self.backgroundFrame)
         self.openVoxMLDataButton.setObjectName(u"openVoxMLDataButton")
-        self.openVoxMLDataButton.setGeometry(QRect(250, 120, 160, 30))
+        self.openVoxMLDataButton.setGeometry(QRect(100, 120, 100, 30))
         font2 = QFont()
         font2.setFamily(u"Segoe UI")
         font2.setPointSize(12)
@@ -1503,13 +1503,13 @@ class Ui_MainVoxMLWindow(object):
         self.typeReflSymXY.setObjectName(u"typeReflSymXY")
         self.typeReflSymXY.setGeometry(QRect(480, 460, 70, 30))
         self.typeReflSymXY.setFont(font3)
-        self.habitatFrame.raise_()
-        self.typeFrame.raise_()
         self.entityFrame.raise_()
         self.lexFrame.raise_()
         self.embodimentFrame.raise_()
         self.attributesFrame.raise_()
         self.affordStrFrame.raise_()
+        self.habitatFrame.raise_()
+        self.typeFrame.raise_()
         self.entityBtn.raise_()
         self.lexBtn.raise_()
         self.typeBtn.raise_()
@@ -1540,7 +1540,7 @@ class Ui_MainVoxMLWindow(object):
         self.templateChooser.addItem("")
         self.templateChooser.addItem("")
         self.templateChooser.setObjectName(u"templateChooser")
-        self.templateChooser.setGeometry(QRect(500, 120, 160, 30))
+        self.templateChooser.setGeometry(QRect(510, 120, 150, 30))
         self.templateChooser.setFont(font3)
         self.templateChooser.setStyleSheet(u"QComboBox {\n"
 "    border: 1px solid #f0f0f0;\n"
@@ -1591,7 +1591,7 @@ class Ui_MainVoxMLWindow(object):
 "")
         self.templateLabel = QLabel(self.backgroundFrame)
         self.templateLabel.setObjectName(u"templateLabel")
-        self.templateLabel.setGeometry(QRect(390, 120, 100, 28))
+        self.templateLabel.setGeometry(QRect(400, 120, 100, 28))
         self.templateLabel.setFont(font3)
         self.templateLabel.setStyleSheet(u"QLabel {\n"
 "	background-color: None;\n"
@@ -1601,7 +1601,7 @@ class Ui_MainVoxMLWindow(object):
         self.templateLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.saveVoxMLData = QPushButton(self.backgroundFrame)
         self.saveVoxMLData.setObjectName(u"saveVoxMLData")
-        self.saveVoxMLData.setGeometry(QRect(30, 120, 160, 30))
+        self.saveVoxMLData.setGeometry(QRect(670, 60, 160, 30))
         self.saveVoxMLData.setFont(font2)
         self.saveVoxMLData.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -1616,7 +1616,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.saveToObject = QPushButton(self.backgroundFrame)
         self.saveToObject.setObjectName(u"saveToObject")
-        self.saveToObject.setGeometry(QRect(195, 120, 50, 30))
+        self.saveToObject.setGeometry(QRect(670, 20, 160, 30))
         self.saveToObject.setFont(font2)
         self.saveToObject.setStyleSheet(u"QPushButton {\n"
 "	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -1631,10 +1631,10 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.popupText = QLabel(self.backgroundFrame)
         self.popupText.setObjectName(u"popupText")
-        self.popupText.setGeometry(QRect(600, 20, 600, 80))
+        self.popupText.setGeometry(QRect(850, 20, 350, 80))
         font4 = QFont()
         font4.setFamily(u"Segoe UI")
-        font4.setPointSize(20)
+        font4.setPointSize(18)
         self.popupText.setFont(font4)
         self.popupText.setStyleSheet(u"QLabel {\n"
 "	border-radius: 20px;\n"
@@ -1642,6 +1642,46 @@ class Ui_MainVoxMLWindow(object):
 "	color: #eb7b59;\n"
 "}")
         self.popupText.setAlignment(Qt.AlignCenter)
+        self.templateLabel_2 = QLabel(self.backgroundFrame)
+        self.templateLabel_2.setObjectName(u"templateLabel_2")
+        self.templateLabel_2.setGeometry(QRect(20, 120, 60, 28))
+        self.templateLabel_2.setFont(font3)
+        self.templateLabel_2.setStyleSheet(u"QLabel {\n"
+"	background-color: None;\n"
+"	color: #2b78d3;\n"
+"	border: None;\n"
+"}")
+        self.templateLabel_2.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.open3DObjectButton = QPushButton(self.backgroundFrame)
+        self.open3DObjectButton.setObjectName(u"open3DObjectButton")
+        self.open3DObjectButton.setGeometry(QRect(210, 120, 100, 30))
+        self.open3DObjectButton.setFont(font2)
+        self.open3DObjectButton.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #2b78d3;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #2b78d3;\n"
+"}")
+        self.openImageButton = QPushButton(self.backgroundFrame)
+        self.openImageButton.setObjectName(u"openImageButton")
+        self.openImageButton.setGeometry(QRect(320, 120, 100, 30))
+        self.openImageButton.setFont(font2)
+        self.openImageButton.setStyleSheet(u"QPushButton {\n"
+"	background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"	border-radius: 10px;\n"
+"	border: 1px solid #f0f0f0;\n"
+"	color: #2b78d3;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"	border: 2px solid #2b78d3;\n"
+"}")
         MainVoxMLWindow.setCentralWidget(self.mainWidget)
 
         self.retranslateUi(MainVoxMLWindow)
@@ -1671,7 +1711,7 @@ class Ui_MainVoxMLWindow(object):
 #if QT_CONFIG(tooltip)
         self.openVoxMLDataButton.setToolTip(QCoreApplication.translate("MainVoxMLWindow", u"Import VoxML Object from file", None))
 #endif // QT_CONFIG(tooltip)
-        self.openVoxMLDataButton.setText(QCoreApplication.translate("MainVoxMLWindow", u"Open VoxMLData", None))
+        self.openVoxMLDataButton.setText(QCoreApplication.translate("MainVoxMLWindow", u"VoxML Data", None))
 #if QT_CONFIG(tooltip)
         self.entityBtn.setToolTip(QCoreApplication.translate("MainVoxMLWindow", u"Edit Entity attributes", None))
 #endif // QT_CONFIG(tooltip)
@@ -1912,7 +1952,19 @@ class Ui_MainVoxMLWindow(object):
 #if QT_CONFIG(tooltip)
         self.saveToObject.setToolTip(QCoreApplication.translate("MainVoxMLWindow", u"Save your edits to your VoxML Object", None))
 #endif // QT_CONFIG(tooltip)
-        self.saveToObject.setText(QCoreApplication.translate("MainVoxMLWindow", u"Save", None))
+        self.saveToObject.setText(QCoreApplication.translate("MainVoxMLWindow", u"Save To Object", None))
         self.popupText.setText(QCoreApplication.translate("MainVoxMLWindow", u"PopUP Window", None))
+#if QT_CONFIG(tooltip)
+        self.templateLabel_2.setToolTip(QCoreApplication.translate("MainVoxMLWindow", u"Not here. To the right!", None))
+#endif // QT_CONFIG(tooltip)
+        self.templateLabel_2.setText(QCoreApplication.translate("MainVoxMLWindow", u"Open:", None))
+#if QT_CONFIG(tooltip)
+        self.open3DObjectButton.setToolTip(QCoreApplication.translate("MainVoxMLWindow", u"Import 3D Object from file", None))
+#endif // QT_CONFIG(tooltip)
+        self.open3DObjectButton.setText(QCoreApplication.translate("MainVoxMLWindow", u"3D Object", None))
+#if QT_CONFIG(tooltip)
+        self.openImageButton.setToolTip(QCoreApplication.translate("MainVoxMLWindow", u"Import Image from file", None))
+#endif // QT_CONFIG(tooltip)
+        self.openImageButton.setText(QCoreApplication.translate("MainVoxMLWindow", u"Image", None))
     # retranslateUi
 

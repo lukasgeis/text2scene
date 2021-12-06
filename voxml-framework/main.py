@@ -32,7 +32,9 @@ class MainVoxMLWindow(QMainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         # main button logic
-        self.ui.openVoxMLDataButton.clicked.connect(lambda: self.addObjectFromFile(self.chooseVoxMLDataFile()))
+        self.ui.openVoxMLDataButton.clicked.connect(lambda: self.addObjectFromFile(self.chooseVoxMLDataFile(), "vox"))
+        self.ui.open3DObjectButton.clicked.connect(lambda: self.addObjectFromFile(self.choose3DObjectFile(), "obj"))
+        self.ui.openImageButton.clicked.connect(lambda: self.addObjectFromFile(self.chooseVoxMLDataFile(), "img"))
         self.ui.exitButton.clicked.connect(lambda: sys.exit())
         self.ui.createVoxMLButton.clicked.connect(lambda: self.createNewVoxMLObject(str(self.ui.templateChooser.currentText())))
         self.ui.saveVoxMLData.clicked.connect(lambda: self.saveDataToFile())
@@ -497,9 +499,14 @@ class MainVoxMLWindow(QMainWindow):
 ### VoxMLData related functions
 
     # saves pbject parsed from file to self.obj
-    def addObjectFromFile(self, inpath: str) -> None:
-        if inpath != None:
-            self.obj = self.loader.loadFileToObject(inpath)
+    def addObjectFromFile(self, inpath: str, type: str) -> None:
+        if inpath != None and len(inpath) > 0:
+            if type == "vox":
+                self.obj = self.loader.loadFileToObject(inpath)
+            elif type == "obj":
+                self.obj = self.loader.load3Dobj(inpath)
+            elif type == "img":
+                pass
             self.loadDataToEditing()
             self.createNewVoxMLObject(str(self.obj.Entity.Type), False)
             self.showPopupMessage("Data loaded from file!", 1.5)
@@ -507,6 +514,10 @@ class MainVoxMLWindow(QMainWindow):
     # Choose .txt or .xml file containing VoxML data from system
     def chooseVoxMLDataFile(self) -> str:
         return QFileDialog.getOpenFileName(self, "Choose file", "voml-framework\\VoxMLData", "VoxML Data (*.txt *.xml)")[0]
+
+    # CHoose .obj or .stl or .off file containing 3D object data from system
+    def choose3DObjectFile(self) -> str:
+        return QFileDialog.getOpenFileName(self, "Choose file", "voml-framework\\VoxMLData", "VoxML Data (*.obj *.stl *.off)")[0]
 
     # save xml data to file with QFileDialog -> use together with createXMLStringFromVoxMLObject
     def saveDataToFile(self):
