@@ -23,3 +23,5 @@ Based on old project: https://github.com/texttechnologylab/TTLabVoxMLAnnotator
 * trimesh
 * pyvista
 * pyvistaqt
+* transformers
+* timm

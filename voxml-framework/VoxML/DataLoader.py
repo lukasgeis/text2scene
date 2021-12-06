@@ -5,6 +5,9 @@ import trimesh
 from pyvista import read as pvRead
 from pyvistaqt import BackgroundPlotter
 
+from PIL import Image
+from transformers import DetrFeatureExtractor, DetrForObjectDetection
+
 import os
 import xml.etree.ElementTree as ET
 
@@ -55,15 +58,18 @@ class VoxMLDataLoader:
                 39: "xbox",
                 }
         self.plotter = None
-        self.initModel()
+        self.initModels()
     
     # copied from old project
-    def initModel(self):
+    def initModels(self):
         model = DGCNN().to(torch.device("cpu"))
         model = torch.nn.DataParallel(model)
         model.load_state_dict(torch.load("voxml-framework/VoxMLData/models/custommodelorig.t7", map_location = torch.device("cpu")))
         model = model.eval()
-        self.model = model
+        self.model3D = model
+
+        self.featureExtractor = DetrFeatureExtractor.from_pretrained("facebook/detr-resnet-50")
+        self.modelImg = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50")
 
     # parse VoxML data file into VoxMLObject
     def loadFileToObject(self, inpath: str) -> VoxMLObject:
@@ -277,7 +283,7 @@ class VoxMLDataLoader:
     def load3Dobj(self, inpath: str):
         pointCloud = torch.tensor([self.createPointCloudFromFile(inpath).tolist()])
         pointCloud = pointCloud.permute(0, 2, 1)
-        logits = self.model(pointCloud)
+        logits = self.model3D(pointCloud)
         guess = (logits.max(dim = 1)[1]).item()
 
         if self.plotter != None:
@@ -288,6 +294,14 @@ class VoxMLDataLoader:
         path = os.path.abspath("voxml-framework/VoxMLData/classificator/" + str(self.classdict[guess]) + ".txt").replace("\\", "/")           
         return self.loadFileToObject(path)
 
+    # load Image to object :: using https://huggingface.co/facebook/detr-resnet-50
+    def loadImage(self, inpath: str):
+        img = Image.open(inpath)
+        inputs = self.featureExtractor(images = img, return_tensors = "pt")
+        outputs = self.modelImg(**inputs)
+
+        logits = outputs.logits
+        bboxes = outputs.pred_boxes
 
 
     # create PointCloud from file :: copied from old project

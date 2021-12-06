@@ -34,7 +34,7 @@ class MainVoxMLWindow(QMainWindow):
         # main button logic
         self.ui.openVoxMLDataButton.clicked.connect(lambda: self.addObjectFromFile(self.chooseVoxMLDataFile(), "vox"))
         self.ui.open3DObjectButton.clicked.connect(lambda: self.addObjectFromFile(self.choose3DObjectFile(), "obj"))
-        self.ui.openImageButton.clicked.connect(lambda: self.addObjectFromFile(self.chooseVoxMLDataFile(), "img"))
+        self.ui.openImageButton.clicked.connect(lambda: self.addObjectFromFile(self.chooseImageFile(), "img"))
         self.ui.exitButton.clicked.connect(lambda: sys.exit())
         self.ui.createVoxMLButton.clicked.connect(lambda: self.createNewVoxMLObject(str(self.ui.templateChooser.currentText())))
         self.ui.saveVoxMLData.clicked.connect(lambda: self.saveDataToFile())
@@ -506,7 +506,8 @@ class MainVoxMLWindow(QMainWindow):
             elif type == "obj":
                 self.obj = self.loader.load3Dobj(inpath)
             elif type == "img":
-                pass
+                self.obj = VoxMLObject()
+                self.loader.loadImage(inpath)
             self.loadDataToEditing()
             self.createNewVoxMLObject(str(self.obj.Entity.Type), False)
             self.showPopupMessage("Data loaded from file!", 1.5)
@@ -515,9 +516,13 @@ class MainVoxMLWindow(QMainWindow):
     def chooseVoxMLDataFile(self) -> str:
         return QFileDialog.getOpenFileName(self, "Choose file", "voml-framework\\VoxMLData", "VoxML Data (*.txt *.xml)")[0]
 
-    # CHoose .obj or .stl or .off file containing 3D object data from system
+    # Choose .obj or .stl or .off file containing 3D object data from system
     def choose3DObjectFile(self) -> str:
         return QFileDialog.getOpenFileName(self, "Choose file", "voml-framework\\VoxMLData", "VoxML Data (*.obj *.stl *.off)")[0]
+
+    # Choose .jpg or .png file containing Image from system
+    def chooseImageFile(self) -> str:
+        return QFileDialog.getOpenFileName(self, "Choose file", "voml-framework\\VoxMLData", "VoxML Data (*.jpg *.png)")[0]
 
     # save xml data to file with QFileDialog -> use together with createXMLStringFromVoxMLObject
     def saveDataToFile(self):
