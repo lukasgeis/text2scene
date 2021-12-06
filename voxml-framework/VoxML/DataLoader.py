@@ -1,10 +1,62 @@
+import torch
+
 import xml.etree.ElementTree as ET
 
 from VoxML.VoxMLClasses import *
 
 class VoxMLDataLoader:
     def __init__(self) -> None:
-        pass
+        self.classdict = {
+                0: "airplane",
+                1: "bathtub",
+                2: "bed",
+                3: "bench",
+                4: "bookshelf",
+                5: "bottle",
+                6: "bowl",
+                7: "car",
+                8: "chair",
+                9: "cone",
+                10: "cup",
+                11: "curtain",
+                12: "desk",
+                13: "door",
+                14: "dresser",
+                15: "flower_pot",
+                16: "glass_box",
+                17: "guitar",
+                18: "keyboard",
+                19: "lamp",
+                20: "laptop",
+                21: "mantel",
+                22: "monitor",
+                23: "night_stand",
+                24: "person",
+                25: "piano",
+                26: "plant",
+                27: "radio",
+                28: "range_hood",
+                29: "sink",
+                30: "sofa",
+                31: "stairs",
+                32: "stool",
+                33: "table",
+                34: "tent",
+                35: "toilet",
+                36: "tv_stand",
+                37: "vase",
+                38: "wardrobe",
+                39: "xbox",
+                }
+        self.plotter = None
+    
+    # copied from old project
+    def initModel(self):
+        model = DGCNN().to(torch.device("cpu"))
+        model = torch.nn.DataParallel(model)
+        model.load_state_dict(torch.load("voml-framework\\VoxMLData\\models\\custommodelorig.t7", map_location = torch.device("cpu")))
+        model = model.eval()
+        self.model = model
 
     # parse VoxML data file into VoxMLObject
     def loadFileToObject(self, inpath) -> VoxMLObject:
@@ -212,4 +264,32 @@ class VoxMLDataLoader:
                 AttributesAttrsAttr = ET.SubElement(AttributesAttrs, "Attr")
                 AttributesAttrsAttr.set("Value", str(x.Value))
 
-        return ET.tostring(VoxML)        
+        return ET.tostring(VoxML)   
+
+    # load 3D object     
+
+
+# copied from 
+# https://github.com/WangYueFt/dgcnn/blob/master/pytorch/model.py
+class DGCNN(torch.nn.Module):
+    def __init__(self, outputChannels = 40) -> None:
+        super(DGCNN, self).__init__()
+        self.k = 20
+        
+        self.bn1 = torch.nn.BatchNorm2d(64)
+        self.bn2 = torch.nn.BatchNorm2d(64)
+        self.bn3 = torch.nn.BatchNorm2d(128)
+        self.bn4 = torch.nn.BatchNorm2d(256)
+        self.bn5 = torch.nn.BatchNorm1d(1024)
+
+        self.conv1 = torch.nn.Sequential(torch.nn.Conv2d(6, 64, kernel_size=1, bias=False), self.bn1, torch.nn.LeakyReLU(negative_slope=0.2))
+        self.conv2 = torch.nn.Sequential(torch.nn.Conv2d(64*2, 64, kernel_size=1, bias=False), self.bn2, torch.nn.LeakyReLU(negative_slope=0.2))
+        self.conv3 = torch.nn.Sequential(torch.nn.Conv2d(64*2, 128, kernel_size=1, bias=False), self.bn3, torch.nn.LeakyReLU(negative_slope=0.2))
+        self.conv4 = torch.nn.Sequential(torch.nn.Conv2d(128*2, 256, kernel_size=1, bias=False), self.bn4, torch.nn.LeakyReLU(negative_slope=0.2))
+        self.conv5 = torch.nn.Sequential(torch.nn.Conv1d(512, 1024, kernel_size=1, bias=False), self.bn5, torch.nn.LeakyReLU(negative_slope=0.2))
+
+        self.linear1 = torch.nn.Linear(1024*2, 512, bias=False)
+        self.bn6 = torch.nn.BatchNorm1d(512)
+        self.linear2 = torch.nn.Linear(512, 256)
+        self.bn7 = torch.nn.BatchNorm1d(256)
+        self.linear3 = torch.nn.Linear(256, outputChannels.nnels)
