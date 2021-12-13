@@ -412,6 +412,9 @@ class VoxMLDataLoader:
             if guess + ".xml" in files:
                 path = os.path.abspath(os.path.join(root, guess + ".xml")).replace("\\", "/")   
         
+        self.plotter = BackgroundPlotter()
+        self.plotter.add_background_image(inpath)
+
         return self.loadFileToObject(path)
         
 
