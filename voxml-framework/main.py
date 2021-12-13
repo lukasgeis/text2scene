@@ -502,12 +502,15 @@ class MainVoxMLWindow(QMainWindow):
     def addObjectFromFile(self, inpath: str, type: str) -> None:
         if inpath != None and len(inpath) > 0:
             if type == "vox":
-                self.obj = self.loader.loadFileToObject(inpath)
+                obj = self.loader.loadFileToObject(inpath)
             elif type == "obj":
-                self.obj = self.loader.load3Dobj(inpath)
+                obj = self.loader.load3Dobj(inpath)
             elif type == "img":
-                self.obj = VoxMLObject()
-                self.loader.loadImage(inpath)
+                obj = self.loader.loadImage(inpath)
+            if obj == None:
+                self.showPopupMessage("Couldnt load/find file!", 1.5)
+                return
+            self.obj = obj
             self.loadDataToEditing()
             self.createNewVoxMLObject(str(self.obj.Entity.Type), False)
             self.showPopupMessage("Data loaded from file!", 1.5)

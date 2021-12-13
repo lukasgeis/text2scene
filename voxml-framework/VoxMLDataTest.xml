@@ -2,10 +2,10 @@
 	<Entity Type="Object" />
 	<Lex>
 		<Pred>
-			bathtub
+			blackboard
 		</Pred>
 		<Type>
-			physobj
+			physobj*artifact
 		</Type>
 	</Lex>
 	<Type>
@@ -13,18 +13,16 @@
 			rectangular_prism[1]
 		</Head>
 		<Components>
-			<Component Value="body[1]" />
-			<Component Value="faucet[2]" />
-			<Component Value="drain[3]" />
+			<Component Value="surface[1]" />
+			<Component Value="frame" />
+			<Component Value="feet" />
 		</Components>
 		<Concavity>
-			Concave[1]
+			Flat
 		</Concavity>
-		<RotatSym>
-			Z
-		</RotatSym>
+		<RotatSym />
 		<ReflSym>
-			XZ,YZ
+			YZ
 		</ReflSym>
 		<Args />
 		<Body />
@@ -38,23 +36,26 @@
 		<Corresps />
 	</Type>
 	<Habitat>
-		<Intrinsic />
+		<Intrinsic>
+			<Intr Name="Test" Value="Tetatnus" />
+		</Intrinsic>
 		<Extrinsic />
 	</Habitat>
 	<AffordStr>
 		<Affordances>
-			<Affordance Formula="H-&gt;[grasp(x, [2])]" />
-			<Affordance Formula="H-&gt;[put(x, in([1]))]contain([1], x)" />
-			<Affordance Formula="Macarena" />
+			<Affordance Formula="H-&gt;[lift(x, [1])]hold(x, [1])" />
+			<Affordance Formula="gasjdhgfj" />
+			<Affordance Formula="asfdasdf" />
+			<Affordance Formula="sadfasfd" />
 		</Affordances>
 		<Attrs />
 	</AffordStr>
 	<Embodiment>
 		<Scale>
-			Easy Peasy
+			agent
 		</Scale>
 		<Movable>
-			True
+			False
 		</Movable>
 	</Embodiment>
 	<Attributes />

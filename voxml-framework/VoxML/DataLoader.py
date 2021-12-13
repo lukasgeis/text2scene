@@ -15,7 +15,7 @@ from VoxML.VoxMLClasses import *
 
 class VoxMLDataLoader:
     def __init__(self) -> None:
-        self.classdict = {
+        self.objClassdict = {
                 0: "airplane",
                 1: "bathtub",
                 2: "bed",
@@ -56,7 +56,100 @@ class VoxMLDataLoader:
                 37: "vase",
                 38: "wardrobe",
                 39: "xbox",
-                }
+            }
+        self.imgClassdict = {
+                0: "N/A",
+                1: "person",
+                10: "traffic light",
+                11: "fire hydrant",
+                12: "street sign",
+                13: "stop sign",
+                14: "parking meter",
+                15: "bench",
+                16: "bird",
+                17: "cat",
+                18: "dog",
+                19: "horse",
+                2: "bicycle",
+                20: "sheep",
+                21: "cow",
+                22: "elephant",
+                23: "bear",
+                24: "zebra",
+                25: "giraffe",
+                26: "hat",
+                27: "backpack",
+                28: "umbrella",
+                29: "shoe",
+                3: "car",
+                30: "eye glasses",
+                31: "handbag",
+                32: "tie",
+                33: "suitcase",
+                34: "frisbee",
+                35: "skis",
+                36: "snowboard",
+                37: "sports ball",
+                38: "kite",
+                39: "baseball bat",
+                4: "motorcycle",
+                40: "baseball glove",
+                41: "skateboard",
+                42: "surfboard",
+                43: "tennis racket",
+                44: "bottle",
+                45: "plate",
+                46: "wine glass",
+                47: "cup",
+                48: "fork",
+                49: "knife",
+                5: "airplane",
+                50: "spoon",
+                51: "bowl",
+                52: "banana",
+                53: "apple",
+                54: "sandwich",
+                55: "orange",
+                56: "broccoli",
+                57: "carrot",
+                58: "hot dog",
+                59: "pizza",
+                6: "bus",
+                60: "donut",
+                61: "cake",
+                62: "chair",
+                63: "couch",
+                64: "potted plant",
+                65: "bed",
+                66: "mirror",
+                67: "dining table",
+                68: "window",
+                69: "desk",
+                7: "train",
+                70: "toilet",
+                71: "door",
+                72: "tv",
+                73: "laptop",
+                74: "mouse",
+                75: "remote",
+                76: "keyboard",
+                77: "cell phone",
+                78: "microwave",
+                79: "oven",
+                8: "truck",
+                80: "toaster",
+                81: "sink",
+                82: "refrigerator",
+                83: "blender",
+                84: "book",
+                85: "clock",
+                86: "vase",
+                87: "scissors",
+                88: "teddy bear",
+                89: "hair drier",
+                9: "boat",
+                90: "toothbrush"
+            }
         self.plotter = None
         self.initModels()
     
@@ -73,6 +166,8 @@ class VoxMLDataLoader:
 
     # parse VoxML data file into VoxMLObject
     def loadFileToObject(self, inpath: str) -> VoxMLObject:
+        if inpath == None:
+            return
         if inpath.endswith(".xml") or inpath.endswith(".txt"):
             vox = VoxMLObject()
             vox.filepath = inpath
@@ -291,7 +386,7 @@ class VoxMLDataLoader:
         self.plotter = BackgroundPlotter()
         self.plotter.add_mesh(pvRead(inpath))
 
-        path = os.path.abspath("voxml-framework/VoxMLData/classificator/" + str(self.classdict[guess]) + ".txt").replace("\\", "/")           
+        path = os.path.abspath("voxml-framework/VoxMLData/classificator/" + str(self.objClassdict[guess]) + ".txt").replace("\\", "/")           
         return self.loadFileToObject(path)
 
     # load Image to object :: using https://huggingface.co/facebook/detr-resnet-50
@@ -300,8 +395,28 @@ class VoxMLDataLoader:
         inputs = self.featureExtractor(images = img, return_tensors = "pt")
         outputs = self.modelImg(**inputs)
 
-        logits = outputs.logits
-        bboxes = outputs.pred_boxes
+        guess = None
+        for logits, bboxes in zip(outputs.logits[0], outputs.pred_boxes[0]):
+            cls = logits.argmax()
+            if cls >= len(self.imgClassdict):
+                continue
+            guess = self.imgClassdict[cls.item()]
+
+        if guess == None:
+            return
+
+        path = None
+        for root, dirs, files in os.walk("voxml-framework/VoxMLData"):
+            if guess + ".txt" in files:
+                path = os.path.abspath(os.path.join(root, guess + ".txt")).replace("\\", "/")   
+            if guess + ".xml" in files:
+                path = os.path.abspath(os.path.join(root, guess + ".xml")).replace("\\", "/")   
+        
+        return self.loadFileToObject(path)
+        
+
+
+        
 
 
     # create PointCloud from file :: copied from old project
