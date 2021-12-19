@@ -1,4 +1,5 @@
 # Basic imports
+import os
 import sys
 import xml.etree.ElementTree as ET
 
@@ -39,6 +40,7 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.exitButton.clicked.connect(lambda: sys.exit())
         self.ui.createVoxMLButton.clicked.connect(lambda: self.createNewVoxMLObject(str(self.ui.templateChooser.currentText())))
         self.ui.saveVoxMLData.clicked.connect(lambda: self.saveDataToFile())
+        self.ui.chooseVoxMLObject.currentIndexChanged.connect(lambda: self.changeSelectedVoxMLObject())
 
         # editing logic
         self.ui.entityBtn.clicked.connect(lambda: self.switchEditingFrame("entity"))
@@ -106,7 +108,7 @@ class MainVoxMLWindow(QMainWindow):
     
     # called when mouse is pressed and moved -> drag and move window
     def mouseMoveEvent(self, event) -> None:
-        if not True in [x.underMouse() for x in [self.ui.editingFrame,self.ui.exitButton,self.ui.openVoxMLDataButton,self.ui.saveVoxMLData,self.ui.templateChooser,self.ui.createVoxMLButton]]:
+        if not True in [x.underMouse() for x in [self.ui.editingFrame,self.ui.exitButton,self.ui.openVoxMLDataButton,self.ui.saveVoxMLData,self.ui.templateChooser,self.ui.createVoxMLButton,self.ui.chooseVoxMLObject,self.ui.open3DObjectButton,self.ui.openImageButton]]:
             delta = QtCore.QPoint(event.globalPos() - self.oldPos)
             self.move(self.x() + delta.x(), self.y() + delta.y())
             self.oldPos = event.globalPos()
@@ -345,13 +347,15 @@ class MainVoxMLWindow(QMainWindow):
 
     # show specific editing attributes for specific template
     def createNewVoxMLObject(self, template, create = True):
+        if self.objIndex >= 0:
+            self.saveDataToObject()
         if create:
-            self.allObj[self.objIndex] = VoxMLObject()
+            self.allObj.append(VoxMLObject())
+            self.ui.chooseVoxMLObject.addItem(template)
+            self.ui.chooseVoxMLObject.setCurrentIndex(len(self.allObj) - 1)
         self.hideAllAttributes()
         self.switchEditingFrame("entity")
-        if template == "Empty":
-            self.showAllAttributes()
-        elif template == "Object":
+        if template == "Object":
             # Entity
             for x in self.ui.entityFrame.children():
                 x.show()
@@ -468,6 +472,8 @@ class MainVoxMLWindow(QMainWindow):
             self.ui.typeArgsDelete.show()
             self.ui.typeMappingLabel.show()
             self.ui.typeMapping.show()
+        else:
+            self.showAllAttributes()
 
         self.saveDataToObject(showPopup = False)
 
@@ -498,8 +504,17 @@ class MainVoxMLWindow(QMainWindow):
 
 ### VoxMLData related functions
 
+    def changeSelectedVoxMLObject(self):
+        self.saveDataToObject(False)
+        self.objIndex = self.ui.chooseVoxMLObject.currentIndex() 
+        self.loadDataToEditing()
+        self.createNewVoxMLObject(str(self.allObj[self.objIndex].Entity.Type), False)
+        self.showPopupMessage("Object changed.", 1)
+
     # saves pbject parsed from file to self.allObj[self.objIndex]
     def addObjectFromFile(self, inpath: str, type: str) -> None:
+        if self.objIndex >= 0:
+            self.saveDataToObject()
         if inpath != None and len(inpath) > 0:
             if type == "vox":
                 obj = self.loader.loadFileToObject(inpath)
@@ -511,7 +526,8 @@ class MainVoxMLWindow(QMainWindow):
                 self.showPopupMessage("Couldnt load/find file!", 1.5)
                 return
             self.allObj.append(obj)
-            self.objIndex += 1
+            self.ui.chooseVoxMLObject.addItem(os.path.basename(inpath))
+            self.ui.chooseVoxMLObject.setCurrentIndex(len(self.allObj) - 1)
             self.loadDataToEditing()
             self.createNewVoxMLObject(str(self.allObj[self.objIndex].Entity.Type), False)
             self.showPopupMessage("Data loaded from file!", 1.5)
@@ -538,9 +554,9 @@ class MainVoxMLWindow(QMainWindow):
                 f.write(output.decode("utf-8"))
             self.showPopupMessage("Data saved to file!", 1.5)
         
-    # save current input data to last VoxML Object
+    # save current input data to current VoxML Object
     def saveDataToObject(self, showPopup: bool = True):
-        if self.allObj[self.objIndex] == None:
+        if self.objIndex >= len(self.allObj):
             return
         vox = VoxMLObject()
 
@@ -664,7 +680,7 @@ class MainVoxMLWindow(QMainWindow):
     def printLastVoxMLObject(self):
         if self.allObj[self.objIndex] == None:
             return
-        vox = self.allObj[self.objIndex]
+        vox = self.allObj[0]
         print("Showing parsed data of " + str(vox.filepath) + "\n")
         if vox.Entity.Type != None:
             print("Entity:\n\tType: " + str(vox.Entity.Type))
