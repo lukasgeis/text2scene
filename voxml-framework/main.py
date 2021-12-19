@@ -24,6 +24,7 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.setupUi(self)
 
         # Vars
+        self.objIndex = -1
         self.obj = None
         self.loader = VoxMLDataLoader()
 
@@ -531,6 +532,7 @@ class MainVoxMLWindow(QMainWindow):
     def saveDataToFile(self):
         fileName = QFileDialog.getSaveFileName(self, "Save File", "voml-framework\\VoxMLData", "VoxML Data (*.xml *.txt )")[0]
         if len(fileName) > 0:
+            self.saveDataToObject(False)
             output = self.loader.loadObjectToXML(self.obj)
             with open(fileName, "w") as f:
                 f.write(output.decode("utf-8"))

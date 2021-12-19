@@ -89,7 +89,7 @@ QPushButton::hover {
       <rect>
        <x>20</x>
        <y>20</y>
-       <width>550</width>
+       <width>600</width>
        <height>60</height>
       </rect>
      </property>
@@ -120,9 +120,9 @@ QPushButton::hover {
     <widget class="QPushButton" name="openVoxMLDataButton">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>90</x>
        <y>120</y>
-       <width>100</width>
+       <width>105</width>
        <height>30</height>
       </rect>
      </property>
@@ -2033,7 +2033,7 @@ QComboBox::down-arrow:on {
        <property name="currentIndex">
         <number>-1</number>
        </property>
-       <property name="placeholderText">
+       <property name="placeholderText" stdset="0">
         <string/>
        </property>
       </widget>
@@ -2295,7 +2295,7 @@ QComboBox::down-arrow:on {
        <property name="currentIndex">
         <number>-1</number>
        </property>
-       <property name="placeholderText">
+       <property name="placeholderText" stdset="0">
         <string/>
        </property>
       </widget>
@@ -2889,7 +2889,7 @@ QComboBox::down-arrow:on {
        <property name="currentIndex">
         <number>-1</number>
        </property>
-       <property name="placeholderText">
+       <property name="placeholderText" stdset="0">
         <string/>
        </property>
       </widget>
@@ -3095,7 +3095,7 @@ QComboBox::down-arrow:on {
        <property name="currentIndex">
         <number>-1</number>
        </property>
-       <property name="placeholderText">
+       <property name="placeholderText" stdset="0">
         <string/>
        </property>
       </widget>
@@ -3291,7 +3291,7 @@ QComboBox::down-arrow:on {
        <property name="currentIndex">
         <number>-1</number>
        </property>
-       <property name="placeholderText">
+       <property name="placeholderText" stdset="0">
         <string/>
        </property>
       </widget>
@@ -3487,7 +3487,7 @@ QComboBox::down-arrow:on {
        <property name="currentIndex">
         <number>-1</number>
        </property>
-       <property name="placeholderText">
+       <property name="placeholderText" stdset="0">
         <string/>
        </property>
       </widget>
@@ -3853,7 +3853,7 @@ QComboBox::down-arrow:on {
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <property name="placeholderText">
+     <property name="placeholderText" stdset="0">
       <string/>
      </property>
      <item>
@@ -3890,7 +3890,7 @@ QComboBox::down-arrow:on {
     <widget class="QLabel" name="templateLabel">
      <property name="geometry">
       <rect>
-       <x>400</x>
+       <x>405</x>
        <y>120</y>
        <width>100</width>
        <height>28</height>
@@ -4063,7 +4063,7 @@ QPushButton::hover {
     <widget class="QPushButton" name="open3DObjectButton">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>205</x>
        <y>120</y>
        <width>100</width>
        <height>30</height>
@@ -4103,7 +4103,7 @@ QPushButton::hover {
     <widget class="QPushButton" name="openImageButton">
      <property name="geometry">
       <rect>
-       <x>320</x>
+       <x>315</x>
        <y>120</y>
        <width>100</width>
        <height>30</height>
