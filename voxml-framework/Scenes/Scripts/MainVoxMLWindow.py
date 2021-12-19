@@ -2132,7 +2132,7 @@ class Ui_MainVoxMLWindow(object):
         self.templateLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.templateLabel.setObjectName("templateLabel")
         self.saveVoxMLData = QtWidgets.QPushButton(self.backgroundFrame)
-        self.saveVoxMLData.setGeometry(QtCore.QRect(670, 60, 160, 30))
+        self.saveVoxMLData.setGeometry(QtCore.QRect(670, 20, 160, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -2154,29 +2154,6 @@ class Ui_MainVoxMLWindow(object):
 "    border: 2px solid #1fd78d;\n"
 "}")
         self.saveVoxMLData.setObjectName("saveVoxMLData")
-        self.saveToObject = QtWidgets.QPushButton(self.backgroundFrame)
-        self.saveToObject.setGeometry(QtCore.QRect(670, 20, 160, 30))
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
-        font.setWeight(50)
-        font.setStrikeOut(False)
-        self.saveToObject.setFont(font)
-        self.saveToObject.setStyleSheet("QPushButton {\n"
-"    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"    border-radius: 10px;\n"
-"    border: 1px solid #f0f0f0;\n"
-"    color: #1fd78d;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"    border: 1px solid #1fd78d;\n"
-"}")
-        self.saveToObject.setObjectName("saveToObject")
         self.popupText = QtWidgets.QLabel(self.backgroundFrame)
         self.popupText.setGeometry(QtCore.QRect(850, 20, 350, 80))
         font = QtGui.QFont()
@@ -2249,6 +2226,55 @@ class Ui_MainVoxMLWindow(object):
 "    border: 2px solid #2b78d3;\n"
 "}")
         self.openImageButton.setObjectName("openImageButton")
+        self.chooseVoxMLObject = QtWidgets.QComboBox(self.backgroundFrame)
+        self.chooseVoxMLObject.setGeometry(QtCore.QRect(670, 60, 160, 30))
+        self.chooseVoxMLObject.setStyleSheet("QComboBox {\n"
+"    border: 1px solid #f0f0f0;\n"
+"    border-radius: 10px;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox::hover {\n"
+"    border: 2px solid #1fd78d;\n"
+"}\n"
+"\n"
+"QComboBox:editable {\n"
+"    background: #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox:!editable, QComboBox::drop-down:editable {\n"
+"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"}\n"
+"\n"
+"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
+"    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"}\n"
+"\n"
+"QComboBox:on { \n"
+"    padding-top: 3px;\n"
+"    padding-left: 4px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 15px;\n"
+"\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: #f0f0f0;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow:on { \n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}\n"
+"")
+        self.chooseVoxMLObject.setObjectName("chooseVoxMLObject")
         MainVoxMLWindow.setCentralWidget(self.mainWidget)
 
         self.retranslateUi(MainVoxMLWindow)
@@ -2393,8 +2419,6 @@ class Ui_MainVoxMLWindow(object):
         self.templateLabel.setText(_translate("MainVoxMLWindow", "Template:"))
         self.saveVoxMLData.setToolTip(_translate("MainVoxMLWindow", "Save your VoxMLObject to a file. (Press -Save- beforehand)."))
         self.saveVoxMLData.setText(_translate("MainVoxMLWindow", "Save To File"))
-        self.saveToObject.setToolTip(_translate("MainVoxMLWindow", "Save your edits to your VoxML Object"))
-        self.saveToObject.setText(_translate("MainVoxMLWindow", "Save To Object"))
         self.popupText.setText(_translate("MainVoxMLWindow", "PopUP Window"))
         self.templateLabel_2.setToolTip(_translate("MainVoxMLWindow", "Not here. To the right!"))
         self.templateLabel_2.setText(_translate("MainVoxMLWindow", "Open:"))
