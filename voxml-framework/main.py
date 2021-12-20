@@ -536,7 +536,7 @@ class MainVoxMLWindow(QMainWindow):
         # Habitat: Intrinsic
         for k in range(5):
             if k < len(self.allObj[self.objIndex].Habitat.Intrinsic):
-                self.ui.intrValues[k].setText("Name: " + str(self.allObj[self.objIndex].Habitat.Intrinsic[k].Name) + "Value: " + str(self.allObj[self.objIndex].Habitat.Intrinsic[k].Value))
+                self.ui.intrValues[k].setText("Name: " + str(self.allObj[self.objIndex].Habitat.Intrinsic[k].Name) + " ,Value: " + str(self.allObj[self.objIndex].Habitat.Intrinsic[k].Value))
                 self.ui.intrValues[k].show()
                 self.ui.intrDelete[k].show()
             else:
@@ -547,7 +547,7 @@ class MainVoxMLWindow(QMainWindow):
         # Habitat: Extrinsic
         for k in range(5):
             if k < len(self.allObj[self.objIndex].Habitat.Extrinsic):
-                self.ui.extrValues[k].setText("Name: " + str(self.allObj[self.objIndex].Habitat.Extrinsic[k].Name) + "Value: " + str(self.allObj[self.objIndex].Habitat.Extrinsic[k].Value))
+                self.ui.extrValues[k].setText("Name: " + str(self.allObj[self.objIndex].Habitat.Extrinsic[k].Name) + " ,Value: " + str(self.allObj[self.objIndex].Habitat.Extrinsic[k].Value))
                 self.ui.extrValues[k].show()
                 self.ui.extrDelete[k].show()
             else:
@@ -734,7 +734,7 @@ class MainVoxMLWindow(QMainWindow):
         for x in range(len(self.allObj[self.objIndex].Habitat.Intrinsic)):
             intr = vIntr()
             content = str(self.ui.intrValues[x].text())
-            if "Name:" in content and "Value:" in content:
+            if "Name:" in content and ",Value:" in content:
                 intr.Name = content.split(",Value:")[0].replace("Name:","")
                 intr.Value = content.split(",Value:")[1]
                 vox.Habitat.Intrinsic.append(intr)
@@ -742,7 +742,7 @@ class MainVoxMLWindow(QMainWindow):
         for x in range(len(self.allObj[self.objIndex].Habitat.Extrinsic)):
             extr = vExtr()
             content = str(self.ui.extrValues[x].text())
-            if "Name:" in content and "Value:" in content:
+            if "Name:" in content and ",Value:" in content:
                 extr.Name = content.split(",Value:")[0].replace("Name:","")
                 extr.Value = content.split(",Value:")[1]
                 vox.Habitat.Extrinsic.append(extr)
