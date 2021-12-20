@@ -406,7 +406,7 @@ class VoxMLDataLoader:
             draw.rectangle([x0,y0,x1,y1], outline = 'red', width = 5)
             draw.text((x,y), guesses[-1], fill = "red")
 
-        img2.save("voxml-framework/Scenes/Temp/" + os.path.basename(inpath))
+        img2.save("voxml-framework/Scenes/TempImages/" + os.path.basename(inpath))
 
         if len(guesses) == 0:
             return

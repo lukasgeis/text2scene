@@ -43,7 +43,7 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.openVoxMLDataButton.clicked.connect(lambda: self.addObjectFromFile(self.chooseVoxMLDataFile(), "vox"))
         self.ui.open3DObjectButton.clicked.connect(lambda: self.addObjectFromFile(self.choose3DObjectFile(), "obj"))
         self.ui.openImageButton.clicked.connect(lambda: self.addObjectFromFile(self.chooseImageFile(), "img"))
-        self.ui.exitButton.clicked.connect(lambda: self.exitProgram())
+        self.ui.exitButton.clicked.connect(lambda: self.doNothing(self.deletePreviousImages(), sys.exit()))
         self.ui.createVoxMLButton.clicked.connect(lambda: self.createNewVoxMLObject(str(self.ui.templateChooser.currentText())))
         self.ui.saveVoxMLData.clicked.connect(lambda: self.saveDataToFile())
         self.ui.chooseVoxMLObject.currentIndexChanged.connect(lambda: self.changeSelectedVoxMLObject())
@@ -118,13 +118,13 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.displayImageLabel.hide()
         self.ui.objPlotter = QtInteractor(self.ui.imgObjFrame)
         self.ui.objPlotter.hide()
+        self.deletePreviousImages()
         self.show()
 
     # delete all temp image files and exit program
-    def exitProgram(self):
-        for f in os.listdir("voxml-framework/Scenes/Temp"):
-            os.remove(os.path.join("voxml-framework/Scenes/Temp", f))
-        sys.exit()
+    def deletePreviousImages(self):
+        for f in os.listdir("voxml-framework/Scenes/TempImages"):
+            os.remove(os.path.join("voxml-framework/Scenes/TempImages", f))
 
     # show popup message for x seconds
     def showPopupMessage(self, msg: str, x: float):
@@ -618,7 +618,7 @@ class MainVoxMLWindow(QMainWindow):
                 self.objDict[os.path.basename(inpath)] = pvRead(inpath)
             elif type == "img":
                 objs = self.loader.loadImage(inpath)
-                self.imgDict[os.path.basename(inpath)] = "voxml-framework/Scenes/Temp/" + os.path.basename(inpath)
+                self.imgDict[os.path.basename(inpath)] = "voxml-framework/Scenes/TempImages/" + os.path.basename(inpath)
             if objs == None:
                 self.showPopupMessage("Couldnt load/find file!", 1.5)
                 return
