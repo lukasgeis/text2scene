@@ -5,8 +5,8 @@ import xml.etree.ElementTree as ET
 
 # PyQt5 imports
 from PyQt5 import QtCore
-from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QApplication, QFileDialog, QLineEdit, QMainWindow, QPushButton
+from PyQt5.QtGui import QFont, QPixmap
+from PyQt5.QtWidgets import QApplication, QFileDialog, QGraphicsOpacityEffect, QLineEdit, QMainWindow, QPushButton
 
 # Scenes imports
 from Scenes.Scripts.MainVoxMLWindow import Ui_MainVoxMLWindow
@@ -27,6 +27,8 @@ class MainVoxMLWindow(QMainWindow):
         # Vars
         self.objIndex = -1
         self.allObj = []
+        self.imgDict = {}
+        self.objDict = {}
         self.loader = VoxMLDataLoader()
 
         # Remove everything outside of backgroundFrame
@@ -89,9 +91,13 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.attrsDel5.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Attributes.Attrs.pop(5), self.updateListVisualisations()))
         self.ui.attrsDel6.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Attributes.Attrs.pop(6), self.updateListVisualisations()))
 
+
+        self.createNewVoxMLObject("Empty")
+
         # setup position and show window
         self.oldPos = self.pos()
         self.ui.popupText.hide()
+        self.ui.displayImageLabel.hide()
         self.show()
 
     # show popup message for x seconds
@@ -272,21 +278,31 @@ class MainVoxMLWindow(QMainWindow):
         # Entity
         if vox.Entity.Type != None:
             self.ui.entityType.setText(str(vox.Entity.Type))
+        else:
+            self.ui.entityType.setText("")
         
         # Lex
         if vox.Lex.Pred != None:
             self.ui.lexPred.setText(str(vox.Lex.Pred))
+        else:
+            self.ui.lexPred.setText("")
         if vox.Lex.Type != None:
             self.ui.lexType.setText(str(vox.Lex.Type)) 
+        else:
+            self.ui.lexType.setText("")
 
         # Type
         if vox.Type.Head != None:
             self.ui.typeHead.setText(str(vox.Type.Head)) 
+        else:
+            self.ui.typeHead.setText("")
         self.ui.typeComponents.clear()
         for x in vox.Type.Components:
             self.ui.typeComponents.addItem(str(x.Value))
         if vox.Type.Concavity != None:
             self.ui.typeConcavity.setText(str(vox.Type.Concavity))
+        else:
+            self.ui.typeConcavity.setText("")
         if vox.Type.RotatSym != None:
             self.ui.typeRotatSymX.setChecked("X" in vox.Type.RotatSym)
             self.ui.typeRotatSymY.setChecked("Y" in vox.Type.RotatSym)
@@ -313,16 +329,28 @@ class MainVoxMLWindow(QMainWindow):
             self.ui.typeClass.setText(str(vox.Type.Class))
         if vox.Type.Value != None:
             self.ui.typeValue.setText(str(vox.Type.Value)) 
+        else:
+            self.ui.typeValue.setText("")
         if vox.Type.Constr != None:
             self.ui.typeConstr.setText(str(vox.Type.Constr))
+        else:
+            self.ui.typeConstr.setText("")
         if vox.Type.Scale != None:
             self.ui.typeScale.setText(str(vox.Type.Scale))
+        else:
+            self.ui.typeScale.setText("")
         if vox.Type.Arity != None:
             self.ui.typeArity.setText(str(vox.Type.Arity))
+        else:
+            self.ui.typeArity.setText("")
         if vox.Type.Referent != None:
             self.ui.typeReferent.setText(str(vox.Type.Referent))
+        else:
+            self.ui.typeReferent.setText("")
         if vox.Type.Mapping != None:
             self.ui.typeMapping.setText(str(vox.Type.Mapping))
+        else:
+            self.ui.typeMapping.setText("")
         self.ui.typeCorresps.clear()
         for x in vox.Type.Corresps:
             self.ui.typeCorresps.addItem(str(x.Value))
@@ -338,6 +366,8 @@ class MainVoxMLWindow(QMainWindow):
         # Embodiment
         if vox.Embodiment.Scale != None:
             self.ui.embodimentScale.setText(str(vox.Embodiment.Scale))
+        else:
+            self.ui.embodimentScale.setText("")
         if vox.Embodiment.Movable:
             self.ui.embodimentMovable.setChecked(True)
         else:
@@ -509,6 +539,14 @@ class MainVoxMLWindow(QMainWindow):
         self.objIndex = self.ui.chooseVoxMLObject.currentIndex() 
         self.loadDataToEditing()
         self.createNewVoxMLObject(str(self.allObj[self.objIndex].Entity.Type), False)
+
+        objName = self.ui.chooseVoxMLObject.currentText()
+        if objName in self.imgDict:
+            self.ui.displayImageLabel.setPixmap(QPixmap.fromImage(self.imgDict[objName]))
+            self.ui.displayImageLabel.show()
+        else:
+            self.ui.displayImageLabel.hide()
+
         self.showPopupMessage("Object changed.", 1)
 
     # saves pbject parsed from file to self.allObj[self.objIndex]
@@ -517,20 +555,21 @@ class MainVoxMLWindow(QMainWindow):
             self.saveDataToObject()
         if inpath != None and len(inpath) > 0:
             if type == "vox":
-                obj = self.loader.loadFileToObject(inpath)
+                objs = self.loader.loadFileToObject(inpath)
             elif type == "obj":
-                obj = self.loader.load3Dobj(inpath)
+                objs = self.loader.load3Dobj(inpath)
             elif type == "img":
-                obj = self.loader.loadImage(inpath)
-            if obj == None:
+                objs, img = self.loader.loadImage(inpath)
+                self.imgDict[os.path.basename(inpath)] = img
+            if objs == None:
                 self.showPopupMessage("Couldnt load/find file!", 1.5)
                 return
-            self.allObj.append(obj)
-            self.ui.chooseVoxMLObject.addItem(os.path.basename(inpath))
-            self.ui.chooseVoxMLObject.setCurrentIndex(len(self.allObj) - 1)
-            self.loadDataToEditing()
-            self.createNewVoxMLObject(str(self.allObj[self.objIndex].Entity.Type), False)
-            self.showPopupMessage("Data loaded from file!", 1.5)
+            for obj in objs:
+                self.allObj.append(obj)
+                self.ui.chooseVoxMLObject.addItem(os.path.basename(inpath))
+                self.ui.chooseVoxMLObject.setCurrentIndex(len(self.allObj) - 1)
+                self.createNewVoxMLObject(str(self.allObj[self.objIndex].Entity.Type), False)
+                self.showPopupMessage("Data loaded from file!", 1.5)
 
     # Choose .txt or .xml file containing VoxML data from system
     def chooseVoxMLDataFile(self) -> str:
@@ -542,7 +581,7 @@ class MainVoxMLWindow(QMainWindow):
 
     # Choose .jpg or .png file containing Image from system
     def chooseImageFile(self) -> str:
-        return QFileDialog.getOpenFileName(self, "Choose file", "voml-framework\\VoxMLData", "VoxML Data (*.jpg *.png)")[0]
+        return QFileDialog.getOpenFileName(self, "Choose file", "voml-framework\\VoxMLData", "VoxML Data (*.jpg *.png *.webp)")[0]
 
     # save xml data to file with QFileDialog -> use together with createXMLStringFromVoxMLObject
     def saveDataToFile(self):
@@ -677,10 +716,15 @@ class MainVoxMLWindow(QMainWindow):
             self.showPopupMessage("Data saved to object!", 1.5)
 
     # Print last added/parsed VoxMLObject to console :: only for testing purposes / will be removed later
-    def printLastVoxMLObject(self):
-        if self.allObj[self.objIndex] == None:
+    def printLastVoxMLObject(self, obj = None):
+        vox = None
+        if obj != None:
+            vox = obj
+        else:
+            vox = self.allObj[self.objIndex]
+        if vox == None:
             return
-        vox = self.allObj[0]
+
         print("Showing parsed data of " + str(vox.filepath) + "\n")
         if vox.Entity.Type != None:
             print("Entity:\n\tType: " + str(vox.Entity.Type))

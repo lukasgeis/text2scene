@@ -5,7 +5,7 @@ import trimesh
 from pyvista import read as pvRead
 from pyvistaqt import BackgroundPlotter
 
-from PIL import Image
+from PIL import Image, ImageDraw, ImageQt
 from transformers import DetrFeatureExtractor, DetrForObjectDetection
 
 import os
@@ -254,7 +254,7 @@ class VoxMLDataLoader:
                     vAtt.Value = attr.get("Value")
                     vox.Attributes.Attrs.append(vAtt)
             
-            return vox
+            return [vox]
 
     # create XML string from VoxMLObject
     def loadObjectToXML(self, vox: VoxMLObject) -> str:
@@ -375,7 +375,7 @@ class VoxMLDataLoader:
         return ET.tostring(VoxML)   
 
     # load 3D object  :: copied from old project   
-    def load3Dobj(self, inpath: str):
+    def load3Dobj(self, inpath):
         pointCloud = torch.tensor([self.createPointCloudFromFile(inpath).tolist()])
         pointCloud = pointCloud.permute(0, 2, 1)
         logits = self.model3D(pointCloud)
@@ -391,31 +391,43 @@ class VoxMLDataLoader:
 
     # load Image to object :: using https://huggingface.co/facebook/detr-resnet-50
     def loadImage(self, inpath: str):
-        img = Image.open(inpath)
+        img = Image.open(inpath).resize((730,600)).convert("RGB")
         inputs = self.featureExtractor(images = img, return_tensors = "pt")
         outputs = self.modelImg(**inputs)
 
-        guess = None
-        for logits, bboxes in zip(outputs.logits[0], outputs.pred_boxes[0]):
+        img2 = img.copy()
+        draw = ImageDraw.Draw(img2)
+
+        guesses = []
+        for logits, box in zip(outputs.logits[0], outputs.pred_boxes[0]):
             cls = logits.argmax()
             if cls >= len(self.imgClassdict):
                 continue
-            guess = self.imgClassdict[cls.item()]
+            guesses.append(self.imgClassdict[cls.item()])
 
-        if guess == None:
-            return
+            box = box.cpu() * torch.Tensor([730,600,730,600])
+            x, y, w, h = box
+            x0, x1 = x-w//2, x+w//2
+            y0, y1 = y-h//2, y+h//2
+            draw.rectangle([x0,y0,x1,y1], outline = 'red', width = 5)
+            draw.text((x,y), guesses[-1], fill = "red")
 
-        path = None
-        for root, dirs, files in os.walk("voxml-framework/VoxMLData"):
-            if guess + ".txt" in files:
-                path = os.path.abspath(os.path.join(root, guess + ".txt")).replace("\\", "/")   
-            if guess + ".xml" in files:
-                path = os.path.abspath(os.path.join(root, guess + ".xml")).replace("\\", "/")   
-        
-        self.plotter = BackgroundPlotter()
-        self.plotter.add_background_image(inpath)
+        if len(guesses) == 0:
+            return None, ImageQt.ImageQt(img2)
 
-        return self.loadFileToObject(path)
+        paths = []
+        for guess in guesses:
+            path = None
+            for root, dirs, files in os.walk("voxml-framework/VoxMLData"):
+                if guess + ".txt" in files:
+                    path = os.path.abspath(os.path.join(root, guess + ".txt")).replace("\\", "/")   
+                if guess + ".xml" in files:
+                    path = os.path.abspath(os.path.join(root, guess + ".xml")).replace("\\", "/")   
+            paths.append(path)
+
+        objs = [self.loadFileToObject(path) for path in paths]
+
+        return [None if x == None else x[0] for x in objs], ImageQt.ImageQt(img2)
         
 
 

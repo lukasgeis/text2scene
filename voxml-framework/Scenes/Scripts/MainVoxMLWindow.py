@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'UI/MainVoxMLWindow.ui'
+# Form implementation generated from reading ui file 'voxml-framework/Scenes/UI/MainVoxMLWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.14.1
 #
@@ -13,11 +13,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainVoxMLWindow(object):
     def setupUi(self, MainVoxMLWindow):
         MainVoxMLWindow.setObjectName("MainVoxMLWindow")
-        MainVoxMLWindow.resize(1300, 820)
+        MainVoxMLWindow.resize(1620, 820)
         self.mainWidget = QtWidgets.QWidget(MainVoxMLWindow)
         self.mainWidget.setObjectName("mainWidget")
         self.backgroundFrame = QtWidgets.QFrame(self.mainWidget)
-        self.backgroundFrame.setGeometry(QtCore.QRect(10, 10, 1280, 800))
+        self.backgroundFrame.setGeometry(QtCore.QRect(10, 10, 1600, 800))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -37,7 +37,7 @@ class Ui_MainVoxMLWindow(object):
         self.backgroundFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.backgroundFrame.setObjectName("backgroundFrame")
         self.exitButton = QtWidgets.QPushButton(self.backgroundFrame)
-        self.exitButton.setGeometry(QtCore.QRect(1230, 10, 40, 25))
+        self.exitButton.setGeometry(QtCore.QRect(1550, 10, 40, 25))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(15)
@@ -2155,7 +2155,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.saveVoxMLData.setObjectName("saveVoxMLData")
         self.popupText = QtWidgets.QLabel(self.backgroundFrame)
-        self.popupText.setGeometry(QtCore.QRect(850, 20, 350, 80))
+        self.popupText.setGeometry(QtCore.QRect(850, 20, 670, 70))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(18)
@@ -2275,6 +2275,21 @@ class Ui_MainVoxMLWindow(object):
 "}\n"
 "")
         self.chooseVoxMLObject.setObjectName("chooseVoxMLObject")
+        self.displayImageLabel = QtWidgets.QLabel(self.backgroundFrame)
+        self.displayImageLabel.setGeometry(QtCore.QRect(850, 170, 730, 600))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(50)
+        self.displayImageLabel.setFont(font)
+        self.displayImageLabel.setStyleSheet("QLabel {\n"
+"    border-radius: 0px;\n"
+"    background-color: None;\n"
+"    color: #f0f0f0;\n"
+"    border: 1px solid #f0f0f0;\n"
+"}")
+        self.displayImageLabel.setText("")
+        self.displayImageLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.displayImageLabel.setObjectName("displayImageLabel")
         MainVoxMLWindow.setCentralWidget(self.mainWidget)
 
         self.retranslateUi(MainVoxMLWindow)
@@ -2426,3 +2441,4 @@ class Ui_MainVoxMLWindow(object):
         self.open3DObjectButton.setText(_translate("MainVoxMLWindow", "3D Object"))
         self.openImageButton.setToolTip(_translate("MainVoxMLWindow", "Import Image from file"))
         self.openImageButton.setText(_translate("MainVoxMLWindow", "Image"))
+        self.displayImageLabel.setToolTip(_translate("MainVoxMLWindow", "That\'s just the title!"))

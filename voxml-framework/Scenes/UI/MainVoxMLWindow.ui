@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1300</width>
+    <width>1620</width>
     <height>820</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>1280</width>
+      <width>1600</width>
       <height>800</height>
      </rect>
     </property>
@@ -50,7 +50,7 @@ QFrame {
     <widget class="QPushButton" name="exitButton">
      <property name="geometry">
       <rect>
-       <x>1230</x>
+       <x>1550</x>
        <y>10</y>
        <width>40</width>
        <height>25</height>
@@ -3964,8 +3964,8 @@ QPushButton::hover {
       <rect>
        <x>850</x>
        <y>20</y>
-       <width>350</width>
-       <height>80</height>
+       <width>670</width>
+       <height>70</height>
       </rect>
      </property>
      <property name="font">
@@ -4156,6 +4156,39 @@ QComboBox::down-arrow:on {
     left: 1px;
 }
 </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="displayImageLabel">
+     <property name="geometry">
+      <rect>
+       <x>850</x>
+       <y>170</y>
+       <width>730</width>
+       <height>600</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>50</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>That's just the title!</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	border-radius: 0px;
+	background-color: None;
+	color: #f0f0f0;
+	border: 1px solid #f0f0f0;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
