@@ -8,6 +8,10 @@ from PyQt5 import QtCore
 from PyQt5.QtGui import QFont, QPixmap
 from PyQt5.QtWidgets import QApplication, QFileDialog, QGraphicsOpacityEffect, QLineEdit, QMainWindow, QPushButton
 
+# 3D-Plotter imports
+from pyvista import read as pvRead
+from pyvistaqt import QtInteractor
+
 # Scenes imports
 from Scenes.Scripts.MainVoxMLWindow import Ui_MainVoxMLWindow
 
@@ -39,7 +43,7 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.openVoxMLDataButton.clicked.connect(lambda: self.addObjectFromFile(self.chooseVoxMLDataFile(), "vox"))
         self.ui.open3DObjectButton.clicked.connect(lambda: self.addObjectFromFile(self.choose3DObjectFile(), "obj"))
         self.ui.openImageButton.clicked.connect(lambda: self.addObjectFromFile(self.chooseImageFile(), "img"))
-        self.ui.exitButton.clicked.connect(lambda: sys.exit())
+        self.ui.exitButton.clicked.connect(lambda: self.exitProgram())
         self.ui.createVoxMLButton.clicked.connect(lambda: self.createNewVoxMLObject(str(self.ui.templateChooser.currentText())))
         self.ui.saveVoxMLData.clicked.connect(lambda: self.saveDataToFile())
         self.ui.chooseVoxMLObject.currentIndexChanged.connect(lambda: self.changeSelectedVoxMLObject())
@@ -65,9 +69,23 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.typeCorrespsDelete.clicked.connect(lambda: self.deleteFromBox("corresps"))
 
         self.ui.habitatIntrinsicAdder.clicked.connect(lambda: self.addToBox("intrinsic"))
-        self.ui.habitatIntrinsicDelete.clicked.connect(lambda: self.deleteFromBox("intrinsic"))
         self.ui.habitatExtrinsicAdd.clicked.connect(lambda: self.addToBox("extrinsic"))
-        self.ui.habitatExtrinsicDelete.clicked.connect(lambda: self.deleteFromBox("extrinsic"))
+
+        self.ui.intrValues = [self.ui.intrVal0,self.ui.intrVal1,self.ui.intrVal2,self.ui.intrVal3,self.ui.intrVal4]
+        self.ui.intrDelete = [self.ui.intrDel0,self.ui.intrDel1,self.ui.intrDel2,self.ui.intrDel3,self.ui.intrDel4]
+        self.ui.extrValues = [self.ui.extrVal0,self.ui.extrVal1,self.ui.extrVal2,self.ui.extrVal3,self.ui.extrVal4]
+        self.ui.extrDelete = [self.ui.extrDel0,self.ui.extrDel1,self.ui.extrDel2,self.ui.extrDel3,self.ui.extrDel4]
+
+        self.ui.intrDel0.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Habitat.Intrinsic.pop(0), self.updateListVisualisations()))
+        self.ui.intrDel1.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Habitat.Intrinsic.pop(1), self.updateListVisualisations()))
+        self.ui.intrDel2.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Habitat.Intrinsic.pop(2), self.updateListVisualisations()))
+        self.ui.intrDel3.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Habitat.Intrinsic.pop(3), self.updateListVisualisations()))
+        self.ui.intrDel4.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Habitat.Intrinsic.pop(4), self.updateListVisualisations()))
+        self.ui.extrDel0.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Habitat.Extrinsic.pop(0), self.updateListVisualisations()))
+        self.ui.extrDel1.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Habitat.Extrinsic.pop(1), self.updateListVisualisations()))
+        self.ui.extrDel2.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Habitat.Extrinsic.pop(2), self.updateListVisualisations()))
+        self.ui.extrDel3.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Habitat.Extrinsic.pop(3), self.updateListVisualisations()))
+        self.ui.extrDel4.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Habitat.Extrinsic.pop(4), self.updateListVisualisations()))
 
         self.ui.affordStrAffordancesAdd.clicked.connect(lambda: self.addToBox("affordances"))
         self.ui.afforValues = [self.ui.afforVal0,self.ui.afforVal1,self.ui.afforVal2,self.ui.afforVal3,self.ui.afforVal4,self.ui.afforVal5,self.ui.afforVal6]
@@ -91,14 +109,22 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.attrsDel5.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Attributes.Attrs.pop(5), self.updateListVisualisations()))
         self.ui.attrsDel6.clicked.connect(lambda: self.doNothing(self.allObj[self.objIndex].Attributes.Attrs.pop(6), self.updateListVisualisations()))
 
-
+        # Instantiate first object
         self.createNewVoxMLObject("Empty")
 
-        # setup position and show window
+        # setup position and show window + other start settings
         self.oldPos = self.pos()
         self.ui.popupText.hide()
         self.ui.displayImageLabel.hide()
+        self.ui.objPlotter = QtInteractor(self.ui.imgObjFrame)
+        self.ui.objPlotter.hide()
         self.show()
+
+    # delete all temp image files and exit program
+    def exitProgram(self):
+        for f in os.listdir("voxml-framework/Scenes/Temp"):
+            os.remove(os.path.join("voxml-framework/Scenes/Temp", f))
+        sys.exit()
 
     # show popup message for x seconds
     def showPopupMessage(self, msg: str, x: float):
@@ -137,11 +163,17 @@ class MainVoxMLWindow(QMainWindow):
             self.ui.typeCorresps.addItem(str(self.ui.typeCorrespsValue.text()))
             self.ui.typeCorrespsValue.setText("")
         elif attr == "intrinsic":
-            self.ui.habitatIntrinsic.addItem("Name:" + str(self.ui.habitatIntrName.text()) + ",Value:" + str(self.ui.habitatIntrValue.text()))
+            intr = vIntr()
+            intr.Name = str(self.ui.habitatIntrName.text())
+            intr.Value = str(self.ui.habitatIntrValue.text())
+            self.allObj[self.objIndex].Habitat.Intrinsic.append(intr)
             self.ui.habitatIntrName.setText("")
             self.ui.habitatIntrValue.setText("")
         elif attr == "extrinsic":
-            self.ui.habitatExtrinsic.addItem("Name:" + str(self.ui.habitatExtrName.text()) + ",Value:" + str(self.ui.habitatExtrValue.text()))
+            extr = vExtr()
+            extr.Name = str(self.ui.habitatExtrName.text())
+            extr.Value = str(self.ui.habitatExtrValue.text())
+            self.allObj[self.objIndex].Habitat.Extrinsic.append(extr)
             self.ui.habitatExtrName.setText("")
             self.ui.habitatExtrValue.setText("")
         elif attr == "affordances" and len(str(self.ui.affordStrAffordancesNewItem.text())) > 0:
@@ -354,15 +386,7 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.typeCorresps.clear()
         for x in vox.Type.Corresps:
             self.ui.typeCorresps.addItem(str(x.Value))
-        
-        # Habitat
-        self.ui.habitatIntrinsic.clear()
-        for x in vox.Habitat.Intrinsic:
-            self.ui.habitatIntrinsic.addItem("Name:" + str(x.Name) + ",Value:" + str(x.Value))
-        self.ui.habitatExtrinsic.clear()
-        for x in vox.Habitat.Extrinsic:
-            self.ui.habitatExtrinsic.addItem("Name:" + str(x.Name) + ",Value:" + str(x.Value))
-        
+
         # Embodiment
         if vox.Embodiment.Scale != None:
             self.ui.embodimentScale.setText(str(vox.Embodiment.Scale))
@@ -509,6 +533,28 @@ class MainVoxMLWindow(QMainWindow):
 
     # Currently handling the display of Affordances/Attrs values (max 7)
     def updateListVisualisations(self):
+        # Habitat: Intrinsic
+        for k in range(5):
+            if k < len(self.allObj[self.objIndex].Habitat.Intrinsic):
+                self.ui.intrValues[k].setText("Name: " + str(self.allObj[self.objIndex].Habitat.Intrinsic[k].Name) + "Value: " + str(self.allObj[self.objIndex].Habitat.Intrinsic[k].Value))
+                self.ui.intrValues[k].show()
+                self.ui.intrDelete[k].show()
+            else:
+                self.ui.intrValues[k].setText("")
+                self.ui.intrValues[k].hide()
+                self.ui.intrDelete[k].hide()
+
+        # Habitat: Extrinsic
+        for k in range(5):
+            if k < len(self.allObj[self.objIndex].Habitat.Extrinsic):
+                self.ui.extrValues[k].setText("Name: " + str(self.allObj[self.objIndex].Habitat.Extrinsic[k].Name) + "Value: " + str(self.allObj[self.objIndex].Habitat.Extrinsic[k].Value))
+                self.ui.extrValues[k].show()
+                self.ui.extrDelete[k].show()
+            else:
+                self.ui.extrValues[k].setText("")
+                self.ui.extrValues[k].hide()
+                self.ui.extrDelete[k].hide()
+
         # AffordStr: Affordances
         for k in range(7):
             if k < len(self.allObj[self.objIndex].AffordStr.Affordances):
@@ -542,10 +588,21 @@ class MainVoxMLWindow(QMainWindow):
 
         objName = self.ui.chooseVoxMLObject.currentText()
         if objName in self.imgDict:
-            self.ui.displayImageLabel.setPixmap(QPixmap.fromImage(self.imgDict[objName]))
+            self.ui.displayImageLabel.setStyleSheet("background-image: url(" + self.imgDict[objName] + ")")
             self.ui.displayImageLabel.show()
         else:
             self.ui.displayImageLabel.hide()
+        
+        if objName in self.objDict:
+            self.ui.objPlotter.deleteLater()
+            self.ui.objPlotter = QtInteractor(self.ui.imgObjFrame)
+            self.ui.objPlotter.setGeometry(QtCore.QRect(1,1,728,598))
+            self.ui.objPlotter.add_background_image("voxml-framework/Scenes/GrayBackground.jpg")
+            self.ui.objPlotter.add_mesh(self.objDict[objName])
+            self.ui.objPlotter.reset_camera()
+            self.ui.objPlotter.show()
+        else:
+            self.ui.objPlotter.hide()
 
         self.showPopupMessage("Object changed.", 1)
 
@@ -558,9 +615,10 @@ class MainVoxMLWindow(QMainWindow):
                 objs = self.loader.loadFileToObject(inpath)
             elif type == "obj":
                 objs = self.loader.load3Dobj(inpath)
+                self.objDict[os.path.basename(inpath)] = pvRead(inpath)
             elif type == "img":
-                objs, img = self.loader.loadImage(inpath)
-                self.imgDict[os.path.basename(inpath)] = img
+                objs = self.loader.loadImage(inpath)
+                self.imgDict[os.path.basename(inpath)] = "voxml-framework/Scenes/Temp/" + os.path.basename(inpath)
             if objs == None:
                 self.showPopupMessage("Couldnt load/find file!", 1.5)
                 return
@@ -673,19 +731,21 @@ class MainVoxMLWindow(QMainWindow):
         
         # Habitat
         vox.Habitat.Intrinsic = []
-        for x in range(self.ui.habitatIntrinsic.count()):
+        for x in range(len(self.allObj[self.objIndex].Habitat.Intrinsic)):
             intr = vIntr()
-            content = str(self.ui.habitatIntrinsic.itemText(x))
-            intr.Name = content.split(",Value:")[0].replace("Name:","")
-            intr.Value = content.split(",Value:")[1]
-            vox.Habitat.Intrinsic.append(intr)
+            content = str(self.ui.intrValues[x].text())
+            if "Name:" in content and "Value:" in content:
+                intr.Name = content.split(",Value:")[0].replace("Name:","")
+                intr.Value = content.split(",Value:")[1]
+                vox.Habitat.Intrinsic.append(intr)
         vox.Habitat.Extrinsic = []
-        for x in range(self.ui.habitatExtrinsic.count()):
+        for x in range(len(self.allObj[self.objIndex].Habitat.Extrinsic)):
             extr = vExtr()
-            content = str(self.ui.habitatExtrinsic.itemText(x))
-            extr.Name = content.split(",Value:")[0].replace("Name:","")
-            extr.Value = content.split(",Value:")[1]
-            vox.Habitat.Extrinsic.append(extr)
+            content = str(self.ui.extrValues[x].text())
+            if "Name:" in content and "Value:" in content:
+                extr.Name = content.split(",Value:")[0].replace("Name:","")
+                extr.Value = content.split(",Value:")[1]
+                vox.Habitat.Extrinsic.append(extr)
 
         # AffordStr
         for x in range(len(self.allObj[self.objIndex].AffordStr.Affordances)):

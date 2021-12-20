@@ -72,7 +72,7 @@ class Ui_MainVoxMLWindow(object):
         self.titleLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.titleLabel.setObjectName("titleLabel")
         self.openVoxMLDataButton = QtWidgets.QPushButton(self.backgroundFrame)
-        self.openVoxMLDataButton.setGeometry(QtCore.QRect(90, 120, 105, 30))
+        self.openVoxMLDataButton.setGeometry(QtCore.QRect(1080, 120, 160, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -1073,69 +1073,14 @@ class Ui_MainVoxMLWindow(object):
         self.habitatFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.habitatFrame.setObjectName("habitatFrame")
         self.intrinsicLabel = QtWidgets.QLabel(self.habitatFrame)
-        self.intrinsicLabel.setGeometry(QtCore.QRect(200, 175, 120, 30))
+        self.intrinsicLabel.setGeometry(QtCore.QRect(200, 20, 120, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
         self.intrinsicLabel.setFont(font)
         self.intrinsicLabel.setObjectName("intrinsicLabel")
-        self.habitatIntrinsic = QtWidgets.QComboBox(self.habitatFrame)
-        self.habitatIntrinsic.setGeometry(QtCore.QRect(300, 175, 190, 30))
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI")
-        font.setPointSize(12)
-        self.habitatIntrinsic.setFont(font)
-        self.habitatIntrinsic.setStyleSheet("QComboBox {\n"
-"    border: 1px solid #2b78d3;\n"
-"    border-radius: 10px;\n"
-"    color: #f0f0f0;\n"
-"}\n"
-"\n"
-"QComboBox::hover {\n"
-"    border: 2px solid #2b78d3;\n"
-"}\n"
-"\n"
-"QComboBox:editable {\n"
-"    background: #f0f0f0;\n"
-"}\n"
-"\n"
-"QComboBox:!editable, QComboBox::drop-down:editable {\n"
-"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"}\n"
-"\n"
-"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
-"    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"}\n"
-"\n"
-"QComboBox:on { \n"
-"    padding-top: 3px;\n"
-"    padding-left: 4px;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"\n"
-"    border-left-width: 1px;\n"
-"    border-left-color: #f0f0f0;\n"
-"    border-left-style: solid;\n"
-"    border-top-right-radius: 3px;\n"
-"    border-bottom-right-radius: 3px;\n"
-"}\n"
-"\n"
-"QComboBox::down-arrow:on { \n"
-"    top: 1px;\n"
-"    left: 1px;\n"
-"}\n"
-"")
-        self.habitatIntrinsic.setCurrentText("")
-        self.habitatIntrinsic.setProperty("placeholderText", "")
-        self.habitatIntrinsic.setObjectName("habitatIntrinsic")
-        self.habitatIntrinsicDelete = QtWidgets.QPushButton(self.habitatFrame)
-        self.habitatIntrinsicDelete.setGeometry(QtCore.QRect(500, 175, 100, 30))
+        self.intrDel0 = QtWidgets.QPushButton(self.habitatFrame)
+        self.intrDel0.setGeometry(QtCore.QRect(500, 65, 100, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -1144,8 +1089,8 @@ class Ui_MainVoxMLWindow(object):
         font.setUnderline(False)
         font.setWeight(50)
         font.setStrikeOut(False)
-        self.habitatIntrinsicDelete.setFont(font)
-        self.habitatIntrinsicDelete.setStyleSheet("QPushButton {\n"
+        self.intrDel0.setFont(font)
+        self.intrDel0.setStyleSheet("QPushButton {\n"
 "    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
 "    border-radius: 10px;\n"
@@ -1156,9 +1101,9 @@ class Ui_MainVoxMLWindow(object):
 "QPushButton::hover {\n"
 "    border: 2px solid #f62451;\n"
 "}")
-        self.habitatIntrinsicDelete.setObjectName("habitatIntrinsicDelete")
+        self.intrDel0.setObjectName("intrDel0")
         self.habitatIntrinsicAdder = QtWidgets.QPushButton(self.habitatFrame)
-        self.habitatIntrinsicAdder.setGeometry(QtCore.QRect(500, 215, 100, 30))
+        self.habitatIntrinsicAdder.setGeometry(QtCore.QRect(500, 20, 100, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -1181,7 +1126,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.habitatIntrinsicAdder.setObjectName("habitatIntrinsicAdder")
         self.habitatIntrName = QtWidgets.QLineEdit(self.habitatFrame)
-        self.habitatIntrName.setGeometry(QtCore.QRect(300, 215, 90, 30))
+        self.habitatIntrName.setGeometry(QtCore.QRect(300, 20, 90, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -1191,7 +1136,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.habitatIntrName.setObjectName("habitatIntrName")
         self.habitatIntrValue = QtWidgets.QLineEdit(self.habitatFrame)
-        self.habitatIntrValue.setGeometry(QtCore.QRect(400, 215, 90, 30))
+        self.habitatIntrValue.setGeometry(QtCore.QRect(400, 20, 90, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -1208,7 +1153,7 @@ class Ui_MainVoxMLWindow(object):
         self.extrinsicLabel.setFont(font)
         self.extrinsicLabel.setObjectName("extrinsicLabel")
         self.habitatExtrName = QtWidgets.QLineEdit(self.habitatFrame)
-        self.habitatExtrName.setGeometry(QtCore.QRect(300, 320, 90, 30))
+        self.habitatExtrName.setGeometry(QtCore.QRect(300, 280, 90, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -1218,7 +1163,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.habitatExtrName.setObjectName("habitatExtrName")
         self.habitatExtrValue = QtWidgets.QLineEdit(self.habitatFrame)
-        self.habitatExtrValue.setGeometry(QtCore.QRect(400, 320, 90, 30))
+        self.habitatExtrValue.setGeometry(QtCore.QRect(400, 280, 90, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -1227,63 +1172,8 @@ class Ui_MainVoxMLWindow(object):
 "    border: 1px solid #f0f0f0;\n"
 "}")
         self.habitatExtrValue.setObjectName("habitatExtrValue")
-        self.habitatExtrinsic = QtWidgets.QComboBox(self.habitatFrame)
-        self.habitatExtrinsic.setGeometry(QtCore.QRect(300, 280, 190, 30))
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI")
-        font.setPointSize(12)
-        self.habitatExtrinsic.setFont(font)
-        self.habitatExtrinsic.setStyleSheet("QComboBox {\n"
-"    border: 1px solid #2b78d3;\n"
-"    border-radius: 10px;\n"
-"    color: #f0f0f0;\n"
-"}\n"
-"\n"
-"QComboBox::hover {\n"
-"    border: 2px solid #2b78d3;\n"
-"}\n"
-"\n"
-"QComboBox:editable {\n"
-"    background: #f0f0f0;\n"
-"}\n"
-"\n"
-"QComboBox:!editable, QComboBox::drop-down:editable {\n"
-"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"}\n"
-"\n"
-"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
-"    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
-"}\n"
-"\n"
-"QComboBox:on { \n"
-"    padding-top: 3px;\n"
-"    padding-left: 4px;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"\n"
-"    border-left-width: 1px;\n"
-"    border-left-color: #f0f0f0;\n"
-"    border-left-style: solid;\n"
-"    border-top-right-radius: 3px;\n"
-"    border-bottom-right-radius: 3px;\n"
-"}\n"
-"\n"
-"QComboBox::down-arrow:on { \n"
-"    top: 1px;\n"
-"    left: 1px;\n"
-"}\n"
-"")
-        self.habitatExtrinsic.setCurrentText("")
-        self.habitatExtrinsic.setProperty("placeholderText", "")
-        self.habitatExtrinsic.setObjectName("habitatExtrinsic")
         self.habitatExtrinsicAdd = QtWidgets.QPushButton(self.habitatFrame)
-        self.habitatExtrinsicAdd.setGeometry(QtCore.QRect(500, 320, 100, 30))
+        self.habitatExtrinsicAdd.setGeometry(QtCore.QRect(500, 280, 100, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -1305,8 +1195,40 @@ class Ui_MainVoxMLWindow(object):
 "    border: 2px solid #1fd78d;\n"
 "}")
         self.habitatExtrinsicAdd.setObjectName("habitatExtrinsicAdd")
-        self.habitatExtrinsicDelete = QtWidgets.QPushButton(self.habitatFrame)
-        self.habitatExtrinsicDelete.setGeometry(QtCore.QRect(500, 280, 100, 30))
+        self.intrVal0 = QtWidgets.QLineEdit(self.habitatFrame)
+        self.intrVal0.setGeometry(QtCore.QRect(300, 65, 190, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.intrVal0.setFont(font)
+        self.intrVal0.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #2d87d3;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QLineEdit::hover {\n"
+"    border: 2px solid #2d87d3;\n"
+"}")
+        self.intrVal0.setPlaceholderText("")
+        self.intrVal0.setObjectName("intrVal0")
+        self.intrVal1 = QtWidgets.QLineEdit(self.habitatFrame)
+        self.intrVal1.setGeometry(QtCore.QRect(300, 105, 190, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.intrVal1.setFont(font)
+        self.intrVal1.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #2d87d3;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QLineEdit::hover {\n"
+"    border: 2px solid #2d87d3;\n"
+"}")
+        self.intrVal1.setPlaceholderText("")
+        self.intrVal1.setObjectName("intrVal1")
+        self.intrDel1 = QtWidgets.QPushButton(self.habitatFrame)
+        self.intrDel1.setGeometry(QtCore.QRect(500, 105, 100, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -1315,8 +1237,8 @@ class Ui_MainVoxMLWindow(object):
         font.setUnderline(False)
         font.setWeight(50)
         font.setStrikeOut(False)
-        self.habitatExtrinsicDelete.setFont(font)
-        self.habitatExtrinsicDelete.setStyleSheet("QPushButton {\n"
+        self.intrDel1.setFont(font)
+        self.intrDel1.setStyleSheet("QPushButton {\n"
 "    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
 "    border-radius: 10px;\n"
@@ -1327,7 +1249,319 @@ class Ui_MainVoxMLWindow(object):
 "QPushButton::hover {\n"
 "    border: 2px solid #f62451;\n"
 "}")
-        self.habitatExtrinsicDelete.setObjectName("habitatExtrinsicDelete")
+        self.intrDel1.setObjectName("intrDel1")
+        self.intrVal2 = QtWidgets.QLineEdit(self.habitatFrame)
+        self.intrVal2.setGeometry(QtCore.QRect(300, 145, 190, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.intrVal2.setFont(font)
+        self.intrVal2.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #2d87d3;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QLineEdit::hover {\n"
+"    border: 2px solid #2d87d3;\n"
+"}")
+        self.intrVal2.setPlaceholderText("")
+        self.intrVal2.setObjectName("intrVal2")
+        self.intrDel2 = QtWidgets.QPushButton(self.habitatFrame)
+        self.intrDel2.setGeometry(QtCore.QRect(500, 145, 100, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        self.intrDel2.setFont(font)
+        self.intrDel2.setStyleSheet("QPushButton {\n"
+"    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #f0f0f0;\n"
+"    color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    border: 2px solid #f62451;\n"
+"}")
+        self.intrDel2.setObjectName("intrDel2")
+        self.intrDel3 = QtWidgets.QPushButton(self.habitatFrame)
+        self.intrDel3.setGeometry(QtCore.QRect(500, 185, 100, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        self.intrDel3.setFont(font)
+        self.intrDel3.setStyleSheet("QPushButton {\n"
+"    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #f0f0f0;\n"
+"    color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    border: 2px solid #f62451;\n"
+"}")
+        self.intrDel3.setObjectName("intrDel3")
+        self.intrVal3 = QtWidgets.QLineEdit(self.habitatFrame)
+        self.intrVal3.setGeometry(QtCore.QRect(300, 185, 190, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.intrVal3.setFont(font)
+        self.intrVal3.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #2d87d3;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QLineEdit::hover {\n"
+"    border: 2px solid #2d87d3;\n"
+"}")
+        self.intrVal3.setPlaceholderText("")
+        self.intrVal3.setObjectName("intrVal3")
+        self.intrDel4 = QtWidgets.QPushButton(self.habitatFrame)
+        self.intrDel4.setGeometry(QtCore.QRect(500, 225, 100, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        self.intrDel4.setFont(font)
+        self.intrDel4.setStyleSheet("QPushButton {\n"
+"    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #f0f0f0;\n"
+"    color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    border: 2px solid #f62451;\n"
+"}")
+        self.intrDel4.setObjectName("intrDel4")
+        self.intrVal4 = QtWidgets.QLineEdit(self.habitatFrame)
+        self.intrVal4.setGeometry(QtCore.QRect(300, 225, 190, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.intrVal4.setFont(font)
+        self.intrVal4.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #2d87d3;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QLineEdit::hover {\n"
+"    border: 2px solid #2d87d3;\n"
+"}")
+        self.intrVal4.setPlaceholderText("")
+        self.intrVal4.setObjectName("intrVal4")
+        self.extrDel4 = QtWidgets.QPushButton(self.habitatFrame)
+        self.extrDel4.setGeometry(QtCore.QRect(500, 485, 100, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        self.extrDel4.setFont(font)
+        self.extrDel4.setStyleSheet("QPushButton {\n"
+"    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #f0f0f0;\n"
+"    color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    border: 2px solid #f62451;\n"
+"}")
+        self.extrDel4.setObjectName("extrDel4")
+        self.extrVal0 = QtWidgets.QLineEdit(self.habitatFrame)
+        self.extrVal0.setGeometry(QtCore.QRect(300, 325, 190, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.extrVal0.setFont(font)
+        self.extrVal0.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #2d87d3;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QLineEdit::hover {\n"
+"    border: 2px solid #2d87d3;\n"
+"}")
+        self.extrVal0.setPlaceholderText("")
+        self.extrVal0.setObjectName("extrVal0")
+        self.extrDel3 = QtWidgets.QPushButton(self.habitatFrame)
+        self.extrDel3.setGeometry(QtCore.QRect(500, 445, 100, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        self.extrDel3.setFont(font)
+        self.extrDel3.setStyleSheet("QPushButton {\n"
+"    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #f0f0f0;\n"
+"    color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    border: 2px solid #f62451;\n"
+"}")
+        self.extrDel3.setObjectName("extrDel3")
+        self.extrVal4 = QtWidgets.QLineEdit(self.habitatFrame)
+        self.extrVal4.setGeometry(QtCore.QRect(300, 485, 190, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.extrVal4.setFont(font)
+        self.extrVal4.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #2d87d3;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QLineEdit::hover {\n"
+"    border: 2px solid #2d87d3;\n"
+"}")
+        self.extrVal4.setPlaceholderText("")
+        self.extrVal4.setObjectName("extrVal4")
+        self.extrVal2 = QtWidgets.QLineEdit(self.habitatFrame)
+        self.extrVal2.setGeometry(QtCore.QRect(300, 405, 190, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.extrVal2.setFont(font)
+        self.extrVal2.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #2d87d3;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QLineEdit::hover {\n"
+"    border: 2px solid #2d87d3;\n"
+"}")
+        self.extrVal2.setPlaceholderText("")
+        self.extrVal2.setObjectName("extrVal2")
+        self.extrDel0 = QtWidgets.QPushButton(self.habitatFrame)
+        self.extrDel0.setGeometry(QtCore.QRect(500, 325, 100, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        self.extrDel0.setFont(font)
+        self.extrDel0.setStyleSheet("QPushButton {\n"
+"    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #f0f0f0;\n"
+"    color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    border: 2px solid #f62451;\n"
+"}")
+        self.extrDel0.setObjectName("extrDel0")
+        self.extrDel1 = QtWidgets.QPushButton(self.habitatFrame)
+        self.extrDel1.setGeometry(QtCore.QRect(500, 365, 100, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        self.extrDel1.setFont(font)
+        self.extrDel1.setStyleSheet("QPushButton {\n"
+"    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #f0f0f0;\n"
+"    color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    border: 2px solid #f62451;\n"
+"}")
+        self.extrDel1.setObjectName("extrDel1")
+        self.extrVal3 = QtWidgets.QLineEdit(self.habitatFrame)
+        self.extrVal3.setGeometry(QtCore.QRect(300, 445, 190, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.extrVal3.setFont(font)
+        self.extrVal3.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #2d87d3;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QLineEdit::hover {\n"
+"    border: 2px solid #2d87d3;\n"
+"}")
+        self.extrVal3.setPlaceholderText("")
+        self.extrVal3.setObjectName("extrVal3")
+        self.extrDel2 = QtWidgets.QPushButton(self.habitatFrame)
+        self.extrDel2.setGeometry(QtCore.QRect(500, 405, 100, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        self.extrDel2.setFont(font)
+        self.extrDel2.setStyleSheet("QPushButton {\n"
+"    background-color:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                 stop: 0 #161c21, stop: 1.0 #2d3943);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #f0f0f0;\n"
+"    color: #f62451;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    border: 2px solid #f62451;\n"
+"}")
+        self.extrDel2.setObjectName("extrDel2")
+        self.extrVal1 = QtWidgets.QLineEdit(self.habitatFrame)
+        self.extrVal1.setGeometry(QtCore.QRect(300, 365, 190, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.extrVal1.setFont(font)
+        self.extrVal1.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #2d87d3;\n"
+"    color: #f0f0f0;\n"
+"}\n"
+"\n"
+"QLineEdit::hover {\n"
+"    border: 2px solid #2d87d3;\n"
+"}")
+        self.extrVal1.setPlaceholderText("")
+        self.extrVal1.setObjectName("extrVal1")
         self.typeFrame = QtWidgets.QFrame(self.editingFrame)
         self.typeFrame.setEnabled(True)
         self.typeFrame.setGeometry(QtCore.QRect(0, 70, 800, 530))
@@ -2021,13 +2255,13 @@ class Ui_MainVoxMLWindow(object):
         font.setPointSize(12)
         self.typeReflSymXY.setFont(font)
         self.typeReflSymXY.setObjectName("typeReflSymXY")
+        self.typeFrame.raise_()
         self.entityFrame.raise_()
         self.lexFrame.raise_()
         self.embodimentFrame.raise_()
         self.attributesFrame.raise_()
         self.affordStrFrame.raise_()
         self.habitatFrame.raise_()
-        self.typeFrame.raise_()
         self.entityBtn.raise_()
         self.lexBtn.raise_()
         self.typeBtn.raise_()
@@ -2036,7 +2270,7 @@ class Ui_MainVoxMLWindow(object):
         self.embodimentBtn.raise_()
         self.affordStrBtn.raise_()
         self.createVoxMLButton = QtWidgets.QPushButton(self.backgroundFrame)
-        self.createVoxMLButton.setGeometry(QtCore.QRect(670, 120, 160, 30))
+        self.createVoxMLButton.setGeometry(QtCore.QRect(290, 120, 160, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -2059,7 +2293,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.createVoxMLButton.setObjectName("createVoxMLButton")
         self.templateChooser = QtWidgets.QComboBox(self.backgroundFrame)
-        self.templateChooser.setGeometry(QtCore.QRect(510, 120, 150, 30))
+        self.templateChooser.setGeometry(QtCore.QRect(130, 120, 150, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -2119,7 +2353,7 @@ class Ui_MainVoxMLWindow(object):
         self.templateChooser.addItem("")
         self.templateChooser.addItem("")
         self.templateLabel = QtWidgets.QLabel(self.backgroundFrame)
-        self.templateLabel.setGeometry(QtCore.QRect(405, 120, 100, 28))
+        self.templateLabel.setGeometry(QtCore.QRect(20, 120, 100, 28))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -2132,7 +2366,7 @@ class Ui_MainVoxMLWindow(object):
         self.templateLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.templateLabel.setObjectName("templateLabel")
         self.saveVoxMLData = QtWidgets.QPushButton(self.backgroundFrame)
-        self.saveVoxMLData.setGeometry(QtCore.QRect(670, 20, 160, 30))
+        self.saveVoxMLData.setGeometry(QtCore.QRect(670, 120, 160, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -2155,7 +2389,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.saveVoxMLData.setObjectName("saveVoxMLData")
         self.popupText = QtWidgets.QLabel(self.backgroundFrame)
-        self.popupText.setGeometry(QtCore.QRect(850, 20, 670, 70))
+        self.popupText.setGeometry(QtCore.QRect(670, 20, 850, 70))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(18)
@@ -2168,7 +2402,7 @@ class Ui_MainVoxMLWindow(object):
         self.popupText.setAlignment(QtCore.Qt.AlignCenter)
         self.popupText.setObjectName("popupText")
         self.templateLabel_2 = QtWidgets.QLabel(self.backgroundFrame)
-        self.templateLabel_2.setGeometry(QtCore.QRect(20, 120, 60, 28))
+        self.templateLabel_2.setGeometry(QtCore.QRect(850, 120, 220, 28))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -2181,7 +2415,7 @@ class Ui_MainVoxMLWindow(object):
         self.templateLabel_2.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.templateLabel_2.setObjectName("templateLabel_2")
         self.open3DObjectButton = QtWidgets.QPushButton(self.backgroundFrame)
-        self.open3DObjectButton.setGeometry(QtCore.QRect(205, 120, 100, 30))
+        self.open3DObjectButton.setGeometry(QtCore.QRect(1250, 120, 160, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -2204,7 +2438,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.open3DObjectButton.setObjectName("open3DObjectButton")
         self.openImageButton = QtWidgets.QPushButton(self.backgroundFrame)
-        self.openImageButton.setGeometry(QtCore.QRect(315, 120, 100, 30))
+        self.openImageButton.setGeometry(QtCore.QRect(1420, 120, 160, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -2227,7 +2461,7 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.openImageButton.setObjectName("openImageButton")
         self.chooseVoxMLObject = QtWidgets.QComboBox(self.backgroundFrame)
-        self.chooseVoxMLObject.setGeometry(QtCore.QRect(670, 60, 160, 30))
+        self.chooseVoxMLObject.setGeometry(QtCore.QRect(500, 120, 160, 30))
         self.chooseVoxMLObject.setStyleSheet("QComboBox {\n"
 "    border: 1px solid #f0f0f0;\n"
 "    border-radius: 10px;\n"
@@ -2275,26 +2509,47 @@ class Ui_MainVoxMLWindow(object):
 "}\n"
 "")
         self.chooseVoxMLObject.setObjectName("chooseVoxMLObject")
-        self.displayImageLabel = QtWidgets.QLabel(self.backgroundFrame)
-        self.displayImageLabel.setGeometry(QtCore.QRect(850, 170, 730, 600))
+        self.imgObjFrame = QtWidgets.QFrame(self.backgroundFrame)
+        self.imgObjFrame.setGeometry(QtCore.QRect(850, 170, 730, 600))
+        self.imgObjFrame.setStyleSheet("QFrame {\n"
+"    border-radius: 0px;\n"
+"    border: 2px solid #f0f0f0;\n"
+"}")
+        self.imgObjFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.imgObjFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.imgObjFrame.setObjectName("imgObjFrame")
+        self.displayImageLabel = QtWidgets.QLabel(self.imgObjFrame)
+        self.displayImageLabel.setGeometry(QtCore.QRect(0, 0, 730, 600))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(50)
         self.displayImageLabel.setFont(font)
+        self.displayImageLabel.setToolTip("")
         self.displayImageLabel.setStyleSheet("QLabel {\n"
 "    border-radius: 0px;\n"
 "    background-color: None;\n"
 "    color: #f0f0f0;\n"
-"    border: 1px solid #f0f0f0;\n"
+"    border: None;\n"
 "}")
         self.displayImageLabel.setText("")
         self.displayImageLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.displayImageLabel.setObjectName("displayImageLabel")
+        self.objLabel = QtWidgets.QLabel(self.backgroundFrame)
+        self.objLabel.setGeometry(QtCore.QRect(435, 120, 60, 28))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(12)
+        self.objLabel.setFont(font)
+        self.objLabel.setStyleSheet("QLabel {\n"
+"    background-color: None;\n"
+"    color: #2b78d3;\n"
+"    border: None;\n"
+"}")
+        self.objLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.objLabel.setObjectName("objLabel")
         MainVoxMLWindow.setCentralWidget(self.mainWidget)
 
         self.retranslateUi(MainVoxMLWindow)
-        self.habitatIntrinsic.setCurrentIndex(-1)
-        self.habitatExtrinsic.setCurrentIndex(-1)
         self.typeComponents.setCurrentIndex(-1)
         self.typeArgs.setCurrentIndex(-1)
         self.typeBody.setCurrentIndex(-1)
@@ -2355,7 +2610,7 @@ class Ui_MainVoxMLWindow(object):
         self.afforDel4.setText(_translate("MainVoxMLWindow", "Delete"))
         self.afforDel6.setText(_translate("MainVoxMLWindow", "Delete"))
         self.intrinsicLabel.setText(_translate("MainVoxMLWindow", "<html><head/><body><p>Intrinsic:</p></body></html>"))
-        self.habitatIntrinsicDelete.setText(_translate("MainVoxMLWindow", "Delete"))
+        self.intrDel0.setText(_translate("MainVoxMLWindow", "Delete"))
         self.habitatIntrinsicAdder.setText(_translate("MainVoxMLWindow", "Add"))
         self.habitatIntrName.setPlaceholderText(_translate("MainVoxMLWindow", "Name"))
         self.habitatIntrValue.setPlaceholderText(_translate("MainVoxMLWindow", "Value"))
@@ -2363,7 +2618,15 @@ class Ui_MainVoxMLWindow(object):
         self.habitatExtrName.setPlaceholderText(_translate("MainVoxMLWindow", "Name"))
         self.habitatExtrValue.setPlaceholderText(_translate("MainVoxMLWindow", "Value"))
         self.habitatExtrinsicAdd.setText(_translate("MainVoxMLWindow", "Add"))
-        self.habitatExtrinsicDelete.setText(_translate("MainVoxMLWindow", "Delete"))
+        self.intrDel1.setText(_translate("MainVoxMLWindow", "Delete"))
+        self.intrDel2.setText(_translate("MainVoxMLWindow", "Delete"))
+        self.intrDel3.setText(_translate("MainVoxMLWindow", "Delete"))
+        self.intrDel4.setText(_translate("MainVoxMLWindow", "Delete"))
+        self.extrDel4.setText(_translate("MainVoxMLWindow", "Delete"))
+        self.extrDel3.setText(_translate("MainVoxMLWindow", "Delete"))
+        self.extrDel0.setText(_translate("MainVoxMLWindow", "Delete"))
+        self.extrDel1.setText(_translate("MainVoxMLWindow", "Delete"))
+        self.extrDel2.setText(_translate("MainVoxMLWindow", "Delete"))
         self.typeHeadLabel.setText(_translate("MainVoxMLWindow", "Head:"))
         self.typeHead.setToolTip(_translate("MainVoxMLWindow", "Type: Head"))
         self.typeConcavity.setToolTip(_translate("MainVoxMLWindow", "Type Concavity"))
@@ -2436,9 +2699,11 @@ class Ui_MainVoxMLWindow(object):
         self.saveVoxMLData.setText(_translate("MainVoxMLWindow", "Save To File"))
         self.popupText.setText(_translate("MainVoxMLWindow", "PopUP Window"))
         self.templateLabel_2.setToolTip(_translate("MainVoxMLWindow", "Not here. To the right!"))
-        self.templateLabel_2.setText(_translate("MainVoxMLWindow", "Open:"))
+        self.templateLabel_2.setText(_translate("MainVoxMLWindow", "Open VoxML Data from:"))
         self.open3DObjectButton.setToolTip(_translate("MainVoxMLWindow", "Import 3D Object from file"))
         self.open3DObjectButton.setText(_translate("MainVoxMLWindow", "3D Object"))
         self.openImageButton.setToolTip(_translate("MainVoxMLWindow", "Import Image from file"))
         self.openImageButton.setText(_translate("MainVoxMLWindow", "Image"))
-        self.displayImageLabel.setToolTip(_translate("MainVoxMLWindow", "That\'s just the title!"))
+        self.imgObjFrame.setToolTip(_translate("MainVoxMLWindow", "Display images and 3D-objects"))
+        self.objLabel.setToolTip(_translate("MainVoxMLWindow", "Not here. To the right!"))
+        self.objLabel.setText(_translate("MainVoxMLWindow", "Obj:"))

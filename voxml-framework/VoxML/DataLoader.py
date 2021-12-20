@@ -2,7 +2,6 @@ import math
 import torch
 import random
 import trimesh
-from pyvista import read as pvRead
 from pyvistaqt import BackgroundPlotter
 
 from PIL import Image, ImageDraw, ImageQt
@@ -381,11 +380,6 @@ class VoxMLDataLoader:
         logits = self.model3D(pointCloud)
         guess = (logits.max(dim = 1)[1]).item()
 
-        if self.plotter != None:
-            self.plotter.close()
-        self.plotter = BackgroundPlotter()
-        self.plotter.add_mesh(pvRead(inpath))
-
         path = os.path.abspath("voxml-framework/VoxMLData/classificator/" + str(self.objClassdict[guess]) + ".txt").replace("\\", "/")           
         return self.loadFileToObject(path)
 
@@ -412,8 +406,10 @@ class VoxMLDataLoader:
             draw.rectangle([x0,y0,x1,y1], outline = 'red', width = 5)
             draw.text((x,y), guesses[-1], fill = "red")
 
+        img2.save("voxml-framework/Scenes/Temp/" + os.path.basename(inpath))
+
         if len(guesses) == 0:
-            return None, ImageQt.ImageQt(img2)
+            return
 
         paths = []
         for guess in guesses:
@@ -427,7 +423,7 @@ class VoxMLDataLoader:
 
         objs = [self.loadFileToObject(path) for path in paths]
 
-        return [None if x == None else x[0] for x in objs], ImageQt.ImageQt(img2)
+        return [None if x == None else x[0] for x in objs]
         
 
 
