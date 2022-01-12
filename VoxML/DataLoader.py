@@ -156,7 +156,7 @@ class VoxMLDataLoader:
     def initModels(self):
         model = DGCNN().to(torch.device("cpu"))
         model = torch.nn.DataParallel(model)
-        model.load_state_dict(torch.load("voxml-framework/VoxMLData/models/custommodelorig.t7", map_location = torch.device("cpu")))
+        model.load_state_dict(torch.load("VoxMLData/models/custommodelorig.t7", map_location = torch.device("cpu")))
         model = model.eval()
         self.model3D = model
 
@@ -380,7 +380,7 @@ class VoxMLDataLoader:
         logits = self.model3D(pointCloud)
         guess = (logits.max(dim = 1)[1]).item()
 
-        path = os.path.abspath("voxml-framework/VoxMLData/classificator/" + str(self.objClassdict[guess]) + ".txt").replace("\\", "/")           
+        path = os.path.abspath("VoxMLData/classificator/" + str(self.objClassdict[guess]) + ".txt").replace("\\", "/")           
         return self.loadFileToObject(path)
 
     # load Image to object :: using https://huggingface.co/facebook/detr-resnet-50
@@ -406,7 +406,7 @@ class VoxMLDataLoader:
             draw.rectangle([x0,y0,x1,y1], outline = 'red', width = 5)
             draw.text((x,y), guesses[-1], fill = "red")
 
-        img2.save("voxml-framework/Scenes/TempImages/" + os.path.basename(inpath))
+        img2.save("Scenes/TempImages/" + os.path.basename(inpath))
 
         if len(guesses) == 0:
             return
@@ -414,7 +414,7 @@ class VoxMLDataLoader:
         paths = []
         for guess in guesses:
             path = None
-            for root, dirs, files in os.walk("voxml-framework/VoxMLData"):
+            for root, dirs, files in os.walk("VoxMLData"):
                 if guess + ".txt" in files:
                     path = os.path.abspath(os.path.join(root, guess + ".txt")).replace("\\", "/")   
                 if guess + ".xml" in files:
@@ -424,9 +424,6 @@ class VoxMLDataLoader:
         objs = [self.loadFileToObject(path) for path in paths]
 
         return [None if x == None else x[0] for x in objs]
-        
-
-
         
 
 

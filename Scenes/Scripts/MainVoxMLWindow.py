@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'voxml-framework/Scenes/UI/MainVoxMLWindow.ui'
+# Form implementation generated from reading ui file 'Scenes/UI/MainVoxMLWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.14.1
 #

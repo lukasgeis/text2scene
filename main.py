@@ -123,8 +123,8 @@ class MainVoxMLWindow(QMainWindow):
 
     # delete all temp image files and exit program
     def deletePreviousImages(self):
-        for f in os.listdir("voxml-framework/Scenes/TempImages"):
-            os.remove(os.path.join("voxml-framework/Scenes/TempImages", f))
+        for f in os.listdir("Scenes/TempImages"):
+            os.remove(os.path.join("Scenes/TempImages", f))
 
     # show popup message for x seconds
     def showPopupMessage(self, msg: str, x: float):
@@ -599,7 +599,7 @@ class MainVoxMLWindow(QMainWindow):
             self.ui.objPlotter.deleteLater()
             self.ui.objPlotter = QtInteractor(self.ui.imgObjFrame)
             self.ui.objPlotter.setGeometry(QtCore.QRect(1,1,728,598))
-            self.ui.objPlotter.add_background_image("voxml-framework/Scenes/GrayBackground.jpg")
+            self.ui.objPlotter.add_background_image("Scenes/GrayBackground.jpg")
             self.ui.objPlotter.add_mesh(self.objDict[objName])
             self.ui.objPlotter.reset_camera()
             self.ui.objPlotter.show()
@@ -621,7 +621,7 @@ class MainVoxMLWindow(QMainWindow):
                 self.objDict[os.path.basename(inpath)] = pvRead(inpath)
             elif type == "img":
                 objs = self.loader.loadImage(inpath)
-                self.imgDict[os.path.basename(inpath)] = "voxml-framework/Scenes/TempImages/" + os.path.basename(inpath)
+                self.imgDict[os.path.basename(inpath)] = "Scenes/TempImages/" + os.path.basename(inpath)
             if objs == None:
                 self.showPopupMessage("Couldnt load/find file!", 1.5)
                 return
@@ -634,15 +634,15 @@ class MainVoxMLWindow(QMainWindow):
 
     # Choose .txt or .xml file containing VoxML data from system
     def chooseVoxMLDataFile(self) -> str:
-        return QFileDialog.getOpenFileName(self, "Choose file", "voml-framework\\VoxMLData", "VoxML Data (*.txt *.xml)")[0]
+        return QFileDialog.getOpenFileName(self, "Choose file", "VoxMLData", "VoxML Data (*.txt *.xml)")[0]
 
     # Choose .obj or .stl or .off file containing 3D object data from system
     def choose3DObjectFile(self) -> str:
-        return QFileDialog.getOpenFileName(self, "Choose file", "voml-framework\\VoxMLData", "VoxML Data (*.obj *.stl *.off)")[0]
+        return QFileDialog.getOpenFileName(self, "Choose file", "VoxMLData/objects3D", "VoxML Data (*.obj *.stl *.off)")[0]
 
     # Choose .jpg or .png file containing Image from system
     def chooseImageFile(self) -> str:
-        return QFileDialog.getOpenFileName(self, "Choose file", "voml-framework\\VoxMLData", "VoxML Data (*.jpg *.png *.webp)")[0]
+        return QFileDialog.getOpenFileName(self, "Choose file", "VoxMLData/images", "VoxML Data (*.jpg *.png *.webp)")[0]
 
     # save xml data to file with QFileDialog -> use together with createXMLStringFromVoxMLObject
     def saveDataToFile(self):
