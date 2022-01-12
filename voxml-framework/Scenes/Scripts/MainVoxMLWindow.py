@@ -2547,6 +2547,11 @@ class Ui_MainVoxMLWindow(object):
 "}")
         self.objLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.objLabel.setObjectName("objLabel")
+        self.blockFrame = QtWidgets.QFrame(self.backgroundFrame)
+        self.blockFrame.setGeometry(QtCore.QRect(850, 170, 730, 600))
+        self.blockFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.blockFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.blockFrame.setObjectName("blockFrame")
         MainVoxMLWindow.setCentralWidget(self.mainWidget)
 
         self.retranslateUi(MainVoxMLWindow)

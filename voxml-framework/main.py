@@ -585,11 +585,13 @@ class MainVoxMLWindow(QMainWindow):
         self.objIndex = self.ui.chooseVoxMLObject.currentIndex() 
         self.loadDataToEditing()
         self.createNewVoxMLObject(str(self.allObj[self.objIndex].Entity.Type), False)
+        self.ui.blockFrame.show()
 
         objName = self.ui.chooseVoxMLObject.currentText()
         if objName in self.imgDict:
             self.ui.displayImageLabel.setStyleSheet("background-image: url(" + self.imgDict[objName] + ")")
             self.ui.displayImageLabel.show()
+            self.ui.blockFrame.hide()
         else:
             self.ui.displayImageLabel.hide()
         
@@ -601,6 +603,7 @@ class MainVoxMLWindow(QMainWindow):
             self.ui.objPlotter.add_mesh(self.objDict[objName])
             self.ui.objPlotter.reset_camera()
             self.ui.objPlotter.show()
+            self.ui.blockFrame.hide()
         else:
             self.ui.objPlotter.hide()
 

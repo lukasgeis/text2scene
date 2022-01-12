@@ -4688,6 +4688,22 @@ QComboBox::down-arrow:on {
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
+    <widget class="QFrame" name="blockFrame">
+     <property name="geometry">
+      <rect>
+       <x>850</x>
+       <y>170</y>
+       <width>730</width>
+       <height>600</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
