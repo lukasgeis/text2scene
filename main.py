@@ -1,4 +1,5 @@
 # Basic imports
+from multiprocessing import Event
 import os
 import sys
 import xml.etree.ElementTree as ET
@@ -149,7 +150,7 @@ class MainVoxMLWindow(QMainWindow):
 ### editor methods
 
     # add item to ComboBox
-    def addToBox(self, attr):
+    def addToBox(self, attr: str):
         if attr == "components":
             self.ui.typeComponents.addItem(str(self.ui.typeComponentsValue.text()))
             self.ui.typeComponentsValue.setText("")
@@ -190,7 +191,7 @@ class MainVoxMLWindow(QMainWindow):
         self.updateListVisualisations()
 
     # remove item from ComboBox
-    def deleteFromBox(self,attr):
+    def deleteFromBox(self, attr: str):
         if attr == "components":
             self.ui.typeComponents.removeItem(self.ui.typeComponents.currentIndex())
         elif attr == "args":
@@ -225,7 +226,7 @@ class MainVoxMLWindow(QMainWindow):
         self.ui.attributesFrame.hide()
 
     # switches between frames for editing: entity,lex,type,habitat,affordstr,embodiment,attributes
-    def switchEditingFrame(self, chosenPart):
+    def switchEditingFrame(self, chosenPart: str):
         # enable all buttons
         self.ui.entityBtn.setEnabled(True)
         self.ui.lexBtn.setEnabled(True)
@@ -400,7 +401,7 @@ class MainVoxMLWindow(QMainWindow):
         self.updateListVisualisations()
 
     # show specific editing attributes for specific template
-    def createNewVoxMLObject(self, template, create = True):
+    def createNewVoxMLObject(self, template: str, create: bool = True):
         if self.objIndex >= 0:
             self.saveDataToObject()
         if create:
@@ -779,7 +780,7 @@ class MainVoxMLWindow(QMainWindow):
             self.showPopupMessage("Data saved to object!", 1.5)
 
     # Print last added/parsed VoxMLObject to console :: only for testing purposes / will be removed later
-    def printLastVoxMLObject(self, obj = None):
+    def printLastVoxMLObject(self, obj: VoxMLObject = None):
         vox = None
         if obj != None:
             vox = obj
@@ -876,6 +877,7 @@ class MainVoxMLWindow(QMainWindow):
     def doNothing(self, *args):
         pass
             
+# run when program is called
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainVoxMLWindow()

@@ -1,0 +1,7 @@
+PyQt5
+torch
+trimesh
+pyvista
+pyvistaqt
+transformers
+timm
