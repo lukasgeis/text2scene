@@ -2,8 +2,6 @@
 # created using files in https://github.com/VoxML/VoxSim/tree/main/VoxML/voxml as reference
 # will be modified/expanded later on if new entites emerge
 
-import xml.etree.ElementTree as ET
-
 # ======================== #
 #        MAIN CLASS        #
 # ======================== #
