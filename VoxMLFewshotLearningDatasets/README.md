@@ -1,11 +1,28 @@
 # VoxML Fewshot-Learning Datasets
 
-This folder holds 3D-Pointclouds for the following VoxML-Attributes:
-* Concavity
-* RotatSym
-* ReflSym
+Create your own Fewshot-Learning-Dataset for VoxML-Attributes. Run 
+```
+python3 GenerateFewShotData.py <VoxML-Attribute>
+    --voxml <VoxML-Directory>
+    --dataset <3D-Pointclouds>
+    --output <outpath>
+```
 
-The datasets are just examples of data fitting the corresponding attributes. To create your own coherrent dataset for these 3 attributes, see /Classification/...
+The following rules apply:
+* VoxML-Attribute should include the full 'path' (for example Type/Concavity)
+* VoxML-Directory is a directory of VoxML files
+* 3D-Pointclouds follow the structure of ModelNet40:
+```
+│dataset/
+├──obj/
+│   ├──train/
+|       ├── ...           
+│   ├──test/
+|       ├── ...
+├──.......
+```
+
+The generation is heavily based and made for [Point-BERT](https://github.com/lulutang0608/Point-BERT).
 
 ## Credits
 
